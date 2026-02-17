@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700&display=swap');
+
+/* ─── Section Container ─── */
+.poetic-section {
+  position: relative;
+  padding: 160px 0 100px;
+  overflow: visible;
+}
+
+.poetic-section__title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(3rem, 6vw, 6rem);
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  background: linear-gradient(to bottom, #fff, #888);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.poetic-section__subtitle {
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ─── Scroll Pin Area ─── */
+.poetic-stack-wrapper {
+  position: relative;
+  width: min(calc(100% - 2rem), 72rem); /* Wider for more impact */
+  margin: 0 auto;
+}
+
+.poetic-stack-inner {
+  position: relative;
+  display: grid;
+  grid-template-areas: "stack";
+  width: 100%;
+}
+
+/* ─── Individual Card Article ─── */
+.poetic-card {
+  position: relative;
+  background-color: #0c0c0e;
+  /* Subtle gradient overlay */
+  background-image: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+  grid-area: stack;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 
+    0 20px 50px -10px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.08); /* Delicate border */
+  will-change: transform, opacity;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+}
+
+/* ─── Card Header ─── */
+.poetic-card__header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.2);
+}
+
+.poetic-card__title {
+  margin: 0;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.poetic-card__category {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #666;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.poetic-card__arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.2rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.poetic-card__arrow:hover {
+  transform: rotate(45deg);
+  background: #fff;
+  color: #000;
+}
+
+/* ─── Card Body ─── */
+.poetic-card__body {
+  position: relative;
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: start;
+  gap: 2rem;
+}
+
+/* ─── Card Iframe Preview ─── */
+.poetic-card__iframe-wrap {
+  width: 100%;
+  height: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: #050505;
+  pointer-events: none;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.5s ease;
+}
+
+.poetic-card__iframe {
+  width: 400%;
+  height: 400%;
+  border: none;
+  transform: scale(0.25);
+  transform-origin: top left;
+  pointer-events: none;
+  opacity: 0.85; /* Slightly muted for sleekness */
+  transition: opacity 0.5s ease;
+}
+
+/* ─── Poem Content ─── */
+.poetic-card__poem {
+  width: 100%;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 12px;
+}
+
+.poetic-card__poem p {
+  margin: 0 0 1.2rem 0;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #a1a1aa; /* Zinc-400 */
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+}
+
+.poetic-card__poem p:last-child {
+  margin-bottom: 0;
+}
+
+/* Custom scrollbar */
+.poetic-card__poem::-webkit-scrollbar {
+  width: 3px;
+}
+.poetic-card__poem::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.02);
+}
+.poetic-card__poem::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+}
+
+/* ─── Link Bar ─── */
+.poetic-card__link-bar {
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.03);
+  background: rgba(0,0,0,0.2);
+}
+
+.poetic-card__link {
+  font-size: 0.85rem;
+  color: #666;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: color 0.3s ease;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.poetic-card__link:hover {
+  color: #fff;
+}
+
+.poetic-card__link-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.poetic-card__link:hover .poetic-card__link-arrow {
+  transform: translateX(4px);
+}
+
+/* ─── Footer Number ─── */
+.poetic-card__number {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1rem;
+  font-size: 12rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.015);
+  user-select: none;
+  z-index: 0;
+  line-height: 0.8;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.05em;
+  pointer-events: none;
+}
+
+/* ─── Scroll Indicator ─── */
+.poetic-scroll-indicator {
+  text-align: center;
+  margin-top: 2rem;
+  opacity: 0.5;
+  animation: poetic-bounce 2s ease-in-out infinite;
+}
+
+@keyframes poetic-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.3; }
+  50% { transform: translateY(6px); opacity: 0.6; }
+}
+
+/* ─── Progress Dots ─── */
+.poetic-progress {
+  position: fixed;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.poetic-progress--visible {
+  opacity: 1;
+}
+
+.poetic-progress__dot {
+  width: 4px; /* Sleeker, smaller dots */
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.poetic-progress__dot--active {
+  background: #fff;
+  transform: scale(2);
+  box-shadow: 0 0 15px rgba(255,255,255,0.5);
+}
+
+/* ─── Responsive ─── */
+@media (min-width: 600px) {
+  /* Desktop Layout Adjustment */
+  .poetic-card__body {
+    grid-template-columns: 320px 1fr; /* Wider first column for the iframe */
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .poetic-card__iframe-wrap {
+    height: 320px;
+    width: 100%; /* Fills the 320px column */
+  }
+
+  /* More zoom out on desktop */
+  .poetic-card__iframe {
+    width: 500%;
+    height: 500%;
+    transform: scale(0.2);
+  }
+
+  /* Specific zoom for Cloyai */
+  .card-cloyai .poetic-card__iframe {
+    width: 250%; /* 100 / 0.4 = 250% */
+    height: 250%;
+    transform: scale(0.4);
+  }
+}
+
+/* Specific zoom for Cloyai on Mobile */
+@media (max-width: 599px) {
+  .card-cloyai .poetic-card__iframe {
+    width: 285%; /* 100 / 0.35 approx */
+    height: 285%;
+    transform: scale(0.35);
+  }
+}
+
+@media (max-width: 600px) {
+  .poetic-section {
+    padding: 100px 0 40px;
+  }
+  .poetic-card__body {
+    padding: 1.5rem;
+  }
+  .poetic-card__header {
+    padding: 1rem 1.5rem;
+  }
+  .poetic-card__link-bar {
+    padding: 1rem 1.5rem;
+  }
+  .poetic-card__number {
+    font-size: 6rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+  .poetic-progress {
+    display: none !important;
+  }
+  .poetic-section__subtitle {
+    margin-bottom: 3rem;
+  }
+}
