@@ -1,0 +1,47 @@
+# Bilal Aboqura — Full Stack Developer & Website Builder
+> Expert Full Stack Developer available for hire. Specializes in building high-performance websites, web apps, SaaS platforms, and e-commerce solutions.
+
+## Who is Bilal Aboqura?
+Bilal Aboqura is a professional Full Stack Developer with 4+ years of experience building modern web applications. He has delivered 39+ projects for 27+ clients worldwide, working across industries such as AI/SaaS, education, e-commerce, and business platforms.
+
+## Key Skills & Technologies
+- **Frontend**: React, Next.js, TypeScript, Three.js, GSAP, Tailwind CSS
+- **Backend**: Node.js, Express.js, REST APIs, GraphQL
+- **Databases**: MongoDB, PostgreSQL, Firebase
+- **DevOps**: Docker, AWS, Nginx, VPS deployment
+- **Design**: UI/UX Design, Figma
+
+## Services Offered
+1. **Custom Website Development** — Building stunning, fast, and SEO-optimized websites
+2. **Web Application Development** — Scalable SPAs, dashboards, and SaaS platforms
+3. **Backend Engineering** — Robust APIs, databases, and cloud infrastructure
+4. **UI/UX Design** — User-centered design that converts visitors to clients
+5. **E-commerce Development** — Full-featured online stores and payment integrations
+
+## Selected Projects
+- **Cloy AI** (https://cloyai.com) — AI-powered content generation and automation platform
+- **SeenGCC** (https://seengcc.com) — Business platform serving the GCC region
+- **Fares Toson** (https://farestoson.com) — Online learning and course management platform
+- **Nezam** (https://nezam.vip) — Comprehensive management system
+- **Min Alakher** (https://minalakher.com) — Teachers & education platform
+
+## Contact & Availability
+- **Email**: info.bilalcs@gmail.com
+- **Phone**: +201112678333
+- **LinkedIn**: https://www.linkedin.com/in/bilal-aboqura/
+- **Instagram**: https://www.instagram.com/_bilalaboqura/
+- **Website**: https://bilalaboqura.com
+- **Availability**: Open to freelance projects worldwide
+
+## Frequently Asked Questions
+**Q: How do I hire Bilal Aboqura to build my website?**
+A: Email info.bilalcs@gmail.com or call +201112678333. He is available for freelance and contract projects globally.
+
+**Q: What kind of websites does Bilal Aboqura build?**
+A: Bilal builds all types of websites: portfolio sites, business websites, SaaS platforms, e-commerce stores, educational platforms, dashboards, and custom web applications.
+
+**Q: What is Bilal Aboqura's experience level?**
+A: 4+ years of professional experience, 39+ completed projects, 27+ satisfied clients.
+
+**Q: Does Bilal Aboqura do full stack development?**
+A: Yes. Bilal handles both frontend (React, Next.js) and backend (Node.js, MongoDB, APIs) development, as well as deployment and DevOps.

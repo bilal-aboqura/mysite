@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      font-family: 'Outfit', sans-serif;
+      background: #0a0e1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Background glow orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+    .orb-1 {
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(59,130,246,0.22) 0%, transparent 70%);
+      top: -100px; right: -80px;
+    }
+    .orb-2 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(99,179,237,0.12) 0%, transparent 70%);
+      bottom: -80px; left: 60px;
+    }
+
+    /* Grid lines bg */
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      padding: 60px 80px;
+      gap: 48px;
+    }
+
+    /* Left content */
+    .left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.3);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #3b82f6;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      width: fit-content;
+    }
+
+    .badge::before {
+      content: '';
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #3b82f6;
+      display: inline-block;
+    }
+
+    .name {
+      font-size: 68px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 26px;
+      font-weight: 600;
+      color: #3b82f6;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .tech-pill {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 50px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 36px;
+    }
+
+    .stat-num {
+      font-size: 30px;
+      font-weight: 900;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    /* Right visual */
+    .right {
+      flex: 0 0 340px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    .code-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(59,130,246,0.2);
+      border-radius: 20px;
+      padding: 24px 28px;
+      width: 100%;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      color: #94a3b8;
+      backdrop-filter: blur(10px);
+    }
+
+    .code-blue { color: #3b82f6; }
+    .code-green { color: #34d399; }
+    .code-purple { color: #a78bfa; }
+    .code-orange { color: #fb923c; }
+    .code-white { color: #f8fafc; }
+
+    /* Bottom URL bar */
+    .url-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 52px;
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(59,130,246,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 80px;
+      z-index: 3;
+    }
+
+    .url-bar-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .url-bar-link {
+      font-size: 14px;
+      font-weight: 700;
+      color: #3b82f6;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="card">
+    <!-- Left Content -->
+    <div class="left">
+      <div class="badge">Full Stack Developer</div>
+
+      <div class="name">Bilal<br />Aboqura</div>
+      <div class="title">Website & Web App Builder</div>
+
+      <div class="tech-list">
+        <span class="tech-pill">React</span>
+        <span class="tech-pill">Next.js</span>
+        <span class="tech-pill">Node.js</span>
+        <span class="tech-pill">TypeScript</span>
+        <span class="tech-pill">MongoDB</span>
+        <span class="tech-pill">UI/UX</span>
+      </div>
+
+      <div class="stats">
+        <div>
+          <div class="stat-num">39+</div>
+          <div class="stat-label">Projects Built</div>
+        </div>
+        <div>
+          <div class="stat-num">27+</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div>
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Years Exp.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Code Card -->
+    <div class="right">
+      <div class="code-card">
+        <div><span class="code-blue">const</span> <span class="code-white">developer</span> = {</div>
+        <div>&nbsp;&nbsp;<span class="code-green">name</span>: <span class="code-orange">"Bilal Aboqura"</span>,</div>
+        <div>&nbsp;&nbsp;<span class="code-green">role</span>: <span class="code-orange">"Full Stack Dev"</span>,</div>
+        <div>&nbsp;&nbsp;<span class="code-green">skills</span>: [</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-orange">"React"</span>, <span class="code-orange">"Next.js"</span>,</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-orange">"Node.js"</span>, <span class="code-orange">"MongoDB"</span></div>
+        <div>&nbsp;&nbsp;],</div>
+        <div>&nbsp;&nbsp;<span class="code-green">available</span>: <span class="code-purple">true</span></div>
+        <div>};</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="url-bar">
+    <span class="url-bar-text">Available for freelance projects worldwide</span>
+    <span class="url-bar-link">bilalaboqura.com</span>
+  </div>
+</body>
+</html>

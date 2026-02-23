@@ -46,11 +46,16 @@ const Skills = () => {
       padding: 'var(--section-padding) 0',
       overflow: 'hidden',
       position: 'relative',
-    }}>
+    }}
+    aria-label="Technical Skills and Technology Stack"
+    >
       <div className="container" style={{ marginBottom: '3rem' }}>
         <div className="skills-heading" style={{ textAlign: 'center' }}>
           <span className="section-label">Tech Stack</span>
-          <h2 className="section-heading">Skills & Technologies</h2>
+          <h2 className="section-heading">Skills &amp; Technologies I Use to Build Websites</h2>
+          <p style={{ marginTop: '0.75rem', color: '#475569', fontSize: '1rem' }}>
+            React, Next.js, Node.js, TypeScript, MongoDB, PostgreSQL, Docker, AWS &amp; more.
+          </p>
         </div>
       </div>
 

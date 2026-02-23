@@ -2,16 +2,285 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         FAVICON
+    ═══════════════════════════════════════════════════════ -->
+    <link rel="icon" type="image/webp" href="/src/assets/bilal-cutout.webp" />
+    <link rel="apple-touch-icon" href="/src/assets/bilal-cutout.webp" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         PRIMARY SEO
+    ═══════════════════════════════════════════════════════ -->
+    <title>Bilal Aboqura | Full Stack Developer & Website Builder</title>
+    <meta
+      name="description"
+      content="Bilal Aboqura is an expert Full Stack Developer specializing in building high-performance websites, web applications, SaaS platforms, and e-commerce solutions using React, Next.js, Node.js, and modern UI/UX design. Hire Bilal to build your next website."
+    />
+    <meta
+      name="keywords"
+      content="full stack developer, website developer, web developer for hire, build a website, website design, web application development, React developer, Next.js developer, Node.js developer, UI UX designer, SaaS developer, e-commerce developer, hire web developer, freelance web developer, custom website, Bilal Aboqura"
+    />
+    <meta name="author" content="Bilal Aboqura" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#0a0e1a" />
+    <meta name="rating" content="general" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://bilalaboqura.com/" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         OPEN GRAPH (Facebook / LinkedIn / WhatsApp)
+    ═══════════════════════════════════════════════════════ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bilalaboqura.com/" />
+    <meta property="og:site_name" content="Bilal Aboqura — Full Stack Developer" />
+    <meta property="og:title" content="Bilal Aboqura | Full Stack Developer & Website Builder" />
+    <meta
+      property="og:description"
+      content="Expert Full Stack Developer building stunning websites, scalable web apps, and SaaS platforms. 4+ years of experience, 39+ projects delivered. Available for hire."
+    />
+    <meta property="og:image" content="https://bilalaboqura.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Bilal Aboqura - Full Stack Developer Portfolio" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         TWITTER CARD
+    ═══════════════════════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bilalaboqura" />
+    <meta name="twitter:creator" content="@bilalaboqura" />
+    <meta name="twitter:title" content="Bilal Aboqura | Full Stack Developer & Website Builder" />
+    <meta
+      name="twitter:description"
+      content="Expert Full Stack Developer building stunning websites, scalable web apps, and SaaS platforms. 4+ years of experience, 39+ projects delivered."
+    />
+    <meta name="twitter:image" content="https://bilalaboqura.com/og-image.jpg" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         STRUCTURED DATA — JSON-LD
+    ═══════════════════════════════════════════════════════ -->
+
+    <!-- 1. Person schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Bilal Aboqura",
+      "url": "https://bilalaboqura.com",
+      "image": "https://bilalaboqura.com/src/assets/bilal-cutout.webp",
+      "email": "info.bilalcs@gmail.com",
+      "telephone": "+201112678333",
+      "jobTitle": "Full Stack Developer",
+      "description": "Full Stack Developer with 4+ years of experience building websites, web applications, SaaS platforms, and e-commerce solutions using React, Next.js, Node.js, MongoDB, and modern UI/UX design.",
+      "knowsAbout": [
+        "Full Stack Web Development",
+        "React",
+        "Next.js",
+        "Node.js",
+        "TypeScript",
+        "MongoDB",
+        "PostgreSQL",
+        "REST APIs",
+        "GraphQL",
+        "UI/UX Design",
+        "SaaS Development",
+        "E-commerce Development"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/bilal-aboqura/",
+        "https://www.instagram.com/_bilalaboqura/"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "name": "Full Stack Web Development Services",
+        "description": "Custom website development, web application development, SaaS platforms, UI/UX design, backend engineering",
+        "url": "https://bilalaboqura.com/#services"
+      }
+    }
+    </script>
+
+    <!-- 2. WebSite schema (enables Google SiteLinks Search Box) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Bilal Aboqura — Full Stack Developer",
+      "url": "https://bilalaboqura.com",
+      "description": "Portfolio website of Bilal Aboqura — Full Stack Developer specializing in websites, web apps, SaaS, and UI/UX design.",
+      "author": {
+        "@type": "Person",
+        "name": "Bilal Aboqura"
+      }
+    }
+    </script>
+
+    <!-- 3. ProfessionalService schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Bilal Aboqura — Web Development Services",
+      "url": "https://bilalaboqura.com",
+      "email": "info.bilalcs@gmail.com",
+      "telephone": "+201112678333",
+      "description": "Professional full stack web development services including custom websites, web applications, SaaS platforms, backend engineering, and UI/UX design.",
+      "priceRange": "$$",
+      "areaServed": "Worldwide",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Development Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Website Development",
+              "description": "Building performant, modern websites and web applications with React and Next.js"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Backend Engineering",
+              "description": "Scalable server architectures with Node.js, MongoDB, and cloud infrastructure"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "UI/UX Design",
+              "description": "Stunning, intuitive interfaces with attention to every pixel and interaction"
+            }
+          }
+        ]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/bilal-aboqura/",
+        "https://www.instagram.com/_bilalaboqura/"
+      ]
+    }
+    </script>
+
+    <!-- 4. FAQ schema (high-intent queries that rank as rich results) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is Bilal Aboqura?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bilal Aboqura is a Full Stack Developer with 4+ years of experience building high-performance websites, web applications, SaaS platforms, and e-commerce solutions. He specializes in React, Next.js, Node.js, and modern UI/UX design."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What services does Bilal Aboqura offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bilal Aboqura offers full stack web development services including custom website development, web application development, SaaS platform development, backend engineering with Node.js and MongoDB, and UI/UX design."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I hire Bilal Aboqura to build my website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can hire Bilal Aboqura by sending an email to info.bilalcs@gmail.com, calling +201112678333, or reaching out via LinkedIn at linkedin.com/in/bilal-aboqura/. He is available for freelance projects worldwide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What technologies does Bilal Aboqura use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bilal Aboqura uses React, Next.js, Node.js, TypeScript, MongoDB, PostgreSQL, GraphQL, REST APIs, Three.js, GSAP, Tailwind CSS, Docker, AWS, Firebase, and Figma for design."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much experience does Bilal Aboqura have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bilal Aboqura has 4+ years of professional experience in full stack web development, having successfully delivered 39+ projects for 27+ happy clients across various industries including AI/SaaS, education, e-commerce, and business platforms."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- 5. BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bilalaboqura.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": "https://bilalaboqura.com/#about"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Services",
+          "item": "https://bilalaboqura.com/#services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Projects",
+          "item": "https://bilalaboqura.com/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Contact",
+          "item": "https://bilalaboqura.com/#contact"
+        }
+      ]
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PERFORMANCE PRECONNECTS
+    ═══════════════════════════════════════════════════════ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.linkedin.com" />
+    <link rel="dns-prefetch" href="https://www.instagram.com" />
+
+    <!-- Google Fonts — non-render-blocking -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@400;700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
-    <title>Bilal Aboqura | Full Stack Developer</title>
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>

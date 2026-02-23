@@ -119,6 +119,7 @@ const Navbar = () => {
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
         className="nav-hamburger"
+        aria-label="Toggle navigation menu"
         style={{
           display: 'none',
           background: 'rgba(10, 22, 40, 0.85)',

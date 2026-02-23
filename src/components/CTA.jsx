@@ -48,7 +48,11 @@ const CTA = () => {
       padding: 'var(--section-padding) 0',
       position: 'relative',
       overflow: 'hidden',
-    }}>
+    }}
+    aria-label="Contact Bilal Aboqura — Hire a Full Stack Developer"
+    itemScope
+    itemType="https://schema.org/ContactPage"
+    >
       {/* Large background blob */}
       <div style={{
         position: 'absolute', top: '50%', left: '50%',
@@ -73,13 +77,13 @@ const CTA = () => {
             fontFamily: 'var(--font-heading)',
             color: '#000000',
           }}>
-            Let's Connect<br />
+            Hire a Full Stack<br />
             <span style={{
               background: 'linear-gradient(135deg, var(--color-primary), var(--color-accent))',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-            }}>There</span>
+            }}>Developer</span>
           </h2>
 
           <p className="cta-reveal" style={{
@@ -89,29 +93,33 @@ const CTA = () => {
             marginBottom: '3rem',
             fontWeight: '500',
           }}>
-            Whether it's a website, app, or branding — let's build something extraordinary together.
-            I'm always open to discussing new projects and creative ideas.
+            Need a website, web application, or SaaS platform built? Let's work together
+            and create something extraordinary. I'm available for freelance projects worldwide.
           </p>
 
           {/* Email link */}
           <div className="cta-reveal" style={{ marginBottom: '1.5rem' }}>
-            <a href="mailto:info.bilalcs@gmail.com" style={{
-              fontSize: 'clamp(1.1rem, 2.5vw, 1.75rem)',
-              color: 'var(--color-primary)',
-              fontWeight: '800',
-              borderBottom: '3px solid rgba(59, 130, 246, 0.2)',
-              paddingBottom: '4px',
-              transition: 'all 0.3s',
-              textDecoration: 'none',
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.borderColor = 'var(--color-primary)';
-              e.target.style.color = '#000000';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.borderColor = 'rgba(59, 130, 246, 0.2)';
-              e.target.style.color = 'var(--color-primary)';
-            }}
+            <a
+              href="mailto:info.bilalcs@gmail.com"
+              itemProp="email"
+              aria-label="Send an email to Bilal Aboqura"
+              style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.75rem)',
+                color: 'var(--color-primary)',
+                fontWeight: '800',
+                borderBottom: '3px solid rgba(59, 130, 246, 0.2)',
+                paddingBottom: '4px',
+                transition: 'all 0.3s',
+                textDecoration: 'none',
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.borderColor = 'var(--color-primary)';
+                e.target.style.color = '#000000';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.borderColor = 'rgba(59, 130, 246, 0.2)';
+                e.target.style.color = 'var(--color-primary)';
+              }}
             >
               info.bilalcs@gmail.com
             </a>
@@ -119,15 +127,19 @@ const CTA = () => {
 
           {/* Phone number */}
           <div className="cta-reveal" style={{ marginBottom: '2.5rem' }}>
-            <a href="tel:+201112678333" style={{
-              fontSize: '1.25rem',
-              color: '#334155',
-              fontWeight: '600',
-              textDecoration: 'none',
-              transition: 'color 0.3s',
-            }}
-            onMouseEnter={(e) => e.target.style.color = 'var(--color-primary)'}
-            onMouseLeave={(e) => e.target.style.color = '#334155'}
+            <a
+              href="tel:+201112678333"
+              itemProp="telephone"
+              aria-label="Call Bilal Aboqura"
+              style={{
+                fontSize: '1.25rem',
+                color: '#334155',
+                fontWeight: '600',
+                textDecoration: 'none',
+                transition: 'color 0.3s',
+              }}
+              onMouseEnter={(e) => e.target.style.color = 'var(--color-primary)'}
+              onMouseLeave={(e) => e.target.style.color = '#334155'}
             >
               +201112678333
             </a>
@@ -181,7 +193,9 @@ const CTA = () => {
             <a href="mailto:info.bilalcs@gmail.com" className="btn-primary" style={{
               fontSize: '1.1rem',
               padding: '16px 40px',
-            }}>
+            }}
+            aria-label="Start a web development project with Bilal Aboqura"
+            >
               Start a Project →
             </a>
           </div>

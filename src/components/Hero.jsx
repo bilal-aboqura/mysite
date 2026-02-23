@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import '../styles/global.css';
-import bilalImage from '../assets/bilal-cutout.png';
+import bilalImage from '../assets/bilal-cutout.webp';
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -23,6 +23,9 @@ const Hero = () => {
       id="home"
       ref={containerRef}
       className="section-dark"
+      aria-label="Hero — Bilal Aboqura, Full Stack Developer"
+      itemScope
+      itemType="https://schema.org/Person"
       style={{
         minHeight: '100vh',
         width: '100%',
@@ -116,7 +119,7 @@ const Hero = () => {
             opacity: 0,
           }}>
             <span style={{ color: '#cbd5e1' }}>I'm </span>
-            <span style={{ color: '#3b82f6' }}>Bilal Aboqura</span>
+            <span style={{ color: '#3b82f6' }} itemProp="name">Bilal Aboqura</span>
             <span style={{ color: '#cbd5e1' }}>,</span>
           </h1>
 
@@ -128,7 +131,7 @@ const Hero = () => {
             marginBottom: 'clamp(1.5rem, 3vw, 2.5rem)',
             opacity: 0,
           }}>
-            Full Stack Developer
+            <span itemProp="jobTitle">Full Stack Developer</span> &amp; Website Builder
           </h2>
 
           {/* Profile Image */}
@@ -142,7 +145,11 @@ const Hero = () => {
             {/* Image */}
             <img 
               src={bilalImage} 
-              alt="Bilal Aboqura" 
+              alt="Bilal Aboqura — Full Stack Developer & Website Builder"
+              title="Bilal Aboqura — Full Stack Developer"
+              itemProp="image"
+              width="550"
+              height="550"
               style={{
                 width: '100%',
                 height: '100%',
@@ -165,7 +172,7 @@ const Hero = () => {
             opacity: 0,
           }} className="hero-btn">
             {/* Filled Button - Portfolio */}
-            <a href="#projects" className="hero-btn-filled" style={{
+            <a href="#projects" className="hero-btn-filled" aria-label="View Bilal Aboqura's project portfolio" style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
@@ -179,14 +186,14 @@ const Hero = () => {
               textDecoration: 'none',
               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             }}>
-              Portfolio
+              View Portfolio
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.5 4.5L21 12M21 12L13.5 19.5M21 12H3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>
             
             {/* Outlined Button - Hire me */}
-            <a href="#contact" className="hero-btn-outlined" style={{
+            <a href="#contact" className="hero-btn-outlined" aria-label="Hire Bilal Aboqura as a Full Stack Developer" style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
@@ -200,7 +207,7 @@ const Hero = () => {
               textDecoration: 'none',
               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             }}>
-              Hire me
+              Hire Me
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.5 4.5L21 12M21 12L13.5 19.5M21 12H3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>

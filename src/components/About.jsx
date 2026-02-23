@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../styles/global.css';
-import profileImg from '../assets/IMG_E1456.jpg';
+import profileImg from '../assets/IMG_E1456.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,6 +25,7 @@ const About = () => {
 
   return (
     <section id="about" ref={sectionRef} className="section-light"
+      aria-label="About Bilal Aboqura — Full Stack Developer"
       style={{ padding: 'var(--section-padding) 0' }}
     >
       <div className="container">
@@ -39,16 +40,17 @@ const About = () => {
           <div>
             <span className="about-reveal section-label">About Me</span>
             <h2 className="about-reveal section-heading" style={{ marginBottom: '1.5rem' }}>
-              Passion for crafting digital excellence
+              Full Stack Developer Passionate About Crafting Digital Excellence
             </h2>
             <p className="about-reveal" style={{ fontSize: '1.05rem', marginBottom: '1.5rem' }}>
-              I am a passionate Full Stack Developer with a knack for creating immersive
-              digital experiences. With expertise in modern web technologies, I bridge the
-              gap between design and engineering.
+              I am a passionate Full Stack Developer with 4+ years of experience building high-performance
+              websites and web applications. With expertise in React, Next.js, Node.js, and modern UI/UX design,
+              I bridge the gap between stunning design and robust engineering.
             </p>
             <p className="about-reveal" style={{ fontSize: '1.05rem', marginBottom: '2rem' }}>
-              My goal is to build software that not only solves problems but leaves a lasting
-              impression. Every project is an opportunity to push boundaries.
+              My goal is to build websites and web applications that not only solve real problems
+              but leave a lasting impression. Every project is an opportunity to push the
+              boundaries of what's possible on the web.
             </p>
 
             {/* Stats row */}
@@ -81,7 +83,11 @@ const About = () => {
             }}>
               <img
                 src={profileImg}
-                alt="Bilal Aboqura"
+                alt="Bilal Aboqura — Full Stack Developer with 4+ years of experience"
+                title="Bilal Aboqura — Full Stack Developer"
+                loading="lazy"
+                width="450"
+                height="450"
                 style={{
                   width: '100%',
                   height: '100%',

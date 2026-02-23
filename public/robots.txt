@@ -1,0 +1,38 @@
+# Bilal Aboqura — Full Stack Developer
+# https://bilalaboqura.com
+
+User-agent: *
+Allow: /
+Disallow: /dist/
+Disallow: /*.log$
+
+# Crawl-delay for polite bots
+Crawl-delay: 2
+
+# Allow AI crawlers explicitly (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Sitemap location
+Sitemap: https://bilalaboqura.com/sitemap.xml

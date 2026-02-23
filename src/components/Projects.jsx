@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../styles/global.css';
-import faresTosonImg from '../assets/wbLB4yBEBSU-HD.jpg';
+import faresTosonImg from '../assets/wbLB4yBEBSU-HD.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,14 +71,15 @@ const Projects = () => {
 
   return (
     <section id="projects" ref={sectionRef} className="section-dark"
+      aria-label="Portfolio — Web Development Projects by Bilal Aboqura"
       style={{ padding: 'var(--section-padding) 0' }}
     >
       <div className="container">
         <div className="project-heading" style={{ textAlign: 'center', marginBottom: 'clamp(40px, 6vw, 80px)' }}>
           <span className="section-label">Portfolio</span>
-          <h2 className="section-heading">Selected Works</h2>
+          <h2 className="section-heading">Website & App Development Projects</h2>
           <p className="section-subheading" style={{ margin: '1rem auto 0', maxWidth: '500px' }}>
-            A curated selection of projects that showcase my expertise in design and development.
+            A curated selection of real-world websites and web applications I've built — from AI SaaS platforms to e-commerce and education solutions.
           </p>
         </div>
 
@@ -86,14 +87,17 @@ const Projects = () => {
           {projects.map((project, i) => {
             const isReversed = i % 2 !== 0;
             return (
-              <div key={i} className="project-row" style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: 'clamp(1.5rem, 3vw, 3rem)',
-                alignItems: 'center',
-                direction: isReversed ? 'rtl' : 'ltr',
-                opacity: 0,
-              }}>
+              <div key={i} className="project-row"
+                itemScope
+                itemType="https://schema.org/CreativeWork"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: 'clamp(1.5rem, 3vw, 3rem)',
+                  alignItems: 'center',
+                  direction: isReversed ? 'rtl' : 'ltr',
+                  opacity: 0,
+                }}>
                 {/* Image / Preview */}
                 <div style={{ direction: 'ltr' }}>
                   <div className="glass-card" style={{
@@ -199,7 +203,9 @@ const Projects = () => {
                     fontSize: 'clamp(1.5rem, 3vw, 2.2rem)',
                     marginBottom: '1rem',
                     fontWeight: '700',
-                  }}>
+                  }}
+                  itemProp="name"
+                  >
                     {project.title}
                   </h3>
                   <p style={{
@@ -207,12 +213,16 @@ const Projects = () => {
                     lineHeight: '1.7',
                     marginBottom: '1.5rem',
                     color: '#e2e8f0',
-                  }}>
+                  }}
+                  itemProp="description"
+                  >
                     {project.description}
                   </p>
                   <a href={project.url} target="_blank" rel="noopener noreferrer"
                     className="btn-primary"
                     style={{ fontSize: '0.9rem', padding: '10px 24px' }}
+                    itemprop="url"
+                    aria-label={`View ${project.title} project`}
                   >
                     View Project →
                   </a>
