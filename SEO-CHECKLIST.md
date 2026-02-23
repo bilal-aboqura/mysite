@@ -39,7 +39,7 @@
 - [x] **llms.txt** — GEO file for AI search engines (ChatGPT, Perplexity, Gemini, Claude)
 - [x] **nginx_site.conf** — HTTPS, gzip, caching, security headers, canonical redirect
 
-### 4. OG Image (og-image.jpg)
+### 4. OG Image (og-image.png)
 
 - [x] HTML template created at `public/og-image-generator.html`
 - [ ] **ACTION REQUIRED** → Convert to JPG (see instructions below)
@@ -48,7 +48,7 @@
 
 ## 🔧 MANUAL STEPS YOU MUST DO
 
-### Step 1: Generate og-image.jpg
+### Step 1: Generate og-image.png
 
 The OG image HTML template at `public/og-image-generator.html` needs to be converted to a JPG.
 
@@ -57,13 +57,13 @@ The OG image HTML template at `public/og-image-generator.html` needs to be conve
 1. Open `public/og-image-generator.html` in Chrome
 2. Set DevTools to "Responsive" mode at 1200×630 px
 3. Right-click → "Capture screenshot" (or use `Ctrl+Shift+P` → "Capture full size screenshot")
-4. Save the result as `public/og-image.jpg`
+4. Save the result as `public/og-image.png`
 
 **Option B — Use online tool:**
 
 - Go to https://htmlcsstoimage.com or https://screenshotone.com
 - Paste the HTML content from `og-image-generator.html`
-- Download at 1200×630 and save as `public/og-image.jpg`
+- Download at 1200×630 and save as `public/og-image.png`
 
 ### Step 2: Submit to Google Search Console
 
