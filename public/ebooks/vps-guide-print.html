@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليلك الشامل لرفع موقعك على VPS</title>
+    <script>window.onload = () => window.print();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            margin: 2cm;
+            size: A4 portrait;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 13pt;
+            line-height: 1.9;
+            color: #1e293b;
+            background: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            padding: 12px 28px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+            z-index: 9999;
+        }
+
+        .print-btn:hover {
+            background: #2563eb;
+        }
+
+        @media print {
+            .print-btn { display: none; }
+        }
+
+        /* Title Block */
+        .title-block {
+            text-align: center;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-family: 'Cairo', sans-serif;
+            font-size: 28pt;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 0 0 10px;
+        }
+
+        .subtitle {
+            color: #3b82f6;
+            font-size: 14pt;
+            font-weight: 600;
+        }
+
+        /* Chapter Headings */
+        h2 {
+            font-family: 'Cairo', sans-serif;
+            font-size: 17pt;
+            font-weight: 700;
+            color: #1e40af;
+            background: #eff6ff;
+            padding: 10px 20px;
+            border-right: 6px solid #3b82f6;
+            border-radius: 4px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-family: 'Cairo', sans-serif;
+            font-size: 14pt;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            padding-right: 5px;
+            border-right: 3px solid #93c5fd;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin: 0 0 16px;
+            color: #334155;
+        }
+
+        strong {
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        em {
+            color: #475569;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background: #f1f5f9;
+            color: #0f172a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            font-size: 0.9em;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        pre {
+            background: #f8fafc;
+            color: #0f172a;
+            border: 1px solid #e2e8f0;
+            border-right: 4px solid #3b82f6;
+            border-left: none;
+            padding: 18px 20px;
+            border-radius: 8px;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 11pt;
+            line-height: 1.7;
+            margin: 20px 0;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
+            page-break-inside: avoid;
+        }
+
+        ul, ol {
+            margin: 10px 0 20px;
+            padding-right: 30px;
+        }
+
+        ul {
+            list-style: none;
+            padding-right: 10px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            padding-right: 20px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: '◆';
+            color: #3b82f6;
+            position: absolute;
+            right: 0;
+            font-size: 0.7em;
+            top: 4px;
+        }
+
+        ol {
+            padding-right: 30px;
+        }
+
+        ol li {
+            margin-bottom: 10px;
+            color: #334155;
+        }
+
+        .note {
+            background: #fefce8;
+            border-right: 5px solid #eab308;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+            color: #713f12;
+            page-break-inside: avoid;
+        }
+
+        .note strong {
+            color: #92400e;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="print-btn" onclick="window.print()">🖨️ طباعة / حفظ كـ PDF</button>
+
+    <div class="title-block">
+        <h1>دليلك الشامل لرفع موقعك على VPS</h1>
+        <p class="subtitle">من كتابة الكود إلى إطلاق الموقع باستخدام النسخة الأحدث من Docker</p>
+    </div>
+
+    <h2>مقدمة: ليه تقرأ الكتاب ده؟</h2>
+    <p>لو إنت بتعمل مواقع أو تطبيقات، أكيد جربت ترفع شغلك على استضافات عادية (Shared Hosting) وحسيت إنها بطيئة أو مقيدة، أو جربت خدمات سحابية ولقيت الفاتورة بتسحب منك أرقام خيالية. هنا بييجي دور الـ VPS (Virtual Private Server).</p>
+    <p>ببساطة، الـ VPS (Virtual Machine) هو سيرفر افتراضي داخل سيرفر أكبر حقيقي باستخدام تقنية (Hypervisor). بيوفر لك بيئة معزولة تماماً كأنك تملك السيرفر لوحدك، شغال 24 ساعة، وبيديك تحكم كامل (Root Access). في الكتاب ده، هنمشي خطوة بخطوة عشان ترفع أي بروجيكت مهما كان حجمه (سواء كان بـ Node.js، React، PHP، Python أو غيره) على سيرفرك الخاص، وبأحدث الطرق الاحترافية.</p>
+
+    <h3>ماذا ستحتاج للبدء؟</h3>
+    <p>قبل الدخول في الخطوات العملية، يُفضل أن يكون لديك:</p>
+    <ul>
+        <li><strong>حساب GitHub:</strong> لرفع كود مشروعك عليه.</li>
+        <li><strong>مشروع برمجي جاهز:</strong> المشروع الذي ترغب في رفعه على السيرفر.</li>
+        <li><strong>اسم نطاق (Domain):</strong> لربطه بموقعك لاحقاً (مثل <code>yourdomain.com</code>).</li>
+    </ul>
+
+    <h2>الفصل الأول: البداية وتجهيز السيرفر</h2>
+    <p>أول حاجة محتاجينها هي إننا نأجر السيرفر. في شركات كتير ممتازة وأسعارها رخيصة بتبدأ من 4 أو 5 دولار في الشهر، وأشهرها <strong>DigitalOcean</strong>، أو <strong>Hetzner</strong> (ممتازة تقنياً)، أو <strong>Hostinger</strong>، أو <strong>Contabo</strong>.</p>
+
+    <h3>إيه الفرق بين خطط الـ KVM (من KVM 1 لـ KVM 8)؟</h3>
+    <p>الـ KVM هو اختصار لـ <em>Kernel-based Virtual Machine</em>، وهو نوع التقنية المستخدمة لعزل النظام الخاص بك تماماً، وإن كانت الموارد قد تكون مشتركة في بعض الشركات.</p>
+    <ul>
+        <li><strong>خطة KVM 1:</strong> (1 vCPU، 4GB RAM، 50GB مساحة) — مثالية للمبتدئين والمواقع الصغيرة.</li>
+        <li><strong>خطة KVM 2:</strong> (2 vCPU، 8GB RAM، 100GB مساحة) — للمتاجر الإلكترونية الصغيرة والتطبيقات المتوسطة.</li>
+        <li><strong>خطة KVM 4:</strong> (4 vCPU، 16GB RAM، 200GB مساحة) — للشركات والمنصات التعليمية.</li>
+        <li><strong>خطة KVM 8 (فأعلى):</strong> (8 vCPU، 32GB RAM، 400GB مساحة) — للمشاريع الضخمة Enterprise Level.</li>
+    </ul>
+
+    <p><strong>الخلاصة للبدء:</strong> ابدأ دائماً بخطة <strong>KVM 1</strong> أو <strong>KVM 2</strong>. ميزة الـ VPS إنك تقدر تعمل Upgrade في أي لحظة بدون ما موقعك يقع.</p>
+
+    <p><strong>خطوات حجز السيرفر:</strong></p>
+    <ol>
+        <li>بتعمل حساب على أي شركة استضافة (مثل DigitalOcean أو Hetzner أو Hostinger).</li>
+        <li>بتختار قسم الـ VPS Hosting وتختار الخطة المناسبة.</li>
+        <li>بتختار نظام التشغيل <strong>Ubuntu</strong> (الإصدار 22.04 أو الأحدث).</li>
+        <li>بعد الدفع، الشركة هتديك رقم الـ IP، اسم المستخدم <code>root</code>، والباسورد.</li>
+    </ol>
+
+    <p><strong>إزاي تدخل على السيرفر بتاعك؟</strong></p>
+<pre>ssh root@your_server_ip</pre>
+
+    <div class="note">
+        <strong>أول وأهم خطوة (تحديث النظام):</strong> بمجرد الدخول للسيرفر لأول مرة، دائماً حدث الحزم أولاً:
+    </div>
+<pre>apt update && apt upgrade -y</pre>
+
+    <h2>الفصل الثاني: سر المحترفين (تسطيب Docker الحديث)</h2>
+    <p>الدوكر بياخد البروجيكت بتاعك بكل اللي بيحتاجه، ويحطه في "صندوق" مقفول (Container) وشغال لوحده. عشان نشتغل باحترافية، هنسطب النسخة الرسمية الأحدث من Docker.</p>
+
+    <p><strong>1. تحديث النظام وتنزيل الأدوات الأساسية:</strong></p>
+<pre>apt-get update
+apt-get install ca-certificates curl gnupg</pre>
+
+    <p><strong>2. إضافة مفتاح الأمان الخاص بـ Docker:</strong></p>
+<pre>install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+chmod a+r /etc/apt/keyrings/docker.gpg</pre>
+
+    <p><strong>3. إضافة مستودع Docker الرسمي للنظام:</strong></p>
+<pre>echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  tee /etc/apt/sources.list.d/docker.list > /dev/null</pre>
+
+    <p><strong>4. تسطيب أحدث إصدار من Docker و Docker Compose V2:</strong></p>
+<pre>apt-get update
+apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</pre>
+
+    <h2>الفصل الثالث: التطبيق العملي ورفع الكود</h2>
+    <p><strong>1. سحب الكود للسيرفر:</strong></p>
+<pre>git clone https://github.com/yourusername/your-repo-name.git</pre>
+
+    <p><strong>2. الدخول لمجلد المشروع:</strong></p>
+<pre>cd your-repo-name</pre>
+
+    <p><strong>3. تشغيل المشروع</strong> (مثال لملف <code>docker-compose.yml</code> مناسب لـ Production):</p>
+<pre>services:
+  web:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000" # مهم: ليمر عبر Nginx فقط
+    # ... باقي الإعدادات</pre>
+
+    <div class="note">
+        <strong>انتبه لثغرة خطيرة:</strong> استخدام <code>"3000:3000"</code> بالشكل التقليدي يجعل موقعك متاحاً مباشرة عبر <code>http://ip:3000</code> متجاوزاً Nginx والـ Firewall! استخدم دائماً <code>127.0.0.1:3000:3000</code>.
+    </div>
+
+<pre>docker compose up -d</pre>
+
+    <h2>الفصل الرابع: ربط الدومين وتأمين الموقع</h2>
+    <p><strong>1. ربط الدومين:</strong> أضف A Record في إعدادات الـ DNS للدومين بتاعك يشاور على الـ IP بتاع السيرفر.</p>
+    <div class="note">
+        ملاحظة: انتشار تحديثات الـ DNS قد يستغرق من بضع دقائق إلى 24 ساعة.
+    </div>
+
+    <p><strong>2. تسطيب Nginx:</strong></p>
+<pre>apt-get install nginx</pre>
+
+    <p><strong>3. إعداد Nginx لموقعك:</strong></p>
+<pre>nano /etc/nginx/sites-available/yourdomain.com</pre>
+<pre>server {
+    listen 80;
+    server_name yourdomain.com www.yourdomain.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}</pre>
+
+<pre>ln -s /etc/nginx/sites-available/yourdomain.com /etc/nginx/sites-enabled/
+systemctl restart nginx</pre>
+
+    <p><strong>4. تأمين الموقع بـ SSL مجاني:</strong></p>
+<pre>apt-get install certbot python3-certbot-nginx
+certbot --nginx -d yourdomain.com -d www.yourdomain.com</pre>
+
+    <h2>الفصل الخامس: تحديث الموقع بعد أي تعديل</h2>
+    <p><strong>على جهازك:</strong></p>
+<pre>git add .
+git commit -m "update features"
+git push</pre>
+
+    <p><strong>على السيرفر:</strong></p>
+<pre>cd your-repo-name
+git pull
+docker compose up -d --build</pre>
+
+    <h2>الفصل السادس: استضافة أكثر من موقع على نفس الـ VPS</h2>
+    <p>لكل موقع إضافي: غير البورت الخارجي في <code>docker-compose.yml</code> (مثلاً <code>127.0.0.1:4000:3000</code>)، أضف A Record للدومين الجديد، وأنشئ ملف Nginx منفصل له.</p>
+
+    <h2>الفصل السابع: التأمين الجذري للسيرفر (Security Hardening)</h2>
+    <p><strong>1. تفعيل الجدار الناري UFW:</strong></p>
+<pre>apt install ufw
+ufw allow OpenSSH
+ufw allow 'Nginx Full'
+ufw enable</pre>
+
+    <p><strong>2. حماية الـ SSH وتثبيت Fail2ban:</strong> يُنصح بإعداد SSH Keys وتعطيل دخول الـ root بكلمة مرور من ملف <code>/etc/ssh/sshd_config</code>، ثم:</p>
+<pre>apt install fail2ban -y
+systemctl enable fail2ban
+systemctl start fail2ban</pre>
+
+    <h2>الفصل الثامن: ترقية بيئة العمل (CI/CD Pipelines)</h2>
+    <p>الأفضل من الـ <code>git pull</code> اليدوي هو استخدام <strong>GitHub Actions</strong> أو <strong>GitLab CI</strong>، اللي بينتج عنه كل <code>git push</code> من جهازك يؤدي تلقائياً لتحديث السيرفر. ابحث عن (GitHub Actions Docker VPS) لتتعلم كيفية تطبيقها.</p>
+
+    <h2>الفصل التاسع: النسخ الاحتياطي والمراقبة</h2>
+    <p><strong>الباك-أب:</strong> استخدم <code>rsync</code> مع <code>cron</code> لأخذ نسخة يومية من قاعدة البيانات وملفاتك ونقلها لـ Object Storage.</p>
+    <p><strong>المراقبة:</strong> ثبت <strong>Prometheus & Grafana</strong> لرسم إحصائيات استهلاك الـ CPU والرامات لحظة بلحظة، وإرسال تنبيهات عند الضغط الزائد.</p>
+
+    <h2>الخاتمة</h2>
+    <p>مبروك! إنت دلوقتي مش مجرد شخص بيكتب كود، إنت بقيت بتعرف تعمل Deployment باحترافية وتدير السيرفر بتاعك زي مهندسين الـ DevOps. استخدامك للـ VPS مع أحدث إصدارات Docker و Nginx هيضمنلك سرعة، أمان، واستقرار لمشاريعك.</p>
+
+</body>
+</html>

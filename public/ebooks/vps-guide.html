@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليلك الشامل لرفع موقعك على VPS</title>
+    <!-- Import Fonts from Google to match portfolio -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Extracted from your premium portfolio CSS */
+            --color-bg:           #050a14;
+            --color-bg-alt:       #0a1628;
+            --color-primary:      #3b82f6;
+            --color-accent:       #60a5fa;
+            --color-text:         #ffffff;
+            --color-text-dim:     #94a3b8;
+            --glass-bg:           rgba(255, 255, 255, 0.04);
+            --glass-border:       rgba(255, 255, 255, 0.08);
+            --glass-glow:         0 0 30px rgba(59, 130, 246, 0.08);
+            --font-heading:       'Cairo', sans-serif;
+            --font-body:          'Tajawal', sans-serif;
+            --radius-md:          16px;
+            --radius-lg:          24px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.8;
+            color: var(--color-text-dim);
+            background-color: var(--color-bg);
+            background-image: 
+                linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+            background-size: 50px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+        }
+
+        /* Glassmorphism Container for the whole article */
+        .article-container {
+            background: rgba(10, 22, 40, 0.9); /* More solid for PDF compatibility */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            padding: clamp(30px, 5vw, 60px);
+            position: relative;
+            overflow: hidden;
+            /* Extra styles for PDF export to keep dark theme */
+            color: var(--color-text-dim);
+        }
+
+        /* Liquid glow effects behind container */
+        .article-container::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+            opacity: 0.5;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--color-text);
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-bottom: none;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--color-accent);
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 60px;
+            letter-spacing: 0.05em;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-top: 80px;
+            margin-bottom: 35px;
+            padding-right: 20px;
+            border-right: 5px solid transparent;
+            border-image: linear-gradient(to bottom, var(--color-primary), var(--color-accent)) 1;
+            color: var(--color-text);
+            position: relative;
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        h2::before {
+             content: '';
+             position: absolute;
+             top: 50%;
+             right: -5px; /* RTL fix */
+             transform: translateY(-50%);
+             width: 5px;
+             height: 100%;
+             background: var(--color-primary);
+             box-shadow: 0 0 15px var(--color-primary);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3::before {
+             content: '▹';
+             color: var(--color-accent);
+             font-size: 1.8rem;
+        }
+
+        p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #cbd5e1;
+            transition: color 0.3s ease;
+        }
+        
+        p:hover {
+             color: #f8fafc;
+        }
+
+        ul, ol {
+            margin-bottom: 40px;
+            padding-right: 30px;
+            color: var(--color-text-dim);
+        }
+
+        li {
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            position: relative;
+            padding-right: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        li:hover {
+             transform: translateX(-5px); /* Move left slightly in RTL */
+             color: #fff;
+        }
+
+        ul li::before {
+            content: '•';
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            position: absolute;
+            right: -15px;
+            top: -5px;
+            text-shadow: 0 0 10px var(--color-primary);
+        }
+        
+        ol {
+            counter-reset: custom-counter;
+            list-style: none;
+        }
+        
+        ol li {
+            counter-increment: custom-counter;
+        }
+        
+        ol li::before {
+            content: counter(custom-counter);
+            color: #0f172a;
+            background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+            font-weight: bold;
+            font-size: 0.85rem;
+            position: absolute;
+            right: -35px;
+            top: 5px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Strong tags for better contrast */
+        strong {
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        /* Glassy Code Blocks */
+        pre {
+            background: rgba(5, 10, 20, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-right: 4px solid var(--color-accent);
+            border-left: none; /* Adjust for RTL */
+            padding: 25px;
+            padding-top: 45px; /* Space for copy button */
+            border-radius: var(--radius-md);
+            direction: ltr;
+            text-align: left;
+            overflow-x: auto;
+            margin: 35px 0;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 15px;
+            color: #a5b4fc;
+            box-shadow: inset 0 2px 15px rgba(0,0,0,0.6), 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        pre:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: inset 0 2px 15px rgba(0,0,0,0.6), 0 15px 40px rgba(59,130,246,0.15);
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+            padding: 4px 8px;
+            border-radius: 6px;
+            direction: ltr;
+            font-size: 0.9em;
+            border: 1px solid rgba(59, 130, 246, 0.1);
+        }
+
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: 500;
+        }
+
+        a:hover {
+            color: #bfdbfe;
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+        }
+        
+        a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        
+        a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Glassy Note Box */
+        .note {
+            background: rgba(234, 179, 8, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            border-right: 4px solid #eab308;
+            color: #fef08a;
+            padding: 25px 30px;
+            border-radius: var(--radius-md);
+            margin: 40px 0;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .note:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(234, 179, 8, 0.1);
+        }
+
+        .note::before {
+            content: '💡';
+            font-size: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; text-shadow: 0 0 0 rgba(234, 179, 8, 0); }
+            50% { transform: scale(1.1); opacity: 0.8; text-shadow: 0 0 20px rgba(234, 179, 8, 0.8); }
+            100% { transform: scale(1); opacity: 1; text-shadow: 0 0 0 rgba(234, 179, 8, 0); }
+        }
+
+        /* Back to site button & Download */
+        .header-actions {
+            margin-bottom: 50px;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .btn-glass {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 28px;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #e2e8f0;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 50px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+        .btn-glass:hover {
+            background: rgba(30, 58, 138, 0.4);
+            border-color: rgba(96, 165, 250, 0.6);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.2), inset 0 0 15px rgba(59, 130, 246, 0.1);
+            transform: translateY(-3px);
+            color: #fff;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-primary), #2563eb);
+            border-color: transparent;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #60a5fa, var(--color-primary));
+            border-color: transparent;
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+        }
+        
+        .btn-glass span, .btn-primary span {
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-glass:hover span.arrow-back {
+             transform: translateX(5px);
+        }
+        
+        .btn-primary:hover span.icon-down {
+             transform: translateY(3px);
+        }
+
+        /* Copy Button */
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px; /* LTR position inside RTL page context */
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #cbd5e1;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        .copy-btn:hover {
+            background: rgba(59, 130, 246, 0.3);
+            border-color: rgba(96, 165, 250, 0.5);
+            color: white;
+        }
+
+        .copy-btn.copied {
+            background: rgba(34, 197, 94, 0.2);
+            border-color: rgba(74, 222, 128, 0.5);
+            color: #86efac;
+        }
+
+        /* Context wrapper for absolute positioning of copy btn */
+        .code-wrapper {
+            position: relative;
+        }
+
+        .btn-glass:hover {
+            background: rgba(30, 58, 138, 0.4);
+            border-color: rgba(96, 165, 250, 0.6);
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.2), inset 0 0 15px rgba(59, 130, 246, 0.1);
+            transform: translateY(-3px);
+            color: #fff;
+        }
+        
+        .btn-glass span {
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-glass:hover span {
+             transform: translateX(5px);
+        }
+
+        /* Reading Progress Bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        
+        .progress-bar {
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #3b82f6);
+            background-size: 200% auto;
+            width: 0%;
+            animation: gradientMove 3s linear infinite;
+        }
+        
+        @keyframes gradientMove {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.2);
+            border-radius: 10px;
+            border: 2px solid #030712;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(59, 130, 246, 0.5);
+        }
+
+        /* Print Settings for Perfect PDF Export */
+        @media print {
+            @page {
+                margin: 2cm;
+                size: A4 portrait;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                text-shadow: none !important;
+                box-shadow: none !important;
+            }
+
+            body {
+                background: #ffffff !important;
+                color: #1e293b !important;
+                font-size: 13pt;
+                line-height: 1.8;
+                max-width: 100% !important;
+            }
+
+            .article-container {
+                background: #ffffff !important;
+                border: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .article-container::before {
+                display: none;
+            }
+
+            h1, h2, h3 {
+                color: #0f172a !important;
+                page-break-after: avoid;
+            }
+
+            h1 {
+                font-size: 26pt;
+                text-align: center;
+                border-bottom: 2px solid #3b82f6;
+                padding-bottom: 20px;
+                margin-bottom: 40px;
+                background: none !important;
+                -webkit-text-fill-color: initial !important;
+            }
+
+            h2 {
+                font-size: 20pt;
+                margin-top: 2.5cm;
+                border-right: 6px solid #3b82f6 !important;
+                border-image: none !important;
+                padding-right: 15px;
+                background: #f1f5f9 !important;
+                padding: 12px 15px 12px 0;
+                border-radius: 4px;
+                -webkit-text-fill-color: initial !important;
+            }
+
+            h2::before {
+                display: none !important;
+            }
+
+            h3 {
+                font-size: 16pt;
+                margin-top: 1.5cm;
+                color: #1e40af !important;
+            }
+
+            p, li {
+                color: #334155 !important;
+                page-break-inside: avoid;
+            }
+
+            strong {
+                color: #000 !important;
+            }
+
+            ul li::before {
+                color: #3b82f6 !important;
+            }
+
+            ol li::before {
+                background: #e2e8f0 !important;
+                color: #0f172a !important;
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1;
+            }
+
+            pre {
+                background: #f8fafc !important; /* Light background for print visibility */
+                color: #0f172a !important; /* Dark text */
+                border-left: none !important;
+                border-top: 1px solid #e2e8f0 !important;
+                border-bottom: 1px solid #e2e8f0 !important;
+                border-right: 4px solid #3b82f6 !important;
+                padding: 15px !important;
+                border-radius: 6px !important;
+                white-space: pre-wrap !important;
+                word-break: break-word !important;
+                page-break-inside: avoid;
+                font-size: 11pt !important;
+                margin: 25px 0 !important;
+            }
+
+            code {
+                color: #0f172a !important;
+                background-color: #f1f5f9 !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+
+            .note {
+                background: #fefce8 !important;
+                border-right: 4px solid #eab308 !important;
+                padding: 20px !important;
+                page-break-inside: avoid;
+                color: #854d0e !important;
+                font-size: 12pt !important;
+                border-radius: 8px !important;
+            }
+
+            /* Hide UI Elements */
+            .header-actions, .progress-container, .copy-btn {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <div class="header-actions">
+        <a href="/library" class="btn-glass">
+            <span class="arrow-back" style="font-size: 1.2rem; line-height: 1;">←</span>
+            عودة للمكتبة
+        </a>
+        <a href="/ebooks/vps-guide.pdf" download="دليل-VPS-الشامل.pdf" class="btn-glass btn-primary">
+            تنزيل الدليل PDF
+            <span class="icon-down" style="font-size: 1.1rem; line-height: 1;">⬇</span>
+        </a>
+    </div>
+
+    <div class="article-container">
+
+    <h1>دليلك الشامل لرفع موقعك على VPS</h1>
+    <p class="subtitle">من كتابة الكود إلى إطلاق الموقع باستخدام النسخة الأحدث من Docker</p>
+
+    <h2>مقدمة: ليه تقرأ الكتاب ده؟</h2>
+    <p>لو إنت بتعمل مواقع أو تطبيقات، أكيد جربت ترفع شغلك على استضافات عادية (Shared Hosting) وحسيت إنها بطيئة أو مقيدة، أو جربت خدمات سحابية ولقيت الفاتورة بتسحب منك أرقام خيالية. هنا بييجي دور الـ VPS (Virtual Private Server).</p>
+    <p>ببساطة، الـ VPS (Virtual Machine) هو سيرفر افتراضي داخل سيرفر أكبر حقيقي باستخدام تقنية (Hypervisor). بيوفر لك ببيئة معزولة تماماً كأنك تملك السيرفر لوحدك، شغال 24 ساعة، وبيديك تحكم كامل (Root Access). في الكتاب ده، هنمشي خطوة بخطوة عشان ترفع أي بروجيكت مهما كان حجمه (سواء كان بـ Node.js، React، PHP، Python أو غيره) على سيرفرك الخاص، وبأحدث الطرق الاحترافية.</p>
+
+    <h3>ماذا ستحتاج للبدء؟</h3>
+    <p>قبل الدخول في الخطوات العملية، يُفضل أن يكون لديك:</p>
+    <ul>
+        <li><strong>حساب GitHub:</strong> لرفع كود مشروعك عليه.</li>
+        <li><strong>مشروع برمجي جاهز:</strong> المشروع الذي ترغب في رفعه على السيرفر.</li>
+        <li><strong>اسم نطاق (Domain):</strong> لربطه بموقعك لاحقاً (مثل <code>yourdomain.com</code>).</li>
+    </ul>
+
+    <h2>الفصل الأول: البداية وتجهيز السيرفر</h2>
+    <p>أول حاجة محتاجينها هي إننا نأجر السيرفر. في شركات كتير ممتازة وأسعارها رخيصة بتبدأ من 4 أو 5 دولار في الشهر، وأشهرها <strong>DigitalOcean</strong>، أو <strong>Hetzner</strong> (ممتازة تقنياً)، أو <strong>Hostinger</strong>، أو <strong>Contabo</strong>.</p>
+
+    <h3>إيه الفرق بين خطط الـ KVM (من KVM 1 لـ KVM 8)؟ ومين يختار إيه؟</h3>
+    <p>لما تيجي تشتري السيرفر من أي شركة، هتلاقي الخطط متقسمة بأسماء زي (KVM 1, KVM 2, KVM 4, KVM 8). الـ KVM هو اختصار لـ <em>Kernel-based Virtual Machine</em>، وهو نوع التقنية المستخدمة لفصل السيرفر الافتراضي بتاعك عن باقي السيرفرات عشان تضمن <strong>عزل النظام الخاص بك تماماً</strong>، हालांकि الموارد نفسها (الرامات والمعالج) قد تكون مشتركة مع مستخدمين آخرين على نفس الهاردوير الأساسي في بعض الشركات.</p>
+    <p>كل ما الرقم زاد، كل ما كانت مساحة السيرفر الافتراضية أكبر (معالج أقوى، رامات أكتر، ومساحة تخزين أكبر). إليك دليلك لاختيار الخطة المناسبة لك:</p>
+    
+    <ul>
+        <li><strong>خطة KVM 1:</strong> (غالباً بتيجي بـ 1 vCPU معالج، و 4GB رامات، و 50GB مساحة).
+            <br><em>مناسبة لمين؟</em> دي الخطة المثالية للمبتدئين. لو بترفع مشروع تخرجك، أو موقع شخصي (Portfolio)، أو مدونة صغيرة متوقعش زيارات ضخمة في البداية. تقدر تشغل عليها 3 لـ 5 مواقع صغيرة بسهولة لو استخدمت Docker.
+        </li>
+        <li><strong>خطة KVM 2:</strong> (غالباً بتيجي بـ 2 vCPU معالج، و 8GB رامات، و 100GB مساحة).
+            <br><em>مناسبة لمين؟</em> لو هترفع متجر إلكتروني صغير لمتوسط (زي منصة ببيع عليها منتجات)، أو تطبيق ويب بيستخدم قواعد بيانات بشكل مستمر. الخطة دي بتديك مساحة ممتازة للتنفس وسرعة استجابة أعلى وقادرة تستحمل ترافيك معقول جداً يومياً.
+        </li>
+        <li><strong>خطة KVM 4:</strong> (غالباً بتيجي بـ 4 vCPU معالج، و 16GB رامات، و 200GB مساحة).
+            <br><em>مناسبة لمين؟</em> للشركات الصغيرة والمتوسطة، أو لو عندك منصة تعليمية فيها كورسات وفيديوهات وناس كتير بتسجل دخول في نفس الوقت. وبرضو ممتازة جداً لو إنت مطور وعندك أكتر من 10 أو 15 موقع عملائك شغالين عليهم، فبتحطهم كلهم على سيرفر واحد عشان توفر.
+        </li>
+        <li><strong>خطة KVM 8 (فأعلى):</strong> (بتيجي بـ 8 vCPU معالج، و 32GB رامات، و 400GB مساحة).
+            <br><em>مناسبة لمين؟</em> للمشاريع الضخمة (Enterprise Level)، والمتاجر الإلكترونية الكبيرة جداً اللي عليها آلاف الزيارات والتفاعلات في نفس اللحظة. نادراً ما ستحتاجها كمبتديء.
+        </li>
+    </ul>
+
+    <p><strong>الخلاصة للبدء:</strong> ابدأ دائماً بخطة <strong>KVM 1</strong> أو <strong>KVM 2</strong>. ميزة الـ VPS إنك تقدر تعمل Upgrade و تعلي الإمكانيات في أي لحظة بضغطة زرار لما موقعك يكبر ويزيد عدد زواره، بدون ما موقعك يقع أو تضطر تنقل الداتا.</p>
+
+    <p><strong>خطوات حجز السيرفر:</strong></p>
+    <ol>
+        <li>بتعمل حساب على أي شركة استضافة (مثل DigitalOcean أو Hetzner أو Hostinger).</li>
+        <li>بتختار قسم الـ VPS Hosting (أو Droplet) وتختار الخطة المناسبة (KVM 1 أو KVM 2 مثلاً).</li>
+        <li>بتختار نظام التشغيل <strong>Ubuntu</strong> (الإصدار 22.04 أو الأحدث).</li>
+        <li>بعد الدفع، الشركة هتديك رقم الـ IP بتاع السيرفر، واسم المستخدم (اللي هو غالباً <code>root</code>)، والباسورد (أو يطلب منك تحدده وقت الإنشاء).</li>
+    </ol>
+
+    <p><strong>إزاي تدخل على السيرفر بتاعك؟</strong></p>
+    <p>افتح الـ Terminal (في الماك أو اللينكس) أو CMD/PowerShell (في الويندوز)، واكتب الأمر ده عشان تتصل بالسيرفر:</p>
+<pre>ssh root@your_server_ip</pre>
+    <p><em>(استبدل <code>your_server_ip</code> برقم السيرفر بتاعك)</em></p>
+    <p>هيطلب منك الباسورد، اكتبه (مش هيظهر قدامك وإنت بتكتبه للسرية) ودوس Enter. مبروك، إنت كده جوه السيرفر بتاعك!</p>
+    
+    <div class="note">
+        <strong>أول وأهم خطوة (تحديث النظام):</strong> بمجرد الدخول للسيرفر لأول مرة، يجب عليك دائماً تحديث الحزم لتجنب تعارض النسخ لاحقاً. اكتب هذا الأمر:
+    </div>
+<pre>apt update && apt upgrade -y</pre>
+
+    <h2>الفصل الثاني: التأمين الجذري للسيرفر (Security Hardening)</h2>
+    <p>حتى الآن، موقعك يعمل بكفاءة، لكن السيرفر الخاص بك مكشوف أمنياً. لكي يكون عملك احترافياً حقاً ويقاوم هجمات الاختراق في بيئة العمل الحقيقية (Production)، يجب تنفيذ هذه الخطوات الأمنية الثلاث فوراً.</p>
+    
+    <h3>1. تفعيل الجدار الناري (UFW Firewall)</h3>
+    <p>السيرفر الجديد تكون جميع منافذه (Ports) مفتوحة افتراضياً. يجب إغلاق كل شيء باستثناء المنافذ التي نحتاجها (SSH للتحكم، و 80/443 للموقع).</p>
+<pre>apt install ufw
+ufw allow OpenSSH
+ufw allow 'Nginx Full'
+ufw enable</pre>
+    <p>بمجرد تفعيل الـ UFW، السيرفر سيرفض أي طلبات خارجية على أي بورت آخر غير المصرح بها.</p>
+
+    <h3>2. حماية الـ SSH (تعطيل Root & Fail2ban)</h3>
+    <p>ترك الدخول متاحاً للمستخدم <code>root</code> بكلمة مرور يجعل سيرفرك هدفاً سهلاً لبرامج التخمين العشوائي (Brute-force). الحل الأمثل هو إعداد <strong>SSH Keys</strong> (إصدار مفتاح مشفر لجهازك فقط) وتعطيل الدخول بكلمات المرور تماماً من ملف <code>/etc/ssh/sshd_config</code>.</p>
+    <p>بالإضافة لذلك، يجب تسطيب برنامج <strong>Fail2ban</strong>، وهو حارس ذكي يقوم بحظر الـ IP الخاص بأي شخص يحاول إدخال كلمة مرور خاطئة عدة مرات متتالية:</p>
+<pre>apt install fail2ban -y
+systemctl enable fail2ban
+systemctl start fail2ban</pre>
+
+    <h2>الفصل الثالث: سر المحترفين (تسطيب Docker الحديث)</h2>
+    <p>زمان كنا بندخل نسطب كل حاجة بإيدينا.. ننزل قاعدة البيانات، وننزل بيئة التشغيل، والدنيا كانت بتضرب مننا. دلوقتي إحنا بنستخدم <strong>Docker</strong>. الدوكر بياخد البروجيكت بتاعك بكل اللي بيحتاجه، ويحطه في "صندوق" مقفول (Container) وشغال لوحده.</p>
+    <p>عشان نشتغل باحترافية، هنسطب النسخة الرسمية الأحدث من Docker (مش النسخة القديمة بتاعت أوبونتو). انسخ الأوامر دي بالترتيب في الـ Terminal:</p>
+
+    <p><strong>1. تحديث النظام وتنزيل الأدوات الأساسية:</strong></p>
+<pre>apt-get update
+apt-get install ca-certificates curl gnupg</pre>
+
+    <p><strong>2. إضافة مفتاح الأمان الخاص بـ Docker:</strong></p>
+<pre>install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+chmod a+r /etc/apt/keyrings/docker.gpg</pre>
+
+    <p><strong>3. إضافة مستودع Docker الرسمي للنظام:</strong></p>
+<pre>echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  tee /etc/apt/sources.list.d/docker.list > /dev/null</pre>
+
+    <p><strong>4. تسطيب أحدث إصدار من Docker و Docker Compose V2:</strong></p>
+<pre>apt-get update
+apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin</pre>
+    <p>كده إنت نزلت أحدث نسخة، وتقدر تتأكد بكتابة أمر <code>docker -v</code> وأمر <code>docker compose version</code>.</p>
+
+    <h2>الفصل الرابع: التطبيق العملي ورفع الكود</h2>
+    <p>عشان نرفع الكود، لازم يكون البروجيكت بتاعك مرفوع على GitHub.</p>
+
+    <p><strong>1. سحب الكود للسيرفر:</strong></p>
+    <p>جوه السيرفر، اكتب الأمر ده عشان تنزل الكود بتاعك:</p>
+<pre>git clone https://github.com/yourusername/your-repo-name.git</pre>
+
+    <p><strong>2. الدخول لمجلد المشروع:</strong></p>
+<pre>cd your-repo-name</pre>
+
+    <p><strong>3. تشغيل المشروع:</strong></p>
+    <p>بافتراض إنك مجهز ملف <code>docker-compose.yml</code> (أو <code>compose.yaml</code>) في البروجيكت بتاعك.<br>
+    <em>(مثال مبسط لشكل ملف الإعدادات المناسب لبيئة العمل الحقيقية Production):</em></p>
+<pre>services:
+  web:
+    build: . # أو استخدام صورة جاهزة بمكانها مثل image: repo/app:latest
+    restart: unless-stopped # لضمان عودة الموقع للعمل تلقائياً إذا أعيد تشغيل السيرفر
+    ports:
+      - "127.0.0.1:3000:3000" # الأهم: نقيد الوصول ليكون داخلياً فقط ليمر عبر Nginx
+    # ... باقي الإعدادات</pre>
+    <div class="note">
+        <strong>انتبه لثغرة خطيرة:</strong> كتابة المنافذ بالشكل التقليدي <code>"3000:3000"</code> في دوكر تجعل موقعك متاحاً لأي شخص عبر <code>http://ip:3000</code> متخطياً حماية الـ Firewall و Nginx تماماً! استخدم دائماً <code>127.0.0.1</code> لمنع ذلك.
+    </div>
+    <p>أمر واحد بس هيشغل الموقع كله في الخلفية (لاحظ إننا بنستخدم <code>docker compose</code> من غير شرطة في النسخة الحديثة):</p>
+<pre>docker compose up -d</pre>
+    <p>حرف الـ <code>-d</code> معناه "Detached"، يعني البروجيكت هيفضل شغال حتى لو قفلت الـ Terminal.</p>
+
+    <h2>الفصل الخامس: ربط الدومين وتأمين الموقع</h2>
+    <p>دلوقتي الموقع شغال على رقم IP وبورت معين (مثلاً 3000). بس إحنا عايزين الناس تدخل عن طريق لينك واسم دومين احترافي زي <code>yourdomain.com</code>.</p>
+
+    <p><strong>1. ربط الدومين:</strong></p>
+    <p>ادخل على الشركة اللي اشتريت منها الدومين (زي Namecheap أو GoDaddy)، وروح لإعدادات الـ DNS. ضيف سجل جديد نوعه <strong>A Record</strong>، واكتب فيه رقم الـ IP بتاع السيرفر بتاعك.</p>
+    <div class="note">ملاحظة هامة: انتشار تحديثات الدومين DNS Propagation قد يستغرق من بضع دقائق إلى 24 ساعة، فلا تقلق إن لم يعمل الموقع فوراً.</div>
+
+    <p><strong>2. تسطيب Nginx (موظف الاستقبال):</strong></p>
+    <p>ده البرنامج اللي بيستقبل الزوار من الدومين ويدخلهم على البورت بتاع موقعك.</p>
+<pre>apt-get install nginx</pre>
+
+    <p><strong>3. إعداد Nginx لموقعك:</strong></p>
+    <p>هنعمل ملف إعدادات جديد:</p>
+<pre>nano /etc/nginx/sites-available/yourdomain.com</pre>
+    <p>حط جواه الكود ده (وغير <code>yourdomain.com</code> لدومينك، و <code>3000</code> للبورت بتاعك):</p>
+<pre>server {
+    listen 80;
+    server_name yourdomain.com www.yourdomain.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        
+        # تمرير الـ IP الحقيقي للزوار إلى تطبيقك
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}</pre>
+    <p>احفظ الملف (Ctrl+X ثم Y ثم Enter)، وبعدين فعل الإعدادات واعمل ريستارت:</p>
+<pre>ln -s /etc/nginx/sites-available/yourdomain.com /etc/nginx/sites-enabled/
+systemctl restart nginx</pre>
+
+    <p><strong>4. تأمين الموقع (SSL مجاني):</strong></p>
+    <p>عشان موقعك يكون <code>https</code> وآمن:</p>
+<pre>apt-get install certbot python3-certbot-nginx
+certbot --nginx -d yourdomain.com -d www.yourdomain.com</pre>
+    <p>اتبع التعليمات البسيطة على الشاشة، ومبروك موقعك بقى آمن!</p>
+
+    <h2>الفصل السادس: إزاي تحدث موقعك بعد أي تعديل؟</h2>
+    <p>طبعاً بعد ما رفعت موقعك، هتحتاج تعمل تعديلات وتصلح أخطاء. التحديث مش هياخد منك ثواني.</p>
+
+    <p><strong>1. على جهازك أنت:</strong></p>
+    <p>ارفع التعديلات الجديدة على GitHub كالعادة:</p>
+<pre>git add .
+git commit -m "update features"
+git push</pre>
+
+    <p><strong>2. على السيرفر:</strong></p>
+    <p>ادخل على السيرفر، روح لفولدر المشروع، واسحب التعديلات:</p>
+<pre>cd your-repo-name
+git pull</pre>
+
+    <p><strong>3. تطبيق التحديث (السر في --build):</strong></p>
+    <p>قول لـ Docker يبني النسخة الجديدة بالتعديلات ويشغلها مكان القديمة بدون ما الموقع يقع فترة طويلة:</p>
+<pre>docker compose up -d --build</pre>
+    <div class="note">ملحوظة هامة: إذا واجهت أي مشكلة أو لم يعمل الموقع بعد التحديث، يمكنك استخدام الأمر <code>docker compose logs -f</code> لعرض السجلات وتتبع الأخطاء بسهولة.</div>
+
+    <h2>الفصل السابع: استضافة أكثر من موقع على نفس الـ VPS (وفر فلوسك)</h2>
+    <p>أكبر ميزة للـ VPS إنك تقدر تستضيف عليه 5 أو 10 مواقع بنفس الـ 5 دولار! السر كله في "البورتات".</p>
+
+    <p><strong>1. تغيير البورت للموقع الثاني:</strong></p>
+    <p>الموقع الأول شغال على بورت <code>3000</code>. الموقع التاني لما تسحبه للسيرفر، ادخل على ملف <code>docker-compose.yml</code> بتاعه، وخلي البورت الخارجي مختلف، مثلاً <code>4000:3000</code>. وشغله بـ <code>docker compose up -d</code>.</p>
+
+    <p><strong>2. توجيه الدومين الثاني:</strong></p>
+    <p>اعمل A Record للدومين التاني (<code>site2.com</code>) يشاور على نفس الـ IP بتاع السيرفر.</p>
+
+    <p><strong>3. إعداد Nginx للموقع الثاني:</strong></p>
+    <p>اعمل ملف إعدادات جديد للموقع التاني زي ما عملنا في الفصل الرابع:</p>
+<pre>nano /etc/nginx/sites-available/site2.com</pre>
+    <p>وحط نفس كود الـ Nginx، بس غير <code>server_name</code> لـ <code>site2.com</code>، وغير <code>proxy_pass</code> لـ <code>http://localhost:4000</code> (البورت الجديد)، وتأكد من وجود رؤوس (Headers) الـ Real-IP.</p>
+    <p>فعل الملف واعمل ريستارت:</p>
+<pre>ln -s /etc/nginx/sites-available/site2.com /etc/nginx/sites-enabled/
+systemctl restart nginx</pre>
+
+    <p>وأخيراً، أمن الموقع التاني بالـ Certbot:</p>
+<pre>certbot --nginx -d site2.com -d www.site2.com</pre>
+
+    <h2>الفصل الثامن: ترقية بيئة العمل (CI/CD Pipelines)</h2>
+    <p>في الفصول السابقة، شرحنا تحديث الموقع عن طريق الدخول للسيرفر وكتابة <code>git pull</code> يدوياً. هذه الطريقة تعمل، لكنها ليست الأفضل للمحترفين.</p>
+    <p>في الشركات الحقيقية، نستخدم ما يُسمى بـ <strong>CI/CD (التكامل والتسليم المستمر)</strong> مثل <strong>GitHub Actions</strong> أو <strong>GitLab CI</strong>. الفكرة هي أنك بمجرد أن تعمل <code>git push</code> للكود الخاص بك من جهازك، يقوم GitHub أو GitLab تلقائياً بالدخول لسيرفرك، سحب التحديثات، إعادة بناء الـ Docker Image، وإعادة تشغيل الموقع دون أي تدخل يدوي منك. ابحث عن (GitHub Actions Docker VPS) لتتعلم كيفية تطبيقها، ستوفر عليك ساعات من العمل اليدوي!</p>
+
+    <h2>الفصل التاسع: النسخ الاحتياطي والمراقبة (Backups & Monitoring)</h2>
+    <p>لا تدع أول خطأ برمجي أو اختراق يدمر مجهود شهور. السيرفر القوي يجب أن يكون مراقباً ولديه نسخ احتياطية.</p>
+    <p><strong>1. النسخ الاحتياطي (Backups):</strong> يمكنك استخدام أداة مثل <code>rsync</code> مع <code>cron</code> (مجدول المهام في لينكس) لأخذ نسخة من قاعدة بياناتك وملفاتك يومياً ونقلها لسيرفر تخزين آخر (Object Storage)، أو استخدام خدمة الباك أب التلقائية التي توفرها شركة الاستضافة (بتكلفة بسيطة إضافية).</p>
+    <p><strong>2. المراقبة (Monitoring):</strong> لكي لا تُفاجأ بأن موقعك توقف لأن الرامات امتلأت، يفضل المحترفون تسطيب أدوات مجانية مثل <strong>Prometheus & Grafana</strong>. هذه الأدوات ترسم لك رسوماً بيانية توضح استهلاك المعالج والرامات لحظة بلحظة، بل وترسل لك رسالة تليجرام أو إيميل إذا كان السيرفر يعاني من ضغط شديد.</p>
+
+    <h2>الخاتمة</h2>
+    <p>مبروك! إنت دلوقتي مش مجرد شخص بيكتب كود، إنت بقيت بتعرف تعمل Deployment باحترافية وتدير السيرفر بتاعك زي مهندسين الـ DevOps. استخدامك للـ VPS مع أحدث إصدارات Docker و Nginx هيضمنلك سرعة، أمان، واستقرار لمشاريعك، والأهم إنه هيوفر عليك ميزانية ضخمة.</p>
+    </div> <!-- End article-container -->
+
+    <script>
+        // Reading Progress Bar
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.width = scrolled + "%";
+        };
+
+        // Copy Code Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const preBlocks = document.querySelectorAll('pre');
+            
+            preBlocks.forEach((pre) => {
+                // Create copy button
+                const copyBtn = document.createElement('button');
+                copyBtn.className = 'copy-btn';
+                copyBtn.innerHTML = `
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    نسخ الكود
+                `;
+                
+                // Wrap pre in relative wrapper for absolute button placement
+                const wrapper = document.createElement('div');
+                wrapper.className = 'code-wrapper';
+                pre.parentNode.insertBefore(wrapper, pre);
+                wrapper.appendChild(pre);
+                wrapper.appendChild(copyBtn);
+
+                // Add click event
+                copyBtn.addEventListener('click', async () => {
+                    // Get text excluding the copy button itself if it was somehow inside, 
+                    // though here it's appended after/outside the pure code content.
+                    const textToCopy = pre.innerText;
+                    
+                    try {
+                        await navigator.clipboard.writeText(textToCopy);
+                        
+                        // Visual feedback
+                        copyBtn.classList.add('copied');
+                        copyBtn.innerHTML = `
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            تم النسخ!
+                        `;
+                        
+                        // Reset after 2s
+                        setTimeout(() => {
+                            copyBtn.classList.remove('copied');
+                            copyBtn.innerHTML = `
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                نسخ الكود
+                            `;
+                        }, 2000);
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                });
+            });
+
+            // PDF Download Functionality (Opens dedicated print page)
+            const downloadBtn = document.getElementById('download-pdf-btn');
+            downloadBtn.addEventListener('click', () => {
+                window.open('/ebooks/vps-guide-print.html', '_blank');
+            });
+        });
+    </script>
+</body>
+</html>

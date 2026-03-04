@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import '../styles/global.css';
 
 const navLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Service', href: '#services' },
-  { label: 'Project', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/#home' },
+  { label: 'About', href: '/#about' },
+  { label: 'Service', href: '/#services' },
+  { label: 'Project', href: '/#projects' },
+  { label: 'Library', href: '/library' },
+  { label: 'Contact', href: '/#contact' },
 ];
 
 const Navbar = () => {
@@ -19,7 +20,7 @@ const Navbar = () => {
       setScrolled(window.scrollY > 50);
       
       // Detect active section based on scroll position
-      const sections = ['home', 'about', 'services', 'projects', 'contact'];
+      const sections = ['home', 'about', 'services', 'projects', 'blog', 'contact'];
       const scrollPosition = window.scrollY + window.innerHeight / 3;
       
       let currentSection = 'home';
@@ -75,8 +76,10 @@ const Navbar = () => {
         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
       }} className="nav-desktop">
         {navLinks.map((link) => {
-          const sectionId = link.href.replace('#', '');
-          const isActive = activeSection === sectionId;
+          const sectionId = link.href.replace('/#', '').replace('/', '');
+          const isActive = window.location.pathname === '/' 
+            ? (activeSection === sectionId || (activeSection === 'blog' && sectionId === 'library')) 
+            : window.location.pathname === `/${sectionId}`;
           
           return (
             <a 
@@ -219,8 +222,10 @@ const Navbar = () => {
         }}>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '4px' }}>
             {navLinks.map((link) => {
-              const sectionId = link.href.replace('#', '');
-              const isActive = activeSection === sectionId;
+              const sectionId = link.href.replace('/#', '').replace('/', '');
+              const isActive = window.location.pathname === '/' 
+                ? (activeSection === sectionId || (activeSection === 'blog' && sectionId === 'library')) 
+                : window.location.pathname === `/${sectionId}`;
               return (
                 <li key={link.label}>
                   <a href={link.href} style={{

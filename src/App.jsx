@@ -16,8 +16,25 @@ const Testimonials = lazy(() => import('./components/Testimonials'));
 const Blog = lazy(() => import('./components/Blog'));
 const CTA = lazy(() => import('./components/CTA'));
 const Footer = lazy(() => import('./components/Footer'));
+const Library = lazy(() => import('./components/Library'));
 
 function App() {
+  const isLibrary = window.location.pathname === '/library';
+
+  if (isLibrary) {
+    return (
+      <div className="app-container">
+        <CustomCursor />
+        <NoiseOverlay />
+        <Navbar />
+        <Suspense fallback={null}>
+          <Library />
+          <Footer />
+        </Suspense>
+      </div>
+    );
+  }
+
   return (
     <div className="app-container">
       <CustomCursor />
