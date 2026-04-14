@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edumize — Project Proposal</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0d1f3c;
+      --accent:  #1a56db;
+      --bg:      #f8f9fb;
+      --surface: #ffffff;
+      --line:    #e4e7ec;
+      --t1:      #0d1f3c;
+      --t2:      #374151;
+      --t3:      #6b7280;
+      --font:    'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--t2);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      max-width: 780px;
+      margin-inline: auto;
+      padding-inline: clamp(1.5rem, 5vw, 3rem);
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+      position: sticky; top: 0; z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 1rem;
+    }
+
+    .logo {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 3px;
+      height: 1.1rem;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .header-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--t3);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── PROGRESS ── */
+    #prog {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      z-index: 100;
+      transition: width 0.1s linear;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      color: white;
+      padding-block: clamp(4.5rem, 10vw, 8rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(transparent, var(--bg));
+    }
+
+    .hero-inner { position: relative; }
+
+    .hero-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 5px;
+      background: #4ade80;
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      color: white;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero h1 span { color: #60a5fa; }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 400;
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .fact {
+      padding: 0.5rem 1.1rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .fact strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+
+    /* ── SECTION ── */
+    .section { padding-block: clamp(3.5rem, 7vw, 6rem); }
+    .section + .section { border-top: 1px solid var(--line); }
+
+    .section-meta {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section h2 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      color: var(--t1);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.9rem;
+    }
+
+    .section-lead {
+      font-size: 1rem;
+      color: var(--t3);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── WHAT WE BUILD ── */
+    .deliverable-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--line);
+    }
+
+    .deliverable {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.4rem 1.6rem;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+      align-items: flex-start;
+      transition: background 180ms;
+    }
+
+    .deliverable:last-child { border-bottom: none; }
+    .deliverable:hover { background: #f5f7ff; }
+
+    .del-num {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--accent);
+      padding-top: 0.2rem;
+      min-width: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .del-body h3 {
+      font-size: 0.925rem;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 0.25rem;
+    }
+
+    .del-body p {
+      font-size: 0.85rem;
+      color: var(--t3);
+      line-height: 1.6;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .step {
+      display: flex;
+      gap: 1.5rem;
+      padding-bottom: 2.2rem;
+      position: relative;
+    }
+
+    .step:last-child { padding-bottom: 0; }
+
+    .step-line {
+      position: absolute;
+      top: 2rem; bottom: 0;
+      left: 0.9rem;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .step:last-child .step-line { display: none; }
+
+    .step-dot {
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-text h3 {
+      font-size: 0.925rem;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 0.3rem;
+      padding-top: 0.2rem;
+    }
+
+    .step-text p {
+      font-size: 0.85rem;
+      color: var(--t3);
+      line-height: 1.65;
+    }
+
+    /* ── TIMELINE ── */
+    .phases {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--line);
+    }
+
+    .phase {
+      display: flex;
+      align-items: stretch;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .phase:last-child { border-bottom: none; }
+
+    .phase-label {
+      min-width: 130px;
+      padding: 1.2rem 1.4rem;
+      border-right: 1px solid var(--line);
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.2rem;
+    }
+
+    .phase-label .ph-num {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--t3);
+    }
+
+    .phase-label .ph-week {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .phase-body {
+      padding: 1.2rem 1.4rem;
+      flex: 1;
+    }
+
+    .phase-body h4 {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 0.3rem;
+    }
+
+    .phase-body p {
+      font-size: 0.825rem;
+      color: var(--t3);
+      line-height: 1.6;
+    }
+
+    /* ── INVESTMENT ── */
+    .invest-card {
+      background: var(--navy);
+      color: white;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .invest-card .inv-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .invest-card .inv-amount {
+      font-size: 3.8rem;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .invest-card .inv-note {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      padding-top: 0.4rem;
+      max-width: 440px;
+      line-height: 1.65;
+    }
+
+    /* ── CLOSING ── */
+    .closing {
+      padding-block: clamp(3.5rem, 7vw, 6rem);
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .closing h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--t1);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .closing p {
+      font-size: 0.95rem;
+      color: var(--t3);
+      max-width: 420px;
+      margin-inline: auto;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding-block: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .site-footer span {
+      font-size: 0.78rem;
+      color: var(--t3);
+    }
+
+    /* ── FADE IN ── */
+    .fi {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fi.in { opacity: 1; transform: none; }
+
+    @media (max-width: 540px) {
+      .hero-facts { flex-direction: column; }
+      .phase-label { min-width: 100px; }
+      .header-badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-mark"></div>
+        Bilal Aboqura
+      </div>
+      <span class="header-badge">Edumize — Ref: PROP-EX-2026 &nbsp;·&nbsp; Valid: May 14, 2026</span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-label">Prepared exclusively for Edumize</div>
+      <h1>A smarter platform<br>for <span>finding universities</span><br>in Malaysia.</h1>
+      <p class="hero-sub">
+        Instead of a static catalog students scroll through manually, we build a system that matches each student to the right university and program — instantly, based on their own criteria.
+      </p>
+      <div class="hero-facts">
+        <div class="fact"><strong>Investment:</strong> $2,500 USD</div>
+        <div class="fact"><strong>Timeline:</strong> 4 – 6 Weeks</div>
+        <div class="fact"><strong>Payment:</strong> 50% to start · 50% on delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <!-- WHAT WE'RE BUILDING -->
+  <div class="section fi">
+    <div class="section-meta">What You Get</div>
+    <h2>Everything included in the project.</h2>
+    <p class="section-lead">One platform. Fully built, tested, and handed over. Here is exactly what is covered.</p>
+
+    <div class="deliverable-list">
+      <div class="deliverable">
+        <div class="del-num">01</div>
+        <div class="del-body">
+          <h3>Smart University Search</h3>
+          <p>Students pick their specialization, budget, and level — and immediately see only the universities and programs that match. No scrolling through irrelevant results.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">02</div>
+        <div class="del-body">
+          <h3>Full Website — All Core Pages</h3>
+          <p>Home, Services, Why Edumize, Malaysia 360° guide, Privacy Policy, and Terms — all professionally designed, fast, and mobile-friendly.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">03</div>
+        <div class="del-body">
+          <h3>Arabic &amp; English — Both Languages</h3>
+          <p>The entire platform works seamlessly in both Arabic (with right-to-left layout) and English. Students see it in whichever language they prefer.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">04</div>
+        <div class="del-body">
+          <h3>Airtable Dashboard — Update Without a Developer</h3>
+          <p>All university data — names, programs, prices, requirements — is connected to Airtable. Your team can add, edit, or remove anything directly, with no technical knowledge required.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">05</div>
+        <div class="del-body">
+          <h3>Consultation Request Form</h3>
+          <p>Students can submit a request directly from the platform. Each submission is automatically organized in your Airtable dashboard — ready for your team to follow up.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">06</div>
+        <div class="del-body">
+          <h3>Hosted on Your Own Server</h3>
+          <p>The platform runs on a VPS server — fully under your control. No subscriptions to external platforms. No third-party dependency on the hosting side.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section fi">
+    <div class="section-meta">How It Works</div>
+    <h2>What the student experience looks like.</h2>
+    <p class="section-lead">Four simple steps — from landing on the platform to submitting a consultation request.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-dot">1</div>
+        <div class="step-text">
+          <h3>Student picks their criteria</h3>
+          <p>They choose their preferred specialization, academic level, and budget using a clear, simple interface.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-dot">2</div>
+        <div class="step-text">
+          <h3>The platform finds matching universities</h3>
+          <p>Instantly — without reloading the page — it shows only the universities and programs that match what the student is looking for.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-dot">3</div>
+        <div class="step-text">
+          <h3>Student reviews their options</h3>
+          <p>They get a clean, focused list — no clutter, no irrelevant results. Just the right options for them.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-dot">4</div>
+        <div class="step-text">
+          <h3>They submit a consultation request</h3>
+          <p>One click — and their details go directly into your Airtable dashboard, ready for your team to follow up.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section fi">
+    <div class="section-meta">Timeline</div>
+    <h2>Delivered in 4 to 6 weeks.</h2>
+    <p class="section-lead">The project is broken into four clear phases. You get updates at the end of each one.</p>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-label">
+          <span class="ph-num">Phase 01</span>
+          <span class="ph-week">Week 1</span>
+        </div>
+        <div class="phase-body">
+          <h4>Setup &amp; Data Structure</h4>
+          <p>Organizing the university and program database, setting up the Airtable structure, and preparing the project foundation.</p>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">
+          <span class="ph-num">Phase 02</span>
+          <span class="ph-week">Weeks 2 – 3</span>
+        </div>
+        <div class="phase-body">
+          <h4>Design &amp; Smart Search</h4>
+          <p>Building all website pages and the intelligent matching engine — the part students interact with to find universities.</p>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">
+          <span class="ph-num">Phase 03</span>
+          <span class="ph-week">Weeks 3 – 4</span>
+        </div>
+        <div class="phase-body">
+          <h4>Forms &amp; Airtable Connection</h4>
+          <p>Connecting the consultation form to your Airtable dashboard so every student submission lands directly in your team's workflow.</p>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">
+          <span class="ph-num">Phase 04</span>
+          <span class="ph-week">Weeks 5 – 6</span>
+        </div>
+        <div class="phase-body">
+          <h4>Testing &amp; Launch</h4>
+          <p>Full testing on all devices, final adjustments, and deploying the platform to your server — ready for real students.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVESTMENT -->
+  <div class="section fi">
+    <div class="section-meta">Investment</div>
+    <h2>Simple, one-time pricing.</h2>
+    <p class="section-lead">No subscriptions. No hidden fees. One payment to build the platform — and it's yours.</p>
+
+    <div class="invest-card">
+      <div class="inv-label">Total Investment</div>
+      <div class="inv-amount">$2,500</div>
+      <div class="inv-note">
+        Paid in two installments: 50% ($1,250) to start the project, and 50% ($1,250) when everything is delivered and approved.
+      </div>
+    </div>
+  </div>
+
+</div><!-- / wrap -->
+
+<!-- CLOSING -->
+<div class="wrap">
+  <div class="closing fi">
+    <h2>Ready to get started?</h2>
+    <p>Reach out and we can confirm the details and kick off the project.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="site-footer">
+      <span>Prepared by <strong>Bilal Aboqura</strong> — bilalaboqura.com</span>
+      <span>Confidential &nbsp;·&nbsp; Edumize &nbsp;·&nbsp; Valid until May 14, 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  const prog = document.getElementById('prog');
+  window.addEventListener('scroll', () => {
+    prog.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+  });
+
+  // Fade in on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

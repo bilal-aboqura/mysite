@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposals — Bilal Aboqura</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 100vh; margin: 0;
+      background: #f8f9fb; color: #374151;
+    }
+    .box { text-align: center; padding: 2rem; }
+    .box h1 { font-size: 1.5rem; color: #0d1f3c; margin-bottom: 0.5rem; }
+    .box p  { color: #6b7280; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+<div class="box" id="msg">
+  <h1>Loading your proposal...</h1>
+  <p>You will be redirected in a moment.</p>
+</div>
+<script>
+  // Read the first path segment after the domain
+  // proposals.bilalaboqura.com/edumize  →  slug = "edumize"
+  const slug = window.location.pathname.replace(/^\/+/, '').replace(/\/.*$/, '').toLowerCase();
+
+  if (!slug) {
+    document.getElementById('msg').innerHTML =
+      '<h1>No proposal found.</h1><p>Please use the link provided by Bilal.</p>';
+  } else {
+    // Try to load the matching HTML file
+    // proposals.bilalaboqura.com/edumize  →  serves /edumize.html
+    window.location.replace('/' + slug + '.html');
+  }
+</script>
+</body>
+</html>
