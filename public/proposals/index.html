@@ -19,8 +19,25 @@
 </head>
 <body>
 <div class="box" id="msg">
-  <h1>No proposal found.</h1>
-  <p>Please use the correct link provided by Bilal.</p>
+  <h1>Loading your proposal...</h1>
+  <p>You will be redirected in a moment.</p>
 </div>
+<script>
+  // Read the first path segment after the domain
+  const path = window.location.pathname.replace(/^\/+/, '').replace(/\/.*$/, '');
+  const slug = path.toLowerCase();
+
+  if (!slug) {
+    document.getElementById('msg').innerHTML =
+      '<h1>No proposal found.</h1><p>Please use the correct link provided by Bilal.</p>';
+  } else if (path !== slug) {
+    // If the URL had uppercase letters, redirect to the lowercase clean URL
+    window.location.replace('/' + slug);
+  } else {
+    // If it's already lowercase and we still hit index.html, the file genuinely doesn't exist
+    document.getElementById('msg').innerHTML =
+      '<h1>No proposal found.</h1><p>The requested proposal does not exist.</p>';
+  }
+</script>
 </body>
 </html>
