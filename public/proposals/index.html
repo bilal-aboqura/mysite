@@ -19,22 +19,8 @@
 </head>
 <body>
 <div class="box" id="msg">
-  <h1>Loading your proposal...</h1>
-  <p>You will be redirected in a moment.</p>
+  <h1>No proposal found.</h1>
+  <p>Please use the correct link provided by Bilal.</p>
 </div>
-<script>
-  // Read the first path segment after the domain
-  // proposals.bilalaboqura.com/edumize  →  slug = "edumize"
-  const slug = window.location.pathname.replace(/^\/+/, '').replace(/\/.*$/, '').toLowerCase();
-
-  if (!slug) {
-    document.getElementById('msg').innerHTML =
-      '<h1>No proposal found.</h1><p>Please use the link provided by Bilal.</p>';
-  } else {
-    // Try to load the matching HTML file
-    // proposals.bilalaboqura.com/edumize  →  serves /edumize.html
-    window.location.replace('/' + slug + '.html');
-  }
-</script>
 </body>
 </html>
