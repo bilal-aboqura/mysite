@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotation — Cornerstone Water System</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0d1f3c;
+      --accent:  #1a56db;
+      --bg:      #f4f6f9;
+      --surface: #ffffff;
+      --line:    #e4e7ec;
+      --t1:      #0d1f3c;
+      --t2:      #374151;
+      --t3:      #6b7280;
+      --green:   #16a34a;
+      --font:    'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--t2);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem);
+    }
+
+    /* ── DOCUMENT SHELL ── */
+    .doc {
+      max-width: 820px;
+      margin-inline: auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      box-shadow: 0 4px 24px rgba(13,31,60,0.07);
+    }
+
+    /* ── TOP BAR ── */
+    .doc-topbar {
+      background: var(--navy);
+      padding: 0.55rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .doc-topbar .brand {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-bar {
+      width: 2px;
+      height: 0.9rem;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .doc-topbar .doc-ref {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── HEADER BLOCK ── */
+    .doc-header {
+      padding: 2.5rem 2.5rem 2rem;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .doc-title-block {}
+
+    .doc-badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: #eff4ff;
+      border: 1px solid #c3d3fb;
+      padding: 0.2rem 0.65rem;
+      border-radius: 2px;
+      margin-bottom: 0.9rem;
+    }
+
+    .doc-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      color: var(--t1);
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .doc-sub {
+      font-size: 0.85rem;
+      color: var(--t3);
+    }
+
+    .doc-meta-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      text-align: right;
+      min-width: 180px;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: flex-end;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .meta-row .mk {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--t3);
+      letter-spacing: 0.04em;
+    }
+
+    .meta-row .mv {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--t1);
+    }
+
+    .mv.valid {
+      color: var(--green);
+    }
+
+    /* ── PARTIES ── */
+    .parties {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .party {
+      padding: 1.6rem 2.5rem;
+    }
+
+    .party + .party {
+      border-left: 1px solid var(--line);
+    }
+
+    .party-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--t3);
+      margin-bottom: 0.7rem;
+    }
+
+    .party-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 0.25rem;
+    }
+
+    .party-detail {
+      font-size: 0.8rem;
+      color: var(--t3);
+      line-height: 1.65;
+    }
+
+    /* ── SCOPE TABLE ── */
+    .section-label {
+      padding: 1.1rem 2.5rem 0.6rem;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--t3);
+      border-bottom: 1px solid var(--line);
+      background: #fafbfc;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      padding: 0.7rem 2.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--t3);
+      text-align: left;
+      background: #fafbfc;
+      border-bottom: 1px solid var(--line);
+    }
+
+    thead th:last-child { text-align: right; }
+
+    tbody tr {
+      border-bottom: 1px solid var(--line);
+      transition: background 150ms;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+    tbody tr:hover { background: #f8f9ff; }
+
+    tbody td {
+      padding: 1.1rem 2.5rem;
+      font-size: 0.875rem;
+      vertical-align: top;
+    }
+
+    .item-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      padding-top: 0.1rem;
+      width: 2rem;
+    }
+
+    .item-name {
+      font-weight: 600;
+      color: var(--t1);
+      margin-bottom: 0.2rem;
+    }
+
+    .item-desc {
+      font-size: 0.8rem;
+      color: var(--t3);
+      line-height: 1.55;
+    }
+
+    .item-price {
+      text-align: right;
+      font-weight: 700;
+      color: var(--t1);
+      white-space: nowrap;
+    }
+
+    /* ── TOTALS ── */
+    .totals {
+      border-top: 1px solid var(--line);
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .totals-inner {
+      min-width: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 2rem;
+      font-size: 0.85rem;
+      color: var(--t3);
+    }
+
+    .total-row.grand {
+      border-top: 1px solid var(--line);
+      padding-top: 0.7rem;
+      margin-top: 0.2rem;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--t1);
+    }
+
+    .total-row.grand .tval { color: var(--accent); }
+
+    /* ── PAYMENT SCHEDULE ── */
+    .payment-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .pay-item {
+      padding: 1.4rem 2.5rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pay-item + .pay-item {
+      border-left: 1px solid var(--line);
+    }
+
+    .pay-tag {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--t3);
+      margin-bottom: 0.4rem;
+    }
+
+    .pay-amount {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--t1);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .pay-note {
+      font-size: 0.78rem;
+      color: var(--t3);
+      line-height: 1.5;
+    }
+
+    /* ── TERMS ── */
+    .terms {
+      padding: 1.5rem 2.5rem;
+      border-top: 1px solid var(--line);
+      background: #fafbfc;
+    }
+
+    .terms-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--t3);
+      margin-bottom: 0.9rem;
+    }
+
+    .terms-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .terms-list li {
+      font-size: 0.8rem;
+      color: var(--t3);
+      padding-left: 1.1rem;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .terms-list li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--line);
+      font-weight: 700;
+    }
+
+    /* ── FOOTER ── */
+    .doc-footer {
+      padding: 1.2rem 2.5rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .doc-footer span {
+      font-size: 0.75rem;
+      color: var(--t3);
+    }
+
+    /* ── PRINT BUTTON ── */
+    .print-wrap {
+      max-width: 820px;
+      margin-inline: auto;
+      display: flex;
+      justify-content: flex-end;
+      padding: 1rem 0 0;
+    }
+
+    .btn-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--t3);
+      background: none;
+      border: 1px solid var(--line);
+      padding: 0.45rem 1rem;
+      cursor: pointer;
+      transition: color 150ms, border-color 150ms;
+    }
+
+    .btn-print:hover { color: var(--t1); border-color: var(--t2); }
+
+    /* ── PRINT STYLES ── */
+    @media print {
+      body { background: white; padding: 0; }
+      .doc { box-shadow: none; border: none; }
+      .print-wrap { display: none; }
+      tbody tr:hover { background: none; }
+    }
+
+    @media (max-width: 600px) {
+      .doc-header { flex-direction: column; }
+      .doc-meta-block { text-align: left; }
+      .meta-row { justify-content: flex-start; }
+      .parties { grid-template-columns: 1fr; }
+      .party + .party { border-left: none; border-top: 1px solid var(--line); }
+      .payment-grid { grid-template-columns: 1fr; }
+      .pay-item + .pay-item { border-left: none; border-top: 1px solid var(--line); }
+      .doc-topbar, .doc-header, .parties .party,
+      .section-label, thead th, tbody td,
+      .totals, .terms, .doc-footer, .pay-item { padding-left: 1.25rem; padding-right: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="print-wrap">
+  <button class="btn-print" onclick="window.print()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print / Save PDF
+  </button>
+</div>
+
+<div class="doc">
+
+  <!-- TOP BAR -->
+  <div class="doc-topbar">
+    <div class="brand">
+      <div class="brand-bar"></div>
+      Bilal Aboqura
+    </div>
+    <span class="doc-ref">QUO-101-2026 &nbsp;·&nbsp; CONFIDENTIAL</span>
+  </div>
+
+  <!-- HEADER -->
+  <div class="doc-header">
+    <div class="doc-title-block">
+      <div class="doc-badge">Formal Quotation</div>
+      <div class="doc-title">Web Platform<br>Development</div>
+      <div class="doc-sub">Cornerstone Water System</div>
+    </div>
+    <div class="doc-meta-block">
+      <div class="meta-row">
+        <span class="mk">Quote No.</span>
+        <span class="mv">QUO-101-2026</span>
+      </div>
+      <div class="meta-row">
+        <span class="mk">Date</span>
+        <span class="mv">May 11, 2026</span>
+      </div>
+      <div class="meta-row">
+        <span class="mk">Valid Until</span>
+        <span class="mv valid">May 25, 2026</span>
+      </div>
+      <div class="meta-row">
+        <span class="mk">Currency</span>
+        <span class="mv">USD</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTIES -->
+  <div class="parties">
+    <div class="party">
+      <div class="party-label">Prepared By</div>
+      <div class="party-name">Bilal Aboqura</div>
+      <div class="party-detail">
+        Independent Web Developer<br>
+        bilalaboqura.com
+      </div>
+    </div>
+    <div class="party">
+      <div class="party-label">Prepared For</div>
+      <div class="party-name">Cornerstone Water System</div>
+      <div class="party-detail">
+        Engineering — Water &amp; Wastewater Treatment<br>
+        United Arab Emirates
+      </div>
+    </div>
+  </div>
+
+  <!-- SCOPE OF WORK -->
+  <div class="section-label">Scope of Work</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:2.5rem">#</th>
+        <th>Deliverable</th>
+        <th>Price (USD)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item-num">01</td>
+        <td>
+          <div class="item-name">Premium Industrial Web Design</div>
+          <div class="item-desc">Full UI/UX design system with a blue and white brand identity, high-quality visuals, and smooth micro-animations reflecting engineering authority.</div>
+        </td>
+        <td class="item-price">Included</td>
+      </tr>
+      <tr>
+        <td class="item-num">02</td>
+        <td>
+          <div class="item-name">Full Website — All Core Pages</div>
+          <div class="item-desc">Home, About Us, Services, Projects (with video support), scalable Products catalogue, and Contact page — professionally structured and fully responsive.</div>
+        </td>
+        <td class="item-price">Included</td>
+      </tr>
+      <tr>
+        <td class="item-num">03</td>
+        <td>
+          <div class="item-name">Bilingual Platform (Arabic &amp; English)</div>
+          <div class="item-desc">Complete multi-language support across all pages, with proper RTL layout for Arabic, ensuring a seamless experience for all clients.</div>
+        </td>
+        <td class="item-price">Included</td>
+      </tr>
+      <tr>
+        <td class="item-num">04</td>
+        <td>
+          <div class="item-name">Custom Content Management System (CMS)</div>
+          <div class="item-desc">A tailored CMS enabling your team to independently upload project videos, manage the products catalogue, and update content — no technical knowledge required.</div>
+        </td>
+        <td class="item-price">Included</td>
+      </tr>
+      <tr>
+        <td class="item-num">05</td>
+        <td>
+          <div class="item-name">Lead Generation &amp; WhatsApp Integration</div>
+          <div class="item-desc">Conversion-optimised call-to-actions, a "Request a Quote" inquiry form, and direct WhatsApp integration to route client inquiries instantly to your team.</div>
+        </td>
+        <td class="item-price">Included</td>
+      </tr>
+      <tr>
+        <td class="item-num">06</td>
+        <td>
+          <div class="item-name">Future-Ready Architecture</div>
+          <div class="item-desc">Scalable codebase prepared for ERP integration, partner portals, expanded product catalogues, and e-commerce capabilities — ready for your next phase of growth.</div>
+        </td>
+        <td class="item-price">Included</td>
+      </tr>
+      <tr>
+        <td class="item-num">07</td>
+        <td>
+          <div class="item-name">Testing, QA &amp; Deployment</div>
+          <div class="item-desc">Full cross-device and cross-browser testing, performance optimisation, and final production deployment. Includes a structured handover session.</div>
+        </td>
+        <td class="item-price">Included</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TOTALS -->
+  <div class="totals">
+    <div class="totals-inner">
+      <div class="total-row">
+        <span class="tk">Subtotal</span>
+        <span class="tval">$3,000.00</span>
+      </div>
+      <div class="total-row">
+        <span class="tk">Tax / VAT</span>
+        <span class="tval">Not Applicable</span>
+      </div>
+      <div class="total-row grand">
+        <span class="tk">Total Investment</span>
+        <span class="tval">$3,000.00 USD</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYMENT SCHEDULE -->
+  <div class="section-label">Payment Schedule</div>
+  <div class="payment-grid">
+    <div class="pay-item">
+      <div class="pay-tag">Instalment 1 — Upon Agreement</div>
+      <div class="pay-amount">$1,500</div>
+      <div class="pay-note">50% deposit to initiate the project. Due upon signing and before any work begins.</div>
+    </div>
+    <div class="pay-item">
+      <div class="pay-tag">Instalment 2 — On Delivery</div>
+      <div class="pay-amount">$1,500</div>
+      <div class="pay-note">50% final payment due upon full delivery, client approval, and before handover.</div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section-label">Delivery Timeline</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Phase</th>
+        <th>Period</th>
+        <th>Milestone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="font-weight:600; color:var(--t1)">Phase 01</td>
+        <td style="color:var(--accent); font-weight:600">Week 1</td>
+        <td style="color:var(--t3); font-size:0.82rem">Project setup, design direction, and brand identity approval</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; color:var(--t1)">Phase 02</td>
+        <td style="color:var(--accent); font-weight:600">Weeks 2 – 3</td>
+        <td style="color:var(--t3); font-size:0.82rem">Core pages built in both Arabic and English</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; color:var(--t1)">Phase 03</td>
+        <td style="color:var(--accent); font-weight:600">Weeks 3 – 4</td>
+        <td style="color:var(--t3); font-size:0.82rem">CMS integration, WhatsApp, and lead generation forms</td>
+      </tr>
+      <tr>
+        <td style="font-weight:600; color:var(--t1)">Phase 04</td>
+        <td style="color:var(--accent); font-weight:600">Weeks 5 – 6</td>
+        <td style="color:var(--t3); font-size:0.82rem">Full testing, performance review, and final deployment</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TERMS -->
+  <div class="terms">
+    <div class="terms-title">Terms &amp; Conditions</div>
+    <ul class="terms-list">
+      <li>This quotation is valid for 14 days from the date of issue (until <strong>May 25, 2026</strong>).</li>
+      <li>The project commences upon receipt of the first instalment of $1,500 USD.</li>
+      <li>All deliverables outlined in the Scope of Work are included in the quoted total. No additional charges apply unless scope is extended by mutual written agreement.</li>
+      <li>Final handover and transfer of all source files occurs upon receipt of the second and final instalment.</li>
+      <li>Client is responsible for providing any required content (text, logos, images, videos) in a timely manner. Delays in content delivery may affect the project timeline.</li>
+      <li>A 30-day post-launch support period is included for bug fixes and minor adjustments.</li>
+      <li>Ongoing hosting, domain registration, and third-party service fees (if any) are not included and are the client's responsibility.</li>
+    </ul>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <span>Prepared by <strong>Bilal Aboqura</strong> — bilalaboqura.com</span>
+    <span>Confidential &nbsp;·&nbsp; Cornerstone Water System &nbsp;·&nbsp; QUO-101-2026</span>
+  </div>
+
+</div>
+
+</body>
+</html>

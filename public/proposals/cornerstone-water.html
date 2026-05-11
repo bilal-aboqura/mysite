@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cornerstone Water System — Project Proposal</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0d1f3c;
+      --accent:  #1a56db;
+      --bg:      #f8f9fb;
+      --surface: #ffffff;
+      --line:    #e4e7ec;
+      --t1:      #0d1f3c;
+      --t2:      #374151;
+      --t3:      #6b7280;
+      --font:    'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--t2);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── LAYOUT ── */
+    .wrap {
+      max-width: 780px;
+      margin-inline: auto;
+      padding-inline: clamp(1.5rem, 5vw, 3rem);
+    }
+
+    /* ── HEADER ── */
+    header {
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+      position: sticky; top: 0; z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 1rem;
+    }
+
+    .logo {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 3px;
+      height: 1.1rem;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .header-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--t3);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── PROGRESS ── */
+    #prog {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      z-index: 100;
+      transition: width 0.1s linear;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      color: white;
+      padding-block: clamp(4.5rem, 10vw, 8rem);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 60px;
+      background: linear-gradient(transparent, var(--bg));
+    }
+
+    .hero-inner { position: relative; }
+
+    .hero-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 5px;
+      background: #4ade80;
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+      color: white;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero h1 span { color: #60a5fa; }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.55);
+      font-weight: 400;
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .fact {
+      padding: 0.5rem 1.1rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .fact strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+
+    /* ── SECTION ── */
+    .section { padding-block: clamp(3.5rem, 7vw, 6rem); }
+    .section + .section { border-top: 1px solid var(--line); }
+
+    .section-meta {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .section h2 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      color: var(--t1);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.9rem;
+    }
+
+    .section-lead {
+      font-size: 1rem;
+      color: var(--t3);
+      max-width: 580px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── WHAT WE BUILD ── */
+    .deliverable-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--line);
+    }
+
+    .deliverable {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.4rem 1.6rem;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+      align-items: flex-start;
+      transition: background 180ms;
+    }
+
+    .deliverable:last-child { border-bottom: none; }
+    .deliverable:hover { background: #f5f7ff; }
+
+    .del-num {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--accent);
+      padding-top: 0.2rem;
+      min-width: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .del-body h3 {
+      font-size: 0.925rem;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 0.25rem;
+    }
+
+    .del-body p {
+      font-size: 0.85rem;
+      color: var(--t3);
+      line-height: 1.6;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .step {
+      display: flex;
+      gap: 1.5rem;
+      padding-bottom: 2.2rem;
+      position: relative;
+    }
+
+    .step:last-child { padding-bottom: 0; }
+
+    .step-line {
+      position: absolute;
+      top: 2rem; bottom: 0;
+      left: 0.9rem;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .step:last-child .step-line { display: none; }
+
+    .step-dot {
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 50%;
+      background: var(--navy);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-text h3 {
+      font-size: 0.925rem;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 0.3rem;
+      padding-top: 0.2rem;
+    }
+
+    .step-text p {
+      font-size: 0.85rem;
+      color: var(--t3);
+      line-height: 1.65;
+    }
+
+    /* ── TIMELINE ── */
+    .phases {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--line);
+    }
+
+    .phase {
+      display: flex;
+      align-items: stretch;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .phase:last-child { border-bottom: none; }
+
+    .phase-label {
+      min-width: 130px;
+      padding: 1.2rem 1.4rem;
+      border-right: 1px solid var(--line);
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.2rem;
+    }
+
+    .phase-label .ph-num {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--t3);
+    }
+
+    .phase-label .ph-week {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .phase-body {
+      padding: 1.2rem 1.4rem;
+      flex: 1;
+    }
+
+    .phase-body h4 {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 0.3rem;
+    }
+
+    .phase-body p {
+      font-size: 0.825rem;
+      color: var(--t3);
+      line-height: 1.6;
+    }
+
+    /* ── INVESTMENT ── */
+    .invest-card {
+      background: var(--navy);
+      color: white;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .invest-card .inv-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .invest-card .inv-amount {
+      font-size: 3.8rem;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .invest-card .inv-note {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      padding-top: 0.4rem;
+      max-width: 440px;
+      line-height: 1.65;
+    }
+
+    /* ── CLOSING ── */
+    .closing {
+      padding-block: clamp(3.5rem, 7vw, 6rem);
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .closing h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 800;
+      color: var(--t1);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .closing p {
+      font-size: 0.95rem;
+      color: var(--t3);
+      max-width: 420px;
+      margin-inline: auto;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding-block: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .site-footer span {
+      font-size: 0.78rem;
+      color: var(--t3);
+    }
+
+    /* ── TECH GRID ── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .tech-card {
+      background: var(--surface);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      transition: background 160ms;
+    }
+
+    .tech-card:hover { background: #f5f7ff; }
+
+    .tech-icon {
+      font-size: 1.3rem;
+      line-height: 1;
+      flex-shrink: 0;
+      padding-top: 0.05rem;
+    }
+
+    .tech-info h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--t1);
+      margin-bottom: 0.15rem;
+    }
+
+    .tech-info .tech-role {
+      font-size: 0.75rem;
+      color: var(--t3);
+      line-height: 1.45;
+    }
+
+    /* ── SPEC TABLE ── */
+    .spec-table {
+      border: 1px solid var(--line);
+      width: 100%;
+    }
+
+    .spec-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .spec-row:last-child { border-bottom: none; }
+
+    .spec-key {
+      padding: 0.9rem 1.4rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--t2);
+      background: #fafbfc;
+      border-right: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+    }
+
+    .spec-val {
+      padding: 0.9rem 1.4rem;
+      font-size: 0.82rem;
+      color: var(--t1);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .spec-val.good { color: #16a34a; }
+    .spec-val.info { color: var(--accent); }
+
+    .spec-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ── RUNNING COSTS ── */
+    .cost-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-bottom: 1.5rem;
+    }
+
+    .cost-card {
+      background: var(--surface);
+      padding: 1.3rem 1.5rem;
+    }
+
+    .cost-card .cc-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--t3);
+      margin-bottom: 0.5rem;
+    }
+
+    .cost-card .cc-amount {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--t1);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2rem;
+    }
+
+    .cost-card .cc-note {
+      font-size: 0.75rem;
+      color: var(--t3);
+      line-height: 1.5;
+    }
+
+    .cost-note-box {
+      background: #eff4ff;
+      border: 1px solid #c3d3fb;
+      padding: 1rem 1.4rem;
+      font-size: 0.82rem;
+      color: #1e40af;
+      line-height: 1.6;
+    }
+
+    /* ── FADE IN ── */
+    .fi {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .fi.in { opacity: 1; transform: none; }
+
+    @media (max-width: 540px) {
+      .hero-facts { flex-direction: column; }
+      .phase-label { min-width: 100px; }
+      .header-badge { display: none; }
+      .spec-row { grid-template-columns: 1fr; }
+      .spec-key { border-right: none; border-bottom: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap">
+    <div class="header-inner">
+      <div class="logo">
+        <div class="logo-mark"></div>
+        Bilal Aboqura
+      </div>
+      <span class="header-badge">Cornerstone Water System — Ref: PROP-101-2026 &nbsp;·&nbsp; Valid: May 25, 2026</span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-label">Prepared exclusively for Cornerstone Water System</div>
+      <h1>A high-end, professional platform<br><span>for Cornerstone Water System.</span></h1>
+      <p class="hero-sub">
+        Instead of a standard corporate site, we build a platform that reflects your trust, technical expertise, and innovation as a leading engineering company in water and wastewater treatment. It is designed to act as a strategic asset that supports your business growth and positioning.
+      </p>
+      <div class="hero-facts">
+        <div class="fact"><strong>Investment:</strong> $3,000 USD</div>
+        <div class="fact"><strong>Timeline:</strong> 4 – 6 Weeks</div>
+        <div class="fact"><strong>Payment:</strong> 50% to start · 50% on delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <!-- WHAT YOU GET -->
+  <div class="section fi">
+    <div class="section-meta">What You Get</div>
+    <h2>Everything included in the project.</h2>
+    <p class="section-lead">One platform. Fully built, tested, and handed over. Here is exactly what is covered.</p>
+
+    <div class="deliverable-list">
+      <div class="deliverable">
+        <div class="del-num">01</div>
+        <div class="del-body">
+          <h3>Premium Industrial Design</h3>
+          <p>A clean UI featuring a blue and white identity, high-quality visuals, and smooth animations to represent your brand strength.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">02</div>
+        <div class="del-body">
+          <h3>Full Website — All Core Pages</h3>
+          <p>Professionally structured pages including Home, About Us, Services, Projects (with videos), scalable Products, and a Contact Page.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">03</div>
+        <div class="del-body">
+          <h3>Arabic &amp; English — Both Languages</h3>
+          <p>The entire platform works seamlessly with multi-language support (Arabic &amp; English), ensuring a great user experience for all clients.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">04</div>
+        <div class="del-body">
+          <h3>Custom Content Management System (CMS)</h3>
+          <p>A flexible CMS that allows your team to easily upload project videos and manage scalable product lines without technical hassle.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">05</div>
+        <div class="del-body">
+          <h3>Conversion-Focused &amp; Lead Generation</h3>
+          <p>Clear call-to-actions, WhatsApp integration, and dedicated lead generation forms (such as "Request Quote") structured to maximize client inquiries.</p>
+        </div>
+      </div>
+      <div class="deliverable">
+        <div class="del-num">06</div>
+        <div class="del-body">
+          <h3>Future-Ready Architecture</h3>
+          <p>A flexible structure prepared for future partnerships, ERP system integration readiness, and seamless expansion into catalogs or e-commerce.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECHNOLOGIES USED -->
+  <div class="section fi">
+    <div class="section-meta">Technologies Used</div>
+    <h2>Built on a proven, modern stack.</h2>
+    <p class="section-lead">Every technology is selected for reliability, long-term maintainability, and the specific needs of your platform — not trends.</p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <div class="tech-icon">⚡</div>
+        <div class="tech-info">
+          <h4>Next.js 14</h4>
+          <div class="tech-role">Frontend Framework — Fast, SEO-optimised pages with server-side rendering.</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🗄️</div>
+        <div class="tech-info">
+          <h4>PostgreSQL + Supabase</h4>
+          <div class="tech-role">Database — Secure, scalable relational database with a built-in admin interface.</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">☁️</div>
+        <div class="tech-info">
+          <h4>Cloudflare R2</h4>
+          <div class="tech-role">Media Storage — Low-cost, high-speed cloud storage for project videos and images.</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🌐</div>
+        <div class="tech-info">
+          <h4>next-intl</h4>
+          <div class="tech-role">Bilingual (AR / EN) — Full RTL Arabic support with seamless language switching.</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🔒</div>
+        <div class="tech-info">
+          <h4>TypeScript</h4>
+          <div class="tech-role">Language — Typed codebase that reduces bugs and makes future expansion safer.</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🎨</div>
+        <div class="tech-info">
+          <h4>Tailwind CSS</h4>
+          <div class="tech-role">Styling — Utility-first CSS for a consistent, responsive, and maintainable UI.</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🛠️</div>
+        <div class="tech-info">
+          <h4>Custom CMS Admin</h4>
+          <div class="tech-role">Content Management — A tailored admin panel built for your team, no third-party dependency.</div>
+        </div>
+      </div>
+      <div class="tech-card">
+        <div class="tech-icon">🚀</div>
+        <div class="tech-info">
+          <h4>VPS / Hostinger Hosting</h4>
+          <div class="tech-role">Deployment — Production-grade hosting with SSL, CDN edge caching, and 99.9% uptime.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section fi">
+    <div class="section-meta">How It Works</div>
+    <h2>What the client experience looks like.</h2>
+    <p class="section-lead">Four simple steps — from landing on the platform to submitting an inquiry.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-dot">1</div>
+        <div class="step-text">
+          <h3>Client lands on the platform</h3>
+          <p>They explore a premium, modern, fast-loading design that builds trust and authority in the engineering sector.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-dot">2</div>
+        <div class="step-text">
+          <h3>They review services and projects</h3>
+          <p>Clients enjoy simple, intuitive navigation to access your services and view high-quality project videos.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-line"></div>
+        <div class="step-dot">3</div>
+        <div class="step-text">
+          <h3>They evaluate scalable products</h3>
+          <p>Visitors can browse your current product offerings and advanced solutions in either Arabic or English.</p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-dot">4</div>
+        <div class="step-text">
+          <h3>They submit a quote request</h3>
+          <p>With one click, they connect via WhatsApp or submit a lead generation form, sending their details directly to your team.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECHNICAL SPECIFICATIONS -->
+  <div class="section fi">
+    <div class="section-meta">Technical Specifications</div>
+    <h2>What the platform is built to achieve.</h2>
+    <p class="section-lead">Measurable technical benchmarks — so you know exactly what you are getting, not just what it looks like.</p>
+
+    <div class="spec-table">
+      <div class="spec-row">
+        <div class="spec-key">Page Load Speed</div>
+        <div class="spec-val good"><span class="spec-dot"></span>Under 2 seconds (target &lt; 1.5s)</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Google Lighthouse Score</div>
+        <div class="spec-val good"><span class="spec-dot"></span>90+ Performance · 90+ SEO · 90+ Accessibility</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Core Web Vitals</div>
+        <div class="spec-val good"><span class="spec-dot"></span>Passing — LCP, CLS, and INP within Google thresholds</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Mobile Responsiveness</div>
+        <div class="spec-val good"><span class="spec-dot"></span>100% — Fully optimised for phones, tablets, and desktops</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Language Support</div>
+        <div class="spec-val info"><span class="spec-dot"></span>Arabic (RTL) and English (LTR) — fully independent layouts</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">SEO Readiness</div>
+        <div class="spec-val good"><span class="spec-dot"></span>Sitemap, meta tags, structured data, and Open Graph</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Video Delivery</div>
+        <div class="spec-val info"><span class="spec-dot"></span>Cloud-streamed via CDN — no buffering, no file-size limits</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Image Optimisation</div>
+        <div class="spec-val good"><span class="spec-dot"></span>Auto-converted to WebP · Lazy-loaded · Compressed</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Security</div>
+        <div class="spec-val good"><span class="spec-dot"></span>HTTPS / SSL by default · Secure form handling · No data leaks</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Browser Support</div>
+        <div class="spec-val info"><span class="spec-dot"></span>All modern browsers — Chrome, Safari, Firefox, Edge</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Uptime (Hosting)</div>
+        <div class="spec-val good"><span class="spec-dot"></span>99.9% — production-grade server with automated recovery</div>
+      </div>
+      <div class="spec-row">
+        <div class="spec-key">Source Code Ownership</div>
+        <div class="spec-val good"><span class="spec-dot"></span>100% yours — full handover of all files and repositories</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section fi">
+    <div class="section-meta">Timeline</div>
+    <h2>Delivered in 4 to 6 weeks.</h2>
+    <p class="section-lead">The project is broken into four clear phases. We will review each phase together to ensure quality and alignment.</p>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-label">
+          <span class="ph-num">Phase 01</span>
+          <span class="ph-week">Week 1</span>
+        </div>
+        <div class="phase-body">
+          <h4>Setup &amp; Design Direction</h4>
+          <p>Establishing the project foundation, clean UI, and the blue and white brand identity.</p>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">
+          <span class="ph-num">Phase 02</span>
+          <span class="ph-week">Weeks 2 – 3</span>
+        </div>
+        <div class="phase-body">
+          <h4>Core Pages &amp; Multi-Language</h4>
+          <p>Building the Home, About, Services, Projects, and Products pages in both Arabic and English.</p>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">
+          <span class="ph-num">Phase 03</span>
+          <span class="ph-week">Weeks 3 – 4</span>
+        </div>
+        <div class="phase-body">
+          <h4>CMS &amp; Integrations</h4>
+          <p>Implementing the Content Management System, video upload capabilities, WhatsApp integration, and lead generation forms.</p>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="phase-label">
+          <span class="ph-num">Phase 04</span>
+          <span class="ph-week">Weeks 5 – 6</span>
+        </div>
+        <div class="phase-body">
+          <h4>Testing &amp; Launch</h4>
+          <p>Full testing for fast loading speed, smooth animations, ensuring a conversion-focused structure, and final deployment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVESTMENT -->
+  <div class="section fi">
+    <div class="section-meta">Investment</div>
+    <h2>Simple, one-time pricing.</h2>
+    <p class="section-lead">No hidden fees. One payment to build the platform — and it's yours.</p>
+
+    <div class="invest-card">
+      <div class="inv-label">Total Investment</div>
+      <div class="inv-amount">$3,000</div>
+      <div class="inv-note">
+        Paid in two installments: 50% ($1,500) to start the project, and 50% ($1,500) when everything is delivered and approved.
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMERCIAL RUNNING COSTS -->
+  <div class="section fi">
+    <div class="section-meta">Commercial Estimates</div>
+    <h2>What running the platform costs after launch.</h2>
+    <p class="section-lead">The $3,000 investment covers everything to build and launch. Below are the estimated ongoing operational costs — all under your control.</p>
+
+    <div class="cost-grid">
+      <div class="cost-card">
+        <div class="cc-label">Domain Name</div>
+        <div class="cc-amount">~$15 <span style="font-size:0.75rem;font-weight:500;color:var(--t3)">/year</span></div>
+        <div class="cc-note">Annual renewal for your custom domain (e.g. cornerstonewater.com).</div>
+      </div>
+      <div class="cost-card">
+        <div class="cc-label">Hosting (VPS)</div>
+        <div class="cc-amount">~$20–40 <span style="font-size:0.75rem;font-weight:500;color:var(--t3)">/mo</span></div>
+        <div class="cc-note">Recommended for full control. Covers the web app and database server.</div>
+      </div>
+      <div class="cost-card">
+        <div class="cc-label">Media Storage (R2)</div>
+        <div class="cc-amount">~$5–15 <span style="font-size:0.75rem;font-weight:500;color:var(--t3)">/mo</span></div>
+        <div class="cc-note">Cloud storage for project videos and images. Scales with usage.</div>
+      </div>
+      <div class="cost-card">
+        <div class="cc-label">CMS</div>
+        <div class="cc-amount">$0</div>
+        <div class="cc-note">Custom-built admin panel is included — no recurring SaaS fees.</div>
+      </div>
+      <div class="cost-card">
+        <div class="cc-label">SSL Certificate</div>
+        <div class="cc-amount">$0</div>
+        <div class="cc-note">Free HTTPS via Let's Encrypt — auto-renewed. No additional cost.</div>
+      </div>
+      <div class="cost-card">
+        <div class="cc-label">Estimated Total</div>
+        <div class="cc-amount">~$40–60 <span style="font-size:0.75rem;font-weight:500;color:var(--t3)">/mo</span></div>
+        <div class="cc-note">Full operational cost to keep the platform live and performant.</div>
+      </div>
+    </div>
+
+    <div class="cost-note-box">
+      These are third-party service costs paid directly to providers — not to me. I will help you set everything up during handover and guide you on the best options based on your budget.
+    </div>
+  </div>
+
+</div><!-- / wrap -->
+
+<!-- CLOSING -->
+<div class="wrap">
+  <div class="closing fi">
+    <h2>Ready to get started?</h2>
+    <p>Reach out and we can confirm the details, integrate any professional recommendations, and kick off our long-term collaboration.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="site-footer">
+      <span>Prepared by <strong>Bilal Aboqura</strong> — bilalaboqura.com</span>
+      <span>Confidential &nbsp;·&nbsp; Cornerstone Water System &nbsp;·&nbsp; Valid until May 25, 2026</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  const prog = document.getElementById('prog');
+  window.addEventListener('scroll', () => {
+    prog.style.width = (window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100) + '%';
+  });
+
+  // Fade in on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('in'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
