@@ -217,14 +217,45 @@ const PoeticCards = () => {
 
               {/* Body */}
               <div className="poetic-card__body">
-                <div className="poetic-card__iframe-wrap">
-                  <iframe
-                    src={project.url}
-                    title={project.title}
-                    className="poetic-card__iframe"
-                    loading="lazy"
-                    sandbox="allow-scripts allow-same-origin"
-                  />
+                <div className="poetic-card__preview">
+                  {/* Browser chrome mockup */}
+                  <div className="poetic-card__browser">
+                    <div className="poetic-card__browser-bar">
+                      <div style={{ display: 'flex', gap: '5px' }}>
+                        {['#ff5f57', '#febc2e', '#28c840'].map(c => (
+                          <div key={c} style={{ width: '10px', height: '10px', borderRadius: '50%', background: c }} />
+                        ))}
+                      </div>
+                      <div className="poetic-card__browser-url">
+                        {project.url.replace('https://', '')}
+                      </div>
+                      <a href={project.url} target="_blank" rel="noopener noreferrer" className="poetic-card__browser-open" aria-label="Open site">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                      </a>
+                    </div>
+                    <div className="poetic-card__browser-content">
+                      <div className="poetic-card__browser-hero">
+                        <div className="poetic-card__browser-glow" />
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
+                          <div style={{ height: '10px', width: '55%', background: 'rgba(59,130,246,0.55)', borderRadius: '5px' }} />
+                          <div style={{ height: '7px', width: '75%', background: 'rgba(255,255,255,0.12)', borderRadius: '4px' }} />
+                          <div style={{ height: '7px', width: '60%', background: 'rgba(255,255,255,0.08)', borderRadius: '4px' }} />
+                          <div style={{ height: '7px', width: '68%', background: 'rgba(255,255,255,0.08)', borderRadius: '4px' }} />
+                          <div style={{ marginTop: '6px', padding: '5px 14px', background: 'rgba(59,130,246,0.35)', borderRadius: '5px', fontSize: '0.6rem', color: 'rgba(255,255,255,0.7)', fontWeight: '600' }}>View Live →</div>
+                        </div>
+                      </div>
+                      <div style={{ display: 'flex', gap: '6px', padding: '0 1rem 1rem' }}>
+                        {[65, 45, 55].map((w, i) => (
+                          <div key={i} style={{ flex: 1, height: '50px', background: 'rgba(255,255,255,0.03)', borderRadius: '6px', border: '1px solid rgba(255,255,255,0.05)' }} />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="poetic-card__category-pill">{project.category}</div>
                 </div>
                 <div className="poetic-card__poem">
                   {project.poem.map((stanza, si) => (

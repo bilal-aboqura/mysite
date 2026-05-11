@@ -3,7 +3,7 @@ import { gsap } from 'gsap';
 import '../styles/global.css';
 import bilalImage from '../assets/bilal-cutout.webp';
 
-const Hero = () => {
+const Hero = ({ onOpenWizard }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -107,7 +107,7 @@ const Hero = () => {
             fontWeight: '500',
             opacity: 0,
           }}>
-            Hello!
+            Available for Projects
           </div>
 
           {/* Name */}
@@ -131,7 +131,8 @@ const Hero = () => {
             marginBottom: 'clamp(1.5rem, 3vw, 2.5rem)',
             opacity: 0,
           }}>
-            <span itemProp="jobTitle">Full Stack Developer</span> &amp; Website Builder
+            I build <span style={{ color: '#3b82f6' }}>high-performing digital products</span>{' '}
+            that scale your business.
           </h2>
 
           {/* Profile Image */}
@@ -159,56 +160,67 @@ const Hero = () => {
             />
           </div>
 
-          {/* CTA Buttons - Grouped in single container */}
           <div style={{ 
             display: 'inline-flex',
-            background: 'rgba(255, 255, 255, 0.08)',
+            background: 'rgba(255, 255, 255, 0.06)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
-            border: '2px solid rgba(255, 255, 255, 0.2)',
+            border: '1.5px solid rgba(255, 255, 255, 0.15)',
             borderRadius: '50px',
             padding: '6px',
             gap: '8px',
             opacity: 0,
           }} className="hero-btn">
-            {/* Filled Button - Portfolio */}
-            <a href="#projects" className="hero-btn-filled" aria-label="View Bilal Aboqura's project portfolio" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '12px 28px',
-              background: 'rgba(59, 130, 246, 0.7)',
-              border: 'none',
-              color: '#ffffff',
-              fontSize: '1rem',
-              fontWeight: '600',
-              borderRadius: '50px',
-              textDecoration: 'none',
-              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-            }}>
-              View Portfolio
+            {/* PRIMARY — Lead Magnet: Instant Estimate */}
+            <button
+              onClick={onOpenWizard}
+              className="hero-btn-filled"
+              aria-label="Get a free instant project estimate from Bilal Aboqura"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '13px 28px',
+                background: 'linear-gradient(135deg, #3b82f6 0%, #6366f1 100%)',
+                border: 'none',
+                color: '#ffffff',
+                fontSize: '1rem',
+                fontWeight: '700',
+                borderRadius: '50px',
+                cursor: 'pointer',
+                fontFamily: 'var(--font-body)',
+                boxShadow: '0 6px 24px rgba(59,130,246,0.45)',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              }}
+            >
+              Get My Instant Estimate
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.5 4.5L21 12M21 12L13.5 19.5M21 12H3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </a>
-            
-            {/* Outlined Button - Hire me */}
-            <a href="#contact" className="hero-btn-outlined" aria-label="Hire Bilal Aboqura as a Full Stack Developer" style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '12px 28px',
-              background: 'transparent',
-              border: 'none',
-              color: '#ffffff',
-              fontSize: '1rem',
-              fontWeight: '600',
-              borderRadius: '50px',
-              textDecoration: 'none',
-              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-            }}>
-              Hire Me
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            </button>
+
+            {/* SECONDARY — View Work */}
+            <a
+              href="#projects"
+              className="hero-btn-outlined"
+              aria-label="View Bilal Aboqura's project portfolio"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '13px 24px',
+                background: 'transparent',
+                border: 'none',
+                color: 'rgba(255,255,255,0.7)',
+                fontSize: '1rem',
+                fontWeight: '500',
+                borderRadius: '50px',
+                textDecoration: 'none',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              }}
+            >
+              View My Work
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.5 4.5L21 12M21 12L13.5 19.5M21 12H3" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </a>

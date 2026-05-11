@@ -58,7 +58,7 @@ const About = () => {
               display: 'flex', gap: '2.5rem', flexWrap: 'wrap',
             }}>
               {[
-                { number: '39+', label: 'Projects' },
+                { number: '47+', label: 'Projects' },
                 { number: '27+', label: 'Happy Clients' },
                 { number: '4+', label: 'Years Exp.' },
               ].map((stat) => (

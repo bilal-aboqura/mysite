@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../styles/global.css';
-import faresTosonImg from '../assets/wbLB4yBEBSU-HD.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,21 +26,20 @@ const projects = [
     category: 'Education / Courses',
     description: 'A modern course platform for online learning. Features course management, student dashboards, and an engaging educational experience.',
     url: 'https://farestoson.com',
-    image: faresTosonImg,
   },
   {
     num: '04',
+    title: 'Platvo',
+    category: 'Business / Platform',
+    description: 'A modern business platform designed for seamless operations, clean architecture, and a polished user experience built for growth.',
+    url: 'https://www.platvo.com/',
+  },
+  {
+    num: '05',
     title: 'Nezam',
     category: 'Management System',
     description: 'A comprehensive management system with clean architecture, powerful organizational tools, and streamlined workflows for efficient operations.',
     url: 'https://nezam.vip',
-  },
-  {
-    num: '05',
-    title: 'Min Alakher',
-    category: 'Education / Teachers',
-    description: 'A dedicated teachers platform for managing educational content, student interactions, and classroom resources with a responsive mobile experience.',
-    url: 'https://minalakher.com',
   },
 ];
 
@@ -100,7 +98,7 @@ const Projects = () => {
                 }}>
                 {/* Image / Preview */}
                 <div style={{ direction: 'ltr' }}>
-                  <div className="glass-card" style={{
+                  <div className="glass-card project-preview-card" style={{
                     height: '320px',
                     borderRadius: 'var(--radius-xl)',
                     display: 'flex',
@@ -109,69 +107,90 @@ const Projects = () => {
                     position: 'relative',
                     overflow: 'hidden',
                     cursor: 'pointer',
-                    background: 'rgba(255, 255, 255, 0.02)',
+                    background: 'linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(99,102,241,0.04) 100%)',
                     backdropFilter: 'blur(10px)',
                   }}
                   onClick={() => window.open(project.url, '_blank')}
                   >
+                    {/* Subtle dot grid */}
+                    <div style={{
+                      position: 'absolute', inset: 0,
+                      backgroundImage: 'radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)',
+                      backgroundSize: '24px 24px',
+                      pointerEvents: 'none',
+                    }} />
+
+                    {/* Glow accent */}
+                    <div style={{
+                      position: 'absolute',
+                      width: '200px', height: '200px',
+                      background: 'radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%)',
+                      borderRadius: '50%',
+                      pointerEvents: 'none',
+                    }} />
+
                     {project.image ? (
                       <img
                         src={project.image}
                         alt={project.title}
                         style={{
                           position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          width: '100%',
-                          height: '100%',
+                          top: 0, left: 0,
+                          width: '100%', height: '100%',
                           objectFit: 'cover',
                           pointerEvents: 'none',
                         }}
                         loading="lazy"
                       />
-                    ) : project.url && project.url !== '#' ? (
-                      <iframe
-                        src={project.url}
-                        title={project.title}
-                        style={{
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          width: '400%',
-                          height: '400%',
-                          transform: 'scale(0.25)',
-                          transformOrigin: 'top left',
-                          border: 'none',
-                          pointerEvents: 'none',
-                        }}
-                        loading="lazy"
-                        sandbox="allow-scripts allow-same-origin"
-                      />
                     ) : (
-                      <div style={{
-                        position: 'relative', zIndex: 1,
-                        textAlign: 'center',
-                      }}>
-                        <div style={{
-                          fontSize: '2.5rem',
-                          fontWeight: '900',
-                          fontFamily: 'var(--font-heading)',
-                          color: '#ffffff',
-                          marginBottom: '0.5rem',
-                        }}>
-                          {project.title}
+                      <div className="project-browser-wrap">
+                        {/* Browser chrome */}
+                        <div className="project-browser-chrome">
+                          <div className="project-browser-bar">
+                            <div style={{ display: 'flex', gap: '5px', flexShrink: 0 }}>
+                              {['#ff5f57','#febc2e','#28c840'].map(c => (
+                                <div key={c} style={{ width: '9px', height: '9px', borderRadius: '50%', background: c }} />
+                              ))}
+                            </div>
+                            <div className="project-browser-url">
+                              {project.url ? project.url.replace('https://', '').replace('www.', '') : project.title.toLowerCase().replace(' ', '') + '.com'}
+                            </div>
+                          </div>
+                          <div className="project-browser-body">
+                            <div style={{ display: 'flex', gap: '6px', marginBottom: '6px' }}>
+                              <div style={{ height: '8px', width: '40%', background: 'rgba(59,130,246,0.6)', borderRadius: '4px' }} />
+                              <div style={{ height: '8px', width: '22%', background: 'rgba(255,255,255,0.18)', borderRadius: '4px' }} />
+                            </div>
+                            <div style={{ height: '6px', width: '100%', background: 'rgba(255,255,255,0.13)', borderRadius: '4px', marginBottom: '5px' }} />
+                            <div style={{ height: '6px', width: '85%', background: 'rgba(255,255,255,0.1)', borderRadius: '4px', marginBottom: '5px' }} />
+                            <div style={{ height: '6px', width: '92%', background: 'rgba(255,255,255,0.09)', borderRadius: '4px', marginBottom: '5px' }} />
+                            <div style={{ height: '6px', width: '75%', background: 'rgba(255,255,255,0.08)', borderRadius: '4px', marginBottom: '10px' }} />
+                            <div style={
+                              { padding: '5px 12px', background: 'rgba(59,130,246,0.35)', borderRadius: '5px',
+                                fontSize: '0.62rem', color: 'rgba(255,255,255,0.85)', fontWeight: '700',
+                                display: 'inline-block', border: '1px solid rgba(59,130,246,0.4)' }
+                            }>View Live →</div>
+                          </div>
                         </div>
-                        <span style={{
-                          fontSize: '0.8rem',
-                          color: 'var(--color-primary)',
-                          letterSpacing: '0.1em',
-                          textTransform: 'uppercase',
-                          fontWeight: '600',
-                        }}>
-                          Coming Soon
-                        </span>
+                        {/* Category pill */}
+                        <div className="project-browser-pill">{project.category}</div>
                       </div>
                     )}
+
+                    {/* Hover overlay */}
+                    <div className="project-hover-overlay" style={{
+                      position: 'absolute', inset: 0,
+                      background: 'rgba(59,130,246,0.07)',
+                      opacity: 0,
+                      transition: 'opacity 0.3s ease',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
 
@@ -220,11 +239,16 @@ const Projects = () => {
                   </p>
                   <a href={project.url} target="_blank" rel="noopener noreferrer"
                     className="btn-primary"
-                    style={{ fontSize: '0.9rem', padding: '10px 24px' }}
+                    style={{ fontSize: '0.9rem', padding: '10px 24px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                     itemprop="url"
                     aria-label={`View ${project.title} project`}
                   >
-                    View Project →
+                    View Project
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
                   </a>
                 </div>
               </div>
@@ -246,17 +270,32 @@ const Projects = () => {
             backdropFilter: 'blur(10px)',
             borderRadius: 'var(--radius-xl)',
           }}>
-            <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🫣</div>
+            <div style={{
+              width: '64px', height: '64px',
+              borderRadius: '50%',
+              background: 'rgba(59,130,246,0.1)',
+              border: '1px solid rgba(59,130,246,0.2)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              margin: '0 auto 1.25rem',
+              color: 'var(--color-primary)',
+            }}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+                <line x1="12" y1="12" x2="12" y2="16" />
+                <line x1="10" y1="14" x2="14" y2="14" />
+              </svg>
+            </div>
             <p dir="ltr" style={{
               fontSize: 'clamp(1.1rem, 2vw, 1.3rem)',
               color: '#e2e8f0',
               lineHeight: '1.8',
               fontWeight: '500',
             }}>
-             And there are way more projects, but if I listed them all,<br /> this page would never end... 
+             And there are way more projects, but if I listed them all,<br /> this page would never end...
               <br />
               <span style={{ color: '#94a3b8', fontSize: '0.95rem', direction: 'ltr' }}>
-              Seriously, the scroll would take longer than your lunch break 😂
+              Seriously, the scroll would take longer than your lunch break.
               </span>
             </p>
           </div>
@@ -271,13 +310,80 @@ const Projects = () => {
             gap: 1rem !important;
           }
           .project-row .glass-card:not(.more-projects-note) {
-            height: 200px !important;
+            height: auto !important;
+            min-height: 220px !important;
+          }
+          .project-browser-wrap {
+            padding: 1.25rem !important;
+          }
+          .project-browser-chrome {
+            max-width: 100% !important;
           }
         }
         @media (max-width: 480px) {
           .project-row .glass-card:not(.more-projects-note) {
-            height: 180px !important;
+            min-height: 190px !important;
           }
+        }
+        .project-preview-card:hover .project-hover-overlay {
+          opacity: 1 !important;
+        }
+        /* Browser mockup styles */
+        .project-browser-wrap {
+          position: relative;
+          z-index: 1;
+          text-align: center;
+          padding: 1.75rem;
+          width: 100%;
+        }
+        .project-browser-chrome {
+          background: rgba(255,255,255,0.05);
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 10px;
+          overflow: hidden;
+          width: 100%;
+          max-width: 280px;
+          margin: 0 auto;
+          box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+        }
+        .project-browser-bar {
+          background: rgba(0,0,0,0.35);
+          padding: 8px 12px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .project-browser-url {
+          flex: 1;
+          background: rgba(255,255,255,0.08);
+          border-radius: 4px;
+          padding: 3px 8px;
+          font-size: 0.65rem;
+          color: rgba(255,255,255,0.5);
+          font-family: monospace;
+          letter-spacing: 0.02em;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          text-align: left;
+        }
+        .project-browser-body {
+          padding: 1.1rem 1rem;
+          text-align: left;
+        }
+        .project-browser-pill {
+          display: inline-block;
+          margin-top: 0.85rem;
+          padding: 4px 14px;
+          background: rgba(59,130,246,0.15);
+          border: 1px solid rgba(59,130,246,0.35);
+          border-radius: 50px;
+          font-size: 0.68rem;
+          color: rgba(147,197,253,1);
+          font-weight: 700;
+          letter-spacing: 0.09em;
+          text-transform: uppercase;
         }
       `}</style>
     </section>

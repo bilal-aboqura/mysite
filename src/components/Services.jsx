@@ -7,19 +7,36 @@ gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
-    icon: '⚡',
-    title: 'Custom Website Development',
-    description: 'Building performant, modern websites and web applications with React, Next.js, and cutting-edge frontend technologies. Fast, SEO-optimized, and beautifully designed.',
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="16 18 22 12 16 6" />
+        <polyline points="8 6 2 12 8 18" />
+      </svg>
+    ),
+    title: 'High-Converting Websites',
+    description: 'Websites built for one goal: turning visitors into paying customers. Fast, mobile-first, SEO-optimized, and designed to outperform any WordPress template out there.',
   },
   {
-    icon: '🔧',
-    title: 'Backend Engineering',
-    description: 'Designing scalable server architectures and robust REST APIs with Node.js, MongoDB, PostgreSQL, and cloud infrastructure. Full backend solutions from scratch.',
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" />
+        <path d="M8 21h8M12 17v4" />
+      </svg>
+    ),
+    title: 'Scalable Backend Systems',
+    description: 'Your product needs to handle growth without breaking. I build rock-solid APIs, databases, and cloud infrastructure that scale with your business — no bottlenecks, no surprises.',
   },
   {
-    icon: '🎨',
-    title: 'UI/UX Design',
-    description: 'Creating stunning, intuitive interfaces with exceptional attention to every pixel and interaction. Turning ideas into beautiful user experiences that convert.',
+    icon: (
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 19l7-7 3 3-7 7-3-3z" />
+        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+        <path d="M2 2l7.586 7.586" />
+        <circle cx="11" cy="11" r="2" />
+      </svg>
+    ),
+    title: 'Interfaces That Sell',
+    description: 'A beautiful product people enjoy using. I design UX flows and interfaces that reduce friction, build trust, and keep users coming back — because great design is your best salesperson.',
   },
 ];
 
@@ -81,15 +98,15 @@ const Services = () => {
             itemType="https://schema.org/Service"
             >
               <div style={{
-                fontSize: '2.5rem',
-                marginBottom: '1.2rem',
                 width: '70px', height: '70px',
                 borderRadius: 'var(--radius-md)',
                 background: 'rgba(59, 130, 246, 0.08)',
+                border: '1px solid rgba(59, 130, 246, 0.15)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                margin: '0 auto 1.2rem',
+                margin: '0 auto 1.5rem',
+                color: 'var(--color-primary)',
               }}>
-                <span aria-hidden="true">{service.icon}</span>
+                {service.icon}
               </div>
               <h3 style={{ fontSize: '1.3rem', marginBottom: '0.8rem' }} itemProp="name">{service.title}</h3>
               <p style={{ fontSize: '0.95rem', lineHeight: '1.6' }} itemProp="description">{service.description}</p>

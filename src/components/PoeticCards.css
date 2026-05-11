@@ -125,29 +125,101 @@
   gap: 2rem;
 }
 
-/* ─── Card Iframe Preview ─── */
-.poetic-card__iframe-wrap {
+/* ─── New: Browser Mockup Preview ─── */
+.poetic-card__preview {
   width: 100%;
-  height: 280px;
-  border-radius: 12px;
-  overflow: hidden;
-  position: relative;
-  background: #050505;
-  pointer-events: none;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: transform 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-.poetic-card__iframe {
-  width: 400%;
-  height: 400%;
-  border: none;
-  transform: scale(0.25);
-  transform-origin: top left;
+.poetic-card__browser {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0a0a0c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.poetic-card__browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.poetic-card__browser-url {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: monospace;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.poetic-card__browser-open {
+  color: rgba(255, 255, 255, 0.3);
+  transition: color 0.25s ease;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.poetic-card__browser-open:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.poetic-card__browser-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.poetic-card__browser-hero {
+  position: relative;
+  border-radius: 7px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(99,102,241,0.04) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.25rem;
+  overflow: hidden;
+  backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)';
+  backgroundSize: '20px 20px';
+}
+
+.poetic-card__browser-glow {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%);
+  border-radius: 50%;
   pointer-events: none;
-  opacity: 0.85; /* Slightly muted for sleekness */
-  transition: opacity 0.5s ease;
+}
+
+.poetic-card__category-pill {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 12px;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 50px;
+  font-size: 0.68rem;
+  color: rgba(99, 179, 237, 0.85);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
 }
 
 /* ─── Poem Content ─── */
@@ -286,39 +358,15 @@
 
 /* ─── Responsive ─── */
 @media (min-width: 600px) {
-  /* Desktop Layout Adjustment */
+  /* Desktop: two-column body */
   .poetic-card__body {
-    grid-template-columns: 320px 1fr; /* Wider first column for the iframe */
+    grid-template-columns: 320px 1fr;
     gap: 2.5rem;
-    align-items: center;
+    align-items: start;
   }
 
-  .poetic-card__iframe-wrap {
-    height: 320px;
-    width: 100%; /* Fills the 320px column */
-  }
-
-  /* More zoom out on desktop */
-  .poetic-card__iframe {
-    width: 500%;
-    height: 500%;
-    transform: scale(0.2);
-  }
-
-  /* Specific zoom for Cloyai */
-  .card-cloyai .poetic-card__iframe {
-    width: 250%; /* 100 / 0.4 = 250% */
-    height: 250%;
-    transform: scale(0.4);
-  }
-}
-
-/* Specific zoom for Cloyai on Mobile */
-@media (max-width: 599px) {
-  .card-cloyai .poetic-card__iframe {
-    width: 285%; /* 100 / 0.35 approx */
-    height: 285%;
-    transform: scale(0.35);
+  .poetic-card__preview {
+    height: auto;
   }
 }
 

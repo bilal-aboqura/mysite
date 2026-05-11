@@ -3,14 +3,15 @@ import '../styles/global.css';
 
 const navLinks = [
   { label: 'Home', href: '/#home' },
-  { label: 'About', href: '/#about' },
-  { label: 'Service', href: '/#services' },
-  { label: 'Project', href: '/#projects' },
+  { label: 'Work', href: '/#projects' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Plans', href: '/#plans' },
+  { label: 'FAQ', href: '/#faq' },
   { label: 'Library', href: '/library' },
   { label: 'Contact', href: '/#contact' },
 ];
 
-const Navbar = () => {
+const Navbar = ({ onOpenWizard }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
@@ -116,6 +117,30 @@ const Navbar = () => {
             </a>
           );
         })}
+
+        {/* Get a Quote CTA */}
+        <button
+          onClick={onOpenWizard}
+          style={{
+            padding: '11px 20px',
+            fontSize: '0.85rem',
+            fontWeight: '700',
+            color: '#fff',
+            background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
+            border: 'none',
+            borderRadius: '50px',
+            cursor: 'pointer',
+            whiteSpace: 'nowrap',
+            boxShadow: '0 4px 16px rgba(59,130,246,0.35)',
+            transition: 'all 0.3s',
+            fontFamily: 'var(--font-body)',
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 6px 24px rgba(59,130,246,0.55)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.boxShadow = '0 4px 16px rgba(59,130,246,0.35)'; e.currentTarget.style.transform = 'none'; }}
+          aria-label="Open project quote wizard"
+        >
+          Get a Quote
+        </button>
       </div>
 
       {/* Mobile Hamburger */}
@@ -248,6 +273,26 @@ const Navbar = () => {
               );
             })}
           </ul>
+          {/* Mobile Quote CTA */}
+          <button
+            onClick={() => { setMobileOpen(false); onOpenWizard?.(); }}
+            style={{
+              width: '100%',
+              marginTop: '0.5rem',
+              padding: '14px',
+              background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
+              border: 'none',
+              borderRadius: '12px',
+              color: '#fff',
+              fontSize: '0.95rem',
+              fontWeight: '700',
+              cursor: 'pointer',
+              fontFamily: 'var(--font-body)',
+              boxShadow: '0 6px 20px rgba(59,130,246,0.4)',
+            }}
+          >
+            Get a Free Quote
+          </button>
         </div>
       </>
     )}
