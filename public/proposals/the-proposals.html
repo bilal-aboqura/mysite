@@ -1,0 +1,2691 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عرض مشروع منصة مصنع الأثاث المتكاملة — بلال أبو قورة</title>
+  <meta name="robots" content="noindex, nofollow">
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── DESIGN SYSTEM & RESET ── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-bg: #050a14;
+      --color-bg-alt: #0a1628;
+      --color-primary: #3b82f6;
+      --color-primary-glow: #1d4ed8;
+      --color-accent: #60a5fa;
+      --color-text: #ffffff;
+      --color-text-dim: #94a3b8;
+      --color-text-muted: #64748b;
+      
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-bg-hover: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --glass-border-hover: rgba(59, 130, 246, 0.35);
+      
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --radius-pill: 50px;
+      
+      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', 'Tajawal', sans-serif;
+      background-color: var(--color-bg);
+      background-image: 
+        linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      color: var(--color-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body.rtl {
+      direction: rtl;
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+    }
+
+    body.ltr {
+      direction: ltr;
+      font-family: 'Outfit', 'Inter', sans-serif;
+    }
+
+    /* ── DYNAMIC BACKGROUND GLOWS ── */
+    .liquid-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    .liquid-blob-1 {
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+      top: 5%;
+      right: 10%;
+    }
+
+    .liquid-blob-2 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+      top: 40%;
+      left: 10%;
+    }
+
+    /* ── UTILITY & WRAPPERS ── */
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 4vw, 40px);
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Glass card */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      transition: all var(--transition-base);
+    }
+
+    .glass:hover {
+      background: var(--glass-bg-hover);
+      border-color: var(--glass-border-hover);
+      box-shadow: 0 15px 50px rgba(59, 130, 246, 0.15);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: var(--color-primary);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border: none;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition-base);
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+      font-family: inherit;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-glow);
+      box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-glass {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition-base);
+      font-family: inherit;
+    }
+
+    .btn-glass:hover {
+      background: var(--glass-bg-hover);
+      border-color: var(--glass-border-hover);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* Section components */
+    .section-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+      padding: 6px 16px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: var(--radius-pill);
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding-block: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-mark {
+      width: 4px;
+      height: 1.4rem;
+      background: var(--color-primary);
+      border-radius: 2px;
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+    }
+
+    .logo-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    /* ── HERO ── */
+    .proposal-hero {
+      text-align: center;
+      padding-block: clamp(3rem, 8vw, 6rem);
+    }
+
+    .proposal-main-title {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .proposal-main-subtitle {
+      font-size: 1.05rem;
+      color: var(--color-text-dim);
+      max-width: 750px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── PRICING CARDS GRID ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .proposal-card {
+      padding: 40px 30px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .proposal-card--elite {
+      border-color: rgba(59, 130, 246, 0.45);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(99, 102, 241, 0.04));
+      box-shadow: 0 0 50px rgba(59, 130, 246, 0.2), 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .proposal-card--standard {
+      border-color: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .card-badge-container {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .elite-badge {
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      color: #ffffff;
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    }
+
+    .standard-badge {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--color-text-dim);
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .card-description {
+      font-size: 0.88rem;
+      color: var(--color-text-dim);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .pricing-meta-row {
+      display: flex;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .meta-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-text-muted);
+      margin-bottom: 6px;
+    }
+
+    .meta-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .meta-val.highlight-val {
+      color: var(--color-accent);
+    }
+
+    .meta-val .currency {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--color-text-dim);
+    }
+
+    .meta-val .time-unit {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-text-dim);
+    }
+
+    .package-highlights-summary {
+      margin-bottom: 30px;
+      flex: 1;
+    }
+
+    .package-highlights-summary ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .package-highlights-summary li {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    body.rtl .package-highlights-summary li::before {
+      content: "✦";
+      color: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    body.ltr .package-highlights-summary li::before {
+      content: "✦";
+      color: var(--color-accent);
+      flex-shrink: 0;
+    }
+
+    .card-cta-btn {
+      width: 100%;
+      padding: 16px 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .card-cta-btn--elite {
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+    }
+
+    /* ── SECTION NAV TABS ── */
+    .proposal-nav-tabs {
+      display: flex;
+      justify-content: space-around;
+      padding: 6px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .nav-tab-btn {
+      flex: 1;
+      min-width: 160px;
+      padding: 14px 20px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: transparent;
+      color: var(--color-text-dim);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: inherit;
+    }
+
+    .nav-tab-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .nav-tab-btn--active {
+      color: #ffffff !important;
+      background: rgba(59, 130, 246, 0.12) !important;
+      box-shadow: inset 0 0 12px rgba(59, 130, 246, 0.05);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    /* ── TABS PANE CONTROL ── */
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.pane-active {
+      display: block;
+    }
+
+    /* ── FEATURE MATRIX ── */
+    .matrix-category {
+      background: rgba(255, 255, 255, 0.005);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .category-title-header {
+      font-size: 1.25rem;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .category-subtext {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      margin-bottom: 24px;
+    }
+
+    .matrix-table {
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .matrix-row {
+      display: flex;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      align-items: center;
+      transition: background-color var(--transition-fast);
+    }
+
+    .matrix-row:hover:not(.matrix-header) {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .matrix-row:last-child {
+      border-bottom: none;
+    }
+
+    .matrix-header {
+      background: rgba(59, 130, 246, 0.08);
+      border-bottom: 2px solid rgba(59, 130, 246, 0.2);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .matrix-cell {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cell-feat {
+      flex: 2.2;
+    }
+
+    body.rtl .cell-feat { padding-left: 15px; }
+    body.ltr .cell-feat { padding-right: 15px; }
+
+    .cell-std, .cell-elite {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .elite-col {
+      background: rgba(59, 130, 246, 0.02);
+    }
+
+    .feat-tip {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+    }
+
+    .badge-yes {
+      color: #10b981;
+      font-size: 1.15rem;
+    }
+
+    .badge-no {
+      color: #ef4444;
+      font-size: 0.95rem;
+    }
+
+    .highlight-tag {
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: var(--color-accent);
+      border-radius: var(--radius-pill);
+      margin-top: 4px;
+      font-weight: 700;
+    }
+
+    .text-highlight-row {
+      background: rgba(59, 130, 246, 0.01);
+    }
+
+    /* ── UX SIMULATORS ── */
+    .simulator-heading-block {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sim-title-header {
+      font-size: 1.35rem;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .sim-description-text {
+      font-size: 0.925rem;
+      color: var(--color-text-dim);
+    }
+
+    .sim-sub-nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .sim-nav-btn {
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.01);
+      color: var(--color-text-dim);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: inherit;
+    }
+
+    .sim-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: #ffffff;
+    }
+
+    .sim-nav-btn--active {
+      background: var(--color-primary) !important;
+      border-color: var(--color-primary) !important;
+      color: #ffffff !important;
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+    }
+
+    .simulator-body {
+      padding: 30px;
+      border-radius: var(--radius-lg);
+      border-color: rgba(255, 255, 255, 0.05);
+      min-height: 380px;
+    }
+
+    .sim-module-pane {
+      display: none;
+    }
+
+    .sim-module-pane.sim-active {
+      display: block;
+    }
+
+    .sim-module-intro {
+      font-size: 0.95rem;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    /* AI Styler Canvas Simulation */
+    .style-selector-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .style-selector-row label {
+      font-size: 0.88rem;
+      color: var(--color-text-dim);
+      font-weight: 700;
+    }
+
+    .style-btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .style-btn-group button {
+      padding: 8px 18px;
+      font-size: 0.82rem;
+    }
+
+    .style-btn-group button.active-btn {
+      border-color: var(--color-accent);
+      background: rgba(96, 165, 250, 0.12);
+      color: #ffffff;
+    }
+
+    .styler-canvas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      min-height: 280px;
+    }
+
+    @media (max-width: 768px) {
+      .styler-canvas {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .canvas-pane {
+      position: relative;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      background: #080c16;
+    }
+
+    .canvas-badge {
+      position: absolute;
+      top: 12px;
+      z-index: 20;
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      background: rgba(0,0,0,0.65);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-dim);
+      font-weight: 700;
+    }
+
+    body.rtl .canvas-badge { right: 12px; }
+    body.ltr .canvas-badge { left: 12px; }
+
+    .canvas-badge.styled-badge {
+      background: rgba(16, 185, 129, 0.85);
+      color: #ffffff;
+    }
+
+    body.rtl .canvas-badge.styled-badge { right: auto; left: 12px; }
+    body.ltr .canvas-badge.styled-badge { left: auto; right: 12px; }
+
+    .room-bg-sim {
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* simulated empty room drawings */
+    .empty-corner-walls {
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 160px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      clip-path: polygon(0 0, 100% 0, 80% 120px, 20% 120px);
+    }
+
+    .empty-wood-floor {
+      position: absolute;
+      bottom: 0; left: 0; right: 0; height: 140px;
+      background: linear-gradient(180deg, #334155, #1e293b);
+      clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+    }
+
+    .empty-window {
+      position: absolute;
+      top: 20px; left: 45%; width: 40px; height: 50px;
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .empty-text-desc {
+      position: absolute;
+      bottom: 15px;
+      left: 10%; right: 10%;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
+    /* styled room drawings */
+    .room-bg-sim--styled {
+      background: #0f172a;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .room-bg-sim--styled.room-visible {
+      opacity: 1;
+    }
+
+    .styled-walls {
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 160px;
+      background: linear-gradient(135deg, #1e293b, #111827);
+      clip-path: polygon(0 0, 100% 0, 80% 120px, 20% 120px);
+    }
+
+    .styled-floor {
+      position: absolute;
+      bottom: 0; left: 0; right: 0; height: 140px;
+      background: linear-gradient(180deg, #78350f, #451a03); /* Wood floor */
+      clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+    }
+
+    .styled-window-glow {
+      position: absolute;
+      top: 20px; left: 45%; width: 40px; height: 50px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      background: rgba(96, 165, 250, 0.25);
+      box-shadow: 0 0 30px rgba(96, 165, 250, 0.4);
+    }
+
+    .room-cta-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 30;
+      background: rgba(0,0,0,0.45);
+    }
+
+    .room-loading-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 31;
+      background: rgba(5, 10, 20, 0.9);
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid rgba(59, 130, 246, 0.2);
+      border-top-color: var(--color-primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 12px;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Furniture drawings */
+    .styled-furniture-modern {
+      position: absolute;
+      inset: 0;
+    }
+
+    .modern-couch {
+      position: absolute;
+      bottom: 15px; left: 25%; width: 50%; height: 60px;
+      background: #475569;
+      border-radius: 12px 12px 6px 6px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    .couch-body {
+      position: absolute;
+      bottom: 12px; left: 5px; right: 5px; height: 35px;
+      background: #64748b;
+      border-radius: 8px;
+    }
+
+    .couch-pillow {
+      position: absolute;
+      bottom: 15px; width: 35%; height: 25px;
+      background: #f59e0b; /* Orange pillows */
+      border-radius: 6px;
+    }
+
+    .pillow-1 { left: 10%; }
+    .pillow-2 { right: 10%; }
+
+    .modern-rug {
+      position: absolute;
+      bottom: 5px; left: 20%; width: 60%; height: 20px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50px;
+    }
+
+    .modern-table-flat {
+      position: absolute;
+      bottom: 8px; left: 40%; width: 20%; height: 12px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 3px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    .modern-plant {
+      position: absolute;
+      bottom: 35px; right: 15%; width: 14px; height: 35px;
+      background: #10b981;
+      border-radius: 10px 10px 0 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .price-tag-overlay {
+      position: absolute;
+      bottom: 85px; left: 50%; transform: translateX(-50%);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      background: var(--color-primary);
+      color: #ffffff;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    /* Classic Bed drawings */
+    .styled-furniture-classic {
+      position: absolute;
+      inset: 0;
+    }
+
+    .classic-bed {
+      position: absolute;
+      bottom: 20px; left: 30%; width: 40%; height: 75px;
+      background: #451a03;
+      border-radius: 8px 8px 4px 4px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    .bed-headboard {
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 35px;
+      background: #78350f;
+      border-radius: 6px 6px 0 0;
+      border-bottom: 2px solid #b45309;
+    }
+
+    .bed-mattress {
+      position: absolute;
+      bottom: 5px; left: 4px; right: 4px; height: 40px;
+      background: #f8fafc;
+      border-radius: 4px;
+      border-top: 15px solid #e2e8f0;
+    }
+
+    .classic-nightstand {
+      position: absolute;
+      bottom: 20px; width: 15px; height: 25px;
+      background: #78350f;
+      border-radius: 2px;
+    }
+
+    .stand-l { left: 22%; }
+    .stand-r { right: 22%; }
+
+    .classic-rug {
+      position: absolute;
+      bottom: 5px; left: 25%; width: 50%; height: 18px;
+      background: #b91c1c; /* Traditional red rug */
+      border-radius: 3px;
+    }
+
+    .styler-success-alert {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      z-index: 25;
+      font-size: 0.72rem;
+      padding: 8px 12px;
+      background: rgba(16, 185, 129, 0.95);
+      border-radius: var(--radius-sm);
+      color: #ffffff;
+      text-align: center;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    /* B2B discounts styles */
+    .b2b-selector-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+      align-items: center;
+    }
+
+    .b2b-label-heading {
+      font-size: 0.88rem;
+      color: var(--color-text-dim);
+      font-weight: 700;
+    }
+
+    .b2b-toggle-switch-container {
+      display: flex;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-pill);
+      padding: 4px;
+    }
+
+    .profile-toggle-btn {
+      padding: 10px 24px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: transparent;
+      color: var(--color-text-dim);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      font-family: inherit;
+    }
+
+    .profile-toggle-btn--active {
+      background: rgba(59, 130, 246, 0.15) !important;
+      border: 1px solid rgba(59, 130, 246, 0.3) !important;
+      color: var(--color-accent) !important;
+    }
+
+    .product-b2b-card-sim {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 24px;
+      border-radius: var(--radius-md);
+    }
+
+    .prod-badge-holder {
+      min-height: 25px;
+      margin-bottom: 12px;
+    }
+
+    .b2b-badge-applied {
+      font-size: 0.72rem;
+      padding: 4px 12px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      border-radius: var(--radius-pill);
+      font-weight: 800;
+    }
+
+    .sim-product-details {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 580px) {
+      .sim-product-details {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sim-product-image-container {
+      background: #070b14;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+      position: relative;
+    }
+
+    .sim-coffee-table-drawing {
+      width: 120px;
+      height: 80px;
+      position: relative;
+    }
+
+    .table-top {
+      position: absolute;
+      top: 15px; left: 0; width: 120px; height: 15px;
+      background: #b45309;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      z-index: 10;
+    }
+
+    .table-leg {
+      position: absolute;
+      top: 28px; width: 8px; height: 42px;
+      background: #78350f;
+    }
+
+    .leg-1 { left: 10px; transform: skewX(-5deg); }
+    .leg-2 { right: 10px; transform: skewX(5deg); }
+    .leg-3 { left: 24px; width: 6px; height: 38px; opacity: 0.7; }
+    .leg-4 { right: 24px; width: 6px; height: 38px; opacity: 0.7; }
+
+    .sim-product-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .sim-prod-name {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .sim-prod-desc {
+      font-size: 0.85rem;
+      color: var(--color-text-dim);
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .sim-prod-price-area {
+      margin-bottom: 20px;
+      min-height: 70px;
+    }
+
+    .price-tag-label {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+    }
+
+    .actual-price-num {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .original-strike-price {
+      font-size: 0.88rem;
+      text-decoration: line-through;
+      color: var(--color-text-muted);
+    }
+
+    .b2b-discounted-price {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 2px;
+      flex-wrap: wrap;
+    }
+
+    .b2b-saving-pill {
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+    }
+
+    .b2b-terms-text {
+      font-size: 0.72rem;
+      color: var(--color-text-muted);
+      margin-top: 6px;
+    }
+
+    /* Admin flow simulator styles */
+    .admin-status-control-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 30px;
+      align-items: center;
+    }
+
+    .admin-status-label {
+      font-size: 0.88rem;
+      color: var(--color-text-dim);
+      font-weight: 700;
+    }
+
+    .admin-status-pipeline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .pipeline-btn {
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255,255,255,0.01);
+      color: var(--color-text-dim);
+      font-weight: 700;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-family: inherit;
+    }
+
+    .pipeline-connector {
+      color: var(--color-text-muted);
+      font-weight: 700;
+    }
+
+    .active-workshop {
+      border-color: #f59e0b !important;
+      background: rgba(245, 158, 11, 0.15) !important;
+      color: #fbbf24 !important;
+    }
+
+    .active-transit {
+      border-color: #3b82f6 !important;
+      background: rgba(59, 130, 246, 0.15) !important;
+      color: #93c5fd !important;
+    }
+
+    .active-completed {
+      border-color: #10b981 !important;
+      background: rgba(16, 185, 129, 0.15) !important;
+      color: #34d399 !important;
+    }
+
+    .admin-order-workspace {
+      max-width: 650px;
+      margin: 0 auto;
+      border-radius: var(--radius-md);
+      border-color: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .workspace-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 20px;
+      background: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.82rem;
+      font-weight: 700;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .status-display-badge {
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      font-weight: 800;
+    }
+
+    .status-display-badge.status-workshop { background: rgba(245, 158, 11, 0.12); color: #fbbf24; }
+    .status-display-badge.status-transit { background: rgba(59, 130, 246, 0.12); color: #93c5fd; }
+    .status-display-badge.status-completed { background: rgba(16, 185, 129, 0.12); color: #34d399; }
+
+    .workspace-body-details {
+      padding: 24px;
+    }
+
+    .status-explanation-card {
+      padding: 15px;
+      background: rgba(255,255,255,0.015);
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+
+    body.rtl .status-explanation-card { border-right: 3px solid var(--color-primary); }
+    body.ltr .status-explanation-card { border-left: 3px solid var(--color-primary); }
+
+    .rma-simulation-module {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 20px;
+    }
+
+    .rma-title {
+      font-size: 0.9rem;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .rma-sub {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      margin-bottom: 16px;
+    }
+
+    .rma-photo-comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 480px) {
+      .rma-photo-comparison-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .rma-photo-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .rma-photo-card span {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--color-text-dim);
+    }
+
+    .sim-photo-placeholder {
+      height: 120px;
+      background: #060912;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .photo-couch-clean {
+      width: 60px;
+      height: 30px;
+      background: #475569;
+      border-radius: 6px;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    .scuffed-mark {
+      position: absolute;
+      top: 5px; left: 12px; width: 14px; height: 4px;
+      background: #b91c1c;
+      border-radius: 2px;
+      transform: rotate(15deg);
+    }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 8px;
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+    }
+
+    .photo-caption.text-caution {
+      color: #f87171;
+    }
+
+    /* ── ROADMAP TIMELINE ── */
+    .timeline-intro-meta {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .timeline-pane-title {
+      font-size: 1.25rem;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .timeline-pane-sub {
+      font-size: 0.88rem;
+      color: var(--color-text-dim);
+    }
+
+    .timeline-milestones-list {
+      display: flex;
+      flex-direction: column;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .milestone-item-row {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      padding: 24px;
+      border-radius: var(--radius-md);
+      margin-bottom: 20px;
+      border-color: rgba(255,255,255,0.05);
+    }
+
+    .milestone-col-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .milestone-node {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.85rem;
+      background: rgba(255,255,255,0.03);
+      border: 2px solid rgba(255, 255, 255, 0.12);
+      color: var(--color-text-muted);
+      z-index: 10;
+    }
+
+    .milestone-node.active-node {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    }
+
+    .milestone-node.elite-node {
+      background: #8b5cf6;
+      border-color: #8b5cf6;
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+    }
+
+    .milestone-line {
+      position: absolute;
+      top: 32px;
+      bottom: -44px;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.06);
+      z-index: 0;
+    }
+
+    .milestone-week-title {
+      font-size: 1.05rem;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .milestone-week-description {
+      font-size: 0.85rem;
+      color: var(--color-text-dim);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .milestone-plan-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag-std, .tag-elite, .tag-std-warn, .tag-std-missing {
+      font-size: 0.65rem;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .tag-std { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--color-text-dim); }
+    .tag-elite { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59,130,246,0.18); color: var(--color-accent); }
+    .tag-std-warn { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245,158,11,0.2); color: #fbbc04; }
+    .tag-std-missing { background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239,68,68,0.12); color: #f87171; }
+
+    /* ── FAQ SECTION ── */
+    .proposal-faq-section {
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      border-color: rgba(255, 255, 255, 0.04);
+      margin-top: 60px;
+      margin-bottom: 60px;
+    }
+
+    .faq-heading-title {
+      font-size: 1.35rem;
+      color: #ffffff;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .faq-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .faq-q {
+      font-size: 1rem;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .faq-a {
+      font-size: 0.88rem;
+      color: var(--color-text-dim);
+      line-height: 1.6;
+    }
+
+    /* ── HUB FOOTER ── */
+    .hub-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 30px;
+      margin-top: 40px;
+      text-align: center;
+      padding-bottom: 40px;
+    }
+
+    .hub-footer p {
+      font-size: 0.88rem;
+      color: var(--color-text-dim);
+    }
+
+    /* ── MICRO-ANIMATIONS ── */
+    .animate-fade {
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .animate-scale {
+      animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* RTL vs LTR specific adjustments */
+    body.rtl .back-home-btn svg {
+      transform: rotate(180deg);
+      margin-left: 6px;
+    }
+
+    body.ltr .back-home-btn svg {
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body class="rtl"> <!-- Arabic RTL by default -->
+
+  <!-- Background Glowing Blobs -->
+  <div class="liquid-blob liquid-blob-1"></div>
+  <div class="liquid-blob liquid-blob-2"></div>
+
+  <div class="wrap">
+    
+    <!-- Top Action bar -->
+    <header>
+      <a href="https://bilalaboqura.com/" class="btn-glass back-home-btn" id="backHomeBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span id="backHomeText">العودة للرئيسية</span>
+      </a>
+
+      <button class="btn-primary" onclick="toggleLanguage()" id="langToggleBtn">
+        🌐 English
+      </button>
+    </header>
+
+    <!-- Main Title Block -->
+    <section class="proposal-hero">
+      <span class="section-label">Interactive Proposals Hub</span>
+      <h1 class="proposal-main-title" id="proposalTitle">عرض مشروع منصة مصنع الأثاث المتكاملة</h1>
+      <p class="proposal-main-subtitle" id="proposalSubtitle">رؤية رقمية متكاملة لربط العملاء بالإنتاج، مضاعفة المبيعات، وأتمتة العمليات اللوجستية.</p>
+    </section>
+
+    <!-- Dual Package Pricing Cards -->
+    <section class="pricing-grid">
+      
+      <!-- ELITE PACKAGE (63,000 EGP) -->
+      <div class="proposal-card proposal-card--elite glass">
+        <div class="card-badge-container">
+          <span class="elite-badge" id="eliteBadgeText">العرض الأكثر قيمة واستثماراً للنمو</span>
+        </div>
+        
+        <h2 class="card-title" id="eliteTitleText">العرض المتكامل للنمو والذكاء الاصطناعي (Elite AI Suite)</h2>
+        <p class="card-description" id="eliteDescText">الحل الرقمي الأقوى والأشمل للمصنع. يدمج بين تجربة التسوق الذكية بالذكاء الاصطناعي، وبوابة تجار الجملة (B2B)، ولوحة تحكم متطورة لأتمتة عمليات الشحن والصيانة بشكل كامل.</p>
+
+        <div class="pricing-meta-row">
+          <div class="meta-box">
+            <span class="meta-label" id="budgetLabel1">الميزانية الاستثمارية</span>
+            <span class="meta-val highlight-val">63,000 <span class="currency" id="currencyLabel1">جنيه مصري</span></span>
+          </div>
+          <div class="meta-box">
+            <span class="meta-label" id="timelineLabel1">المدة الزمنية للتنفيذ</span>
+            <span class="meta-val">5 <span class="time-unit" id="weeksLabel1">أسابيع</span></span>
+          </div>
+        </div>
+
+        <div class="package-highlights-summary" id="eliteHighlights">
+          <ul>
+            <li><strong>منسق الغرف الذكي (AI Room Styler)</strong> لتخيل الأثاث في الغرفة</li>
+            <li><strong>شات بوت تفاعلي للعملاء 24/7</strong> للإجابة واقتراح المنتجات</li>
+            <li><strong>بوابة تجار ومصممي ديكور B2B</strong> مخصصة بأسعار الجملة</li>
+            <li><strong>ربط أتمتة شحن أرامكس API بالكامل</strong> لسحب البوالص فوريًا</li>
+            <li><strong>نظام الصيانة والاسترجاع الرقمي بالصور (RMA)</strong> لحماية الحقوق</li>
+          </ul>
+        </div>
+
+        <a href="" target="_blank" id="eliteCtaBtn" class="btn-primary card-cta-btn card-cta-btn--elite">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style="margin: 0 4px;">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+          <span id="eliteCtaText">تفعيل عرض الـ 63,000 ج.م والمناقشة</span>
+        </a>
+      </div>
+
+      <!-- STANDARD PACKAGE (50,000 EGP) -->
+      <div class="proposal-card proposal-card--standard glass">
+        <div class="card-badge-container">
+          <span class="standard-badge" id="standardBadgeText">العرض القياسي الذكي</span>
+        </div>
+        
+        <h2 class="card-title" id="standardTitleText">العرض القياسي الذكي (Standard Growth)</h2>
+        <p class="card-description" id="standardDescText">منصة متكاملة لتأسيس حضور المصنع الإلكتروني باحترافية. تغطي عمليات البيع المباشر للأفراد، ربط أرامكس الأساسي، ونظام المقالات والصيانة القياسي.</p>
+
+        <div class="pricing-meta-row">
+          <div class="meta-box">
+            <span class="meta-label" id="budgetLabel2">الميزانية الاستثمارية</span>
+            <span class="meta-val">50,000 <span class="currency" id="currencyLabel2">جنيه مصري</span></span>
+          </div>
+          <div class="meta-box">
+            <span class="meta-label" id="timelineLabel2">المدة الزمنية للتنفيذ</span>
+            <span class="meta-val">4 <span class="time-unit" id="weeksLabel2">أسابيع</span></span>
+          </div>
+        </div>
+
+        <div class="package-highlights-summary" id="standardHighlights">
+          <ul>
+            <li>تصفح المنتجات والأقسام وسلة الشراء بالكامل</li>
+            <li>صفحة "تنفيذ تصميمات خاصة" مع رفع صورة ودفع عربون</li>
+            <li>طلب "صندوق عينات الخامات" مباشرة كمنتج بالمتجر</li>
+            <li>بوابة الدفع الإلكتروني وتواصل واتساب مباشر</li>
+            <li>لوحة تحكم الآدمن لإدارة الطلبات والمدونة (SEO)</li>
+          </ul>
+        </div>
+
+        <a href="" target="_blank" id="standardCtaBtn" class="btn-glass card-cta-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style="margin: 0 4px;">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+          <span id="standardCtaText">تفعيل عرض الـ 50,000 ج.م والمناقشة</span>
+        </a>
+      </div>
+
+    </section>
+
+    <!-- Sub-Section Navigation Tabs -->
+    <section class="proposal-nav-tabs glass">
+      <button class="nav-tab-btn nav-tab-btn--active" onclick="switchMainTab('features', this)" id="tabCompareBtn">
+        ⚡ مقارنة الميزات التفصيلية
+      </button>
+      <button class="nav-tab-btn" onclick="switchMainTab('simulator', this)" id="tabSimBtn">
+        📱 محاكي تجربة المستخدم التفاعلي
+      </button>
+      <button class="nav-tab-btn" onclick="switchMainTab('timeline', this)" id="tabTimelineBtn">
+        📅 خريطة وجدول مراحل العمل
+      </button>
+    </section>
+
+    <!-- Content Panel -->
+    <div class="tab-content-panel">
+      
+      <!-- TAB 1: FEATURE MATRIX COMPARISON -->
+      <div id="featuresPane" class="tab-pane pane-active animate-fade">
+        
+        <!-- Frontend Matrix -->
+        <div class="matrix-category">
+          <h3 class="category-title-header" id="frontEndSectionTitle">القسم الأول: واجهة العميل (Main Website)</h3>
+          <p class="category-subtext" id="frontEndSectionDesc">رحلة سلسة تأخذ الزائر من الاستكشاف وبناء الثقة حتى الشراء والدفع بمرونة تامة.</p>
+          
+          <div class="matrix-table" id="frontEndTable">
+            <!-- Row Headers -->
+            <div class="matrix-row matrix-header">
+              <div class="matrix-cell cell-feat" id="cellFeatHeader">الميزة / الوظيفة</div>
+              <div class="matrix-cell cell-std">50,000 EGP</div>
+              <div class="matrix-cell cell-elite elite-col">63,000 EGP</div>
+            </div>
+
+            <!-- Features -->
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">تصفح المنتجات وأقسام المتجر المتقدمة</strong>
+                <span class="feat-tip">عرض فئات الأثاث بشكل تفاعلي وتنسيق رائع وسلس</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">صفحة "قصة المصنع" التاريخية</strong>
+                <span class="feat-tip">بناء ارتباط عاطفي مع الزائر وتوضيح جودة الخشب والتصنيع</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">تسجيل حسابات للعملاء والتوثيق</strong>
+                <span class="feat-tip">حفظ بيانات الشحن، العناوين وتتبع حالات الطلب التاريخية</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">زر تواصل تفاعلي مباشر للواتساب</strong>
+                <span class="feat-tip">مساعد عائم للمساعدة الفورية وتوجيه استشارات المعرض</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">صفحة "تنفيذ تصميمات خاصة" مع رفع صور</strong>
+                <span class="feat-tip">تتيح للعميل رفع تصميم خارجي وتلقي عرض سعر للمصنع مع دفع عربون</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">طلب "صندوق عينات خامات الخشب والأقمشة"</strong>
+                <span class="feat-tip">صندوق يحتوي على نماذج الأخشاب للتوصيل واللمس قبل المبالغ الكبيرة</span>
+              </div>
+              <div class="matrix-cell cell-std"><span>✔ <small>(كمنتج عادي بالمتجر)</small></span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔ <small>(بخطوات مخصصة تفاعلية)</small></span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">بوابة دفع إلكتروني آمنة وسريعة</strong>
+                <span class="feat-tip">ربط فيزا، ماستركارد، فوري، ومحافظ إلكترونية بالكامل</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">المحتوى الحقيقي الديناميكي (UGC)</strong>
+                <span class="feat-tip">عرض صور قطع الأثاث الحقيقية داخل منازل العملاء لتعزيز المصداقية</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">عروض الغرف الكاملة والتوصيات الذكية</strong>
+                <span class="feat-tip">تقديم خصم تلقائي لشراء غرفة كاملة (Bundle) واقتراح كراسي متناسقة بالسلة</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <!-- Elite exclusive AI tools -->
+            <div class="matrix-row text-highlight-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">مساعد شات بوت تفاعلي بالذكاء الاصطناعي 24/7</strong>
+                <span class="feat-tip">مساعد آلي ذكي للرد الفوري واقتراح منتجات وديكورات للعميل</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-no">✖</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔ <span class="highlight-tag">AI Tools</span></span></div>
+            </div>
+
+            <div class="matrix-row text-highlight-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">منسق الغرف الذكي (AI Room Styler)</strong>
+                <span class="feat-tip">رفع صورة الغرفة الفارغة ليتخيلها ويفرشها النظام إلكترونيًا بمنتجات المصنع</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-no">✖</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔ <span class="highlight-tag">AI Tools</span></span></div>
+            </div>
+
+            <div class="matrix-row text-highlight-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">بوابة التجار ومصممي الديكور الحصرية (B2B Portal)</strong>
+                <span class="feat-tip">تسجيل دخول بصلاحيات خاصة تظهر أسعار الجملة للشركات والمصممين مباشرة</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-no">✖</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔ <span class="highlight-tag">Enterprise</span></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Matrix -->
+        <div class="matrix-category">
+          <h3 class="category-title-header" id="adminSectionTitle">القسم الثاني: لوحة الإدارة والتشغيل (Admin Panel)</h3>
+          <p class="category-subtext" id="adminSectionDesc">المطبخ الخلفي الذي يدير منه المصنع كل عملياته بسهولة واحترافية فائقة.</p>
+          
+          <div class="matrix-table" id="adminTable">
+            <div class="matrix-row matrix-header">
+              <div class="matrix-cell cell-feat" id="cellFeatHeader2">الميزة / الوظيفة</div>
+              <div class="matrix-cell cell-std">50,000 EGP</div>
+              <div class="matrix-cell cell-elite elite-col">63,000 EGP</div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">لوحة إدارة ومتابعة الطلبات وتعديل الحالات</strong>
+                <span class="feat-tip">واجهة متطورة لتحديث حالة الطلب (ورشة، شحن، مكتمل) بسلاسة</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">قاعدة بيانات المستخدمين والعملاء للتسويق</strong>
+                <span class="feat-tip">قاعدة بيانات مفهرسة ومصنفة (شركات وأفراد) للتواصل المستقبلي</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">نظام مدونة ومقالات للتسويق والـ SEO</strong>
+                <span class="feat-tip">نظام لإضافة مقالات الديكور لجلب زوار مجانين من محركات بحث جوجل</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">إضافة المنتجات والبطاقات بمساعدة AI</strong>
+                <span class="feat-tip">إدخال مقاسات وتوليد أوصاف تسويقية بالذكاء الاصطناعي مع تأثيرات بصرية جذابة</span>
+              </div>
+              <div class="matrix-cell cell-std"><span>✔ <small>(عبر أدوات AI خارجية)</small></span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔ <small>(مدمج بالكامل باللوحة)</small></span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">تنبيهات فورية وإشعارات بالطلبات والرسائل</strong>
+                <span class="feat-tip">إشعارات حية ومباشرة للآدمن فور إتمام طلب أو رسالة بالمتجر</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <div class="matrix-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">ربط شحن أرامكس الأساسي</strong>
+                <span class="feat-tip">الربط الضروري والأساسي لحساب بوالص الشحن لتشغيل البزنس</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-yes">✔</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔</span></div>
+            </div>
+
+            <div class="matrix-row text-highlight-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">ربط شحن أرامكس API التلقائي بالكامل</strong>
+                <span class="feat-tip">سحب بوالص الشحن وطباعتها وتحديث التتبع تلقائياً بضغطة زر واحدة</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-no">✖</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔ <span class="highlight-tag">أتمتة كاملة</span></span></div>
+            </div>
+
+            <div class="matrix-row text-highlight-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">إرسال "دليل العناية التلقائي" بالأثاث</strong>
+                <span class="feat-tip">إرسال ملف إلكتروني تلقائي للعميل لشرح طرق العناية فور استلام المنتجات</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-no">✖</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔ <span class="highlight-tag">خدمة ما بعد البيع</span></span></div>
+            </div>
+
+            <div class="matrix-row text-highlight-row">
+              <div class="matrix-cell cell-feat">
+                <strong class="feat-title-main">نظام تتبع الاسترجاع والصيانة بالصور (RMA)</strong>
+                <span class="feat-tip">توثيق وحفظ صور القطعة قبل الشحن وصور صيانة العميل لحفظ حقوق الطرفين</span>
+              </div>
+              <div class="matrix-cell cell-std"><span class="badge-no">✖</span></div>
+              <div class="matrix-cell cell-elite elite-col"><span class="badge-yes">✔ <span class="highlight-tag">خدمة ما بعد البيع</span></span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAB 2: INTERACTIVE UX SIMULATOR -->
+      <div id="simulatorPane" class="tab-pane animate-fade">
+        <div class="simulator-heading-block">
+          <h3 class="sim-title-header" id="simTitleHeader">كيف ستبدو تجربة المستخدم للعميل والآدمن؟ (UX Simulator)</h3>
+          <p class="sim-description-text" id="simDescText">اضغط على الأزرار أدناه لتجربة الأدوات الذكية المخطط تنفيذها مباشرة والتفاعل معها:</p>
+        </div>
+
+        <!-- Simulator Navigation -->
+        <div class="sim-sub-nav">
+          <button class="sim-nav-btn sim-nav-btn--active" onclick="switchSimModule('styler', this)" id="btnSimStyler">
+            ✨ منسق الغرف الذكي (AI Room Styler)
+          </button>
+          <button class="sim-nav-btn" onclick="switchSimModule('b2b', this)" id="btnSimB2b">
+            💼 بوابة أسعار التجار (B2B Portal)
+          </button>
+          <button class="sim-nav-btn" onclick="switchSimModule('admin', this)" id="btnSimAdmin">
+            ⚙ لوحة تتبع الطلبات والشحن (Admin Flow)
+          </button>
+        </div>
+
+        <!-- Simulator Core Frame -->
+        <div class="simulator-body glass">
+          
+          <!-- 1. AI Room Styler module -->
+          <div id="simModuleStyler" class="sim-module-pane sim-active animate-fade">
+            <p class="sim-module-intro" id="stylerIntroText">🎨 <strong>يتيح للعميل رفع صورة لغرفته الفارغة، ليقوم النظام بتخيلها وفرشها بأثاث المصنع ليرى النتيجة قبل الشراء.</strong></p>
+            
+            <div class="style-selector-row">
+              <label id="styleSelectorLabel">قم باختيار طراز الغرفة المراد فرشها:</label>
+              <div class="style-btn-group">
+                <button class="btn-glass active-btn" onclick="setStylerOption('modern', this)" id="btnStyleModern">🏠 صالون مودرن فاخر</button>
+                <button class="btn-glass" onclick="setStylerOption('classic', this)" id="btnStyleClassic">🏰 غرفة نوم كلاسيك دافئة</button>
+              </div>
+            </div>
+
+            <div class="styler-canvas">
+              <div class="canvas-pane">
+                <div class="canvas-badge" id="badgeBefore">غرفة فارغة (قبل الفرش)</div>
+                <div class="room-bg-sim">
+                  <div class="empty-corner-walls"></div>
+                  <div class="empty-wood-floor"></div>
+                  <div class="empty-window"></div>
+                  <div class="empty-text-desc" id="emptyTextDesc">غرفة صالون فارغة، جاري تجهيز الذكاء الاصطناعي لملء الفراغ...</div>
+                </div>
+              </div>
+
+              <div class="canvas-pane">
+                <div class="canvas-badge styled-badge" id="badgeAfter">الغرفة مفروشة بأثاث المصنع (بعد الفرش)</div>
+                
+                <div class="room-cta-overlay" id="stylerCtaOverlay">
+                  <button class="btn-primary" onclick="simulateAIStaging()" id="btnApplyStaging">تطبيق فرش الأثاث بالذكاء الاصطناعي ✨</button>
+                </div>
+
+                <div class="room-loading-overlay" id="stylerLoadingOverlay" style="display: none;">
+                  <div class="spinner"></div>
+                  <p id="stylerProcessingText">جاري تحليل أبعاد الغرفة وتطبيق الأثاث بشكل متناسق...</p>
+                </div>
+
+                <div class="room-bg-sim room-bg-sim--styled" id="stylerResultBg">
+                  <div class="styled-walls"></div>
+                  <div class="styled-floor" id="styledFloor"></div>
+                  <div class="styled-window-glow"></div>
+                  
+                  <!-- Modern furniture pieces -->
+                  <div id="furnitureModernGroup" class="styled-furniture-modern animate-scale" style="display: block;">
+                    <div class="modern-couch">
+                      <div class="couch-body"></div>
+                      <div class="couch-pillow pillow-1"></div>
+                      <div class="couch-pillow pillow-2"></div>
+                    </div>
+                    <div class="modern-plant"></div>
+                    <div class="modern-rug"></div>
+                    <div class="modern-table-flat"></div>
+                    <span class="price-tag-overlay" id="modernLabel">صالون 'أورورا'</span>
+                  </div>
+
+                  <!-- Classic furniture pieces -->
+                  <div id="furnitureClassicGroup" class="styled-furniture-classic animate-scale" style="display: none;">
+                    <div class="classic-bed">
+                      <div class="bed-headboard"></div>
+                      <div class="bed-mattress"></div>
+                    </div>
+                    <div class="classic-nightstand stand-l"></div>
+                    <div class="classic-nightstand stand-r"></div>
+                    <div class="classic-rug"></div>
+                    <span class="price-tag-overlay" id="classicLabel">سرير 'رويال' خشب زان</span>
+                  </div>
+
+                  <div class="styler-success-alert animate-fade" id="stylerSuccessAlert">
+                    🎉 تم فرش الغرفة بنجاح! يمكنك الآن شراء الأثاث كـ Bundle بخصم 15%
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. B2B Wholesaler module -->
+          <div id="simModuleB2b" class="sim-module-pane animate-fade">
+            <p class="sim-module-intro" id="b2bIntroText">💼 <strong>واجهة تفتح بصلاحيات خاصة للمصممين وتجار الأثاث تظهر أسعار الجملة، مما يفتح خط مبيعات ضخم للمصنع.</strong></p>
+            
+            <div class="b2b-selector-block">
+              <label class="b2b-label-heading" id="b2bToggleLabel">اختر نوع حساب المستخدم لرؤية تغير الأسعار:</label>
+              <div class="b2b-toggle-switch-container">
+                <button class="profile-toggle-btn profile-toggle-btn--active" onclick="setB2bProfile('retail', this)" id="btnB2bRetail">👤 عميل تجزئة (عادي)</button>
+                <button class="profile-toggle-btn" onclick="setB2bProfile('partner', this)" id="btnB2bPartner">🏢 تاجر / مصمم ديكور (B2B)</button>
+              </div>
+            </div>
+
+            <!-- Product Card -->
+            <div class="product-b2b-card-sim glass">
+              <div class="prod-badge-holder">
+                <span class="b2b-badge-applied animate-scale" id="b2bActiveBadge" style="display: none;">🔥 B2B Partner Portal Active</span>
+              </div>
+              
+              <div class="sim-product-details">
+                <div class="sim-product-image-container">
+                  <div class="sim-coffee-table-drawing">
+                    <div class="table-top"></div>
+                    <div class="table-leg leg-1"></div>
+                    <div class="table-leg leg-2"></div>
+                    <div class="table-leg leg-3"></div>
+                    <div class="table-leg leg-4"></div>
+                  </div>
+                </div>
+
+                <div class="sim-product-info">
+                  <h4 class="sim-prod-name" id="prodTitleText">طاولة صالون 'أورورا' خشب زان طبيعي</h4>
+                  <p class="sim-prod-desc" id="prodDescText">مصنعة بالكامل من قطاع خشب زان أحمر عالي الجودة مع طبقة حماية عازلة للرطوبة والخدش.</p>
+                  
+                  <div class="sim-prod-price-area">
+                    <!-- Standard Retail Price -->
+                    <div id="priceRetailGroup" class="retail-price-display animate-fade">
+                      <span class="price-tag-label" id="priceLabelNormal">السعر للعميل العادي:</span>
+                      <span class="actual-price-num">18,000 ج.م</span>
+                    </div>
+
+                    <!-- Wholesale price -->
+                    <div id="pricePartnerGroup" class="b2b-price-display animate-scale" style="display: none;">
+                      <span class="original-strike-price">18,000 ج.م</span>
+                      <div class="b2b-discounted-price">
+                        <span class="price-tag-label" id="priceLabelWholesale">سعر شريك B2B المعتمد:</span>
+                        <span class="actual-price-num">12,600 ج.م</span>
+                        <span class="b2b-saving-pill" id="discountBadgeText">خصم الشركاء (30%-)</span>
+                      </div>
+                      <p class="b2b-terms-text" id="b2bTermsText">الحد الأدنى لطلب الجملة: 3 قطع · السعر لا يشمل مصاريف الشحن الخاص بالتجار.</p>
+                    </div>
+                  </div>
+
+                  <div class="sim-checkout-actions">
+                    <button class="btn-primary" style="width: 100%;" id="btnCartAction">إضافة إلى السلة</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Admin Flow module -->
+          <div id="simModuleAdmin" class="sim-module-pane animate-fade">
+            <p class="sim-module-intro" id="adminIntroText">⚙ <strong>المطبخ التشغيلي للمصنع: معالجة الطلبات، سحب بوالص أرامكس تلقائياً، وإدارة الصيانة.</strong></p>
+            
+            <div class="admin-status-control-section">
+              <label class="admin-status-label" id="adminActionLabel">قم بنقل حالة الطلب لمحاكاة التدفق التشغيلي 🔄</label>
+              <div class="admin-status-pipeline">
+                <button class="pipeline-btn active-workshop" onclick="setAdminStatus('workshop', this)" id="btnStep1">🛠 1. قيد التنفيذ (الورشة)</button>
+                <div class="pipeline-connector">➡</div>
+                <button class="pipeline-btn" onclick="setAdminStatus('transit', this)" id="btnStep2">🚚 2. جاري الشحن (أرامكس)</button>
+                <div class="pipeline-connector">➡</div>
+                <button class="pipeline-btn" onclick="setAdminStatus('completed', this)" id="btnStep3">✅ 3. مكتمل (تلقائي)</button>
+              </div>
+            </div>
+
+            <!-- Admin workspace view -->
+            <div class="admin-order-workspace glass">
+              <div class="workspace-header">
+                <span id="orderTitleText">📦 إدارة الطلب #AMX-09823</span>
+                <span class="status-display-badge status-workshop" id="orderStatusBadge">تحت التصنيع بالورشة</span>
+              </div>
+
+              <div class="workspace-body-details">
+                <div class="status-explanation-card" id="statusDescText">
+                  الطلب قيد التصنيع في الورشة حالياً. جاري تجهيز الأخشاب والأقمشة المعتمدة.
+                </div>
+
+                <!-- Warranty RMA verification if completed -->
+                <div class="rma-simulation-module" id="rmaModule" style="display: none;">
+                  <h5 class="rma-title" id="rmaTitleText">نظام الصيانة والاسترجاع الذكي (RMA):</h5>
+                  <p class="rma-sub" id="rmaSubText">يتم رفع صور القطعة قبل الشحن وصور الشكوى لحفظ حقوق المصنع وتفادي نزاعات الصيانة.</p>
+                  
+                  <div class="rma-photo-comparison-grid">
+                    <div class="rma-photo-card">
+                      <span id="photoBeforeLabel">صورة المصنع قبل الشحن 📸</span>
+                      <div class="sim-photo-placeholder">
+                        <div class="photo-couch-clean"></div>
+                        <span class="photo-caption" id="captionBefore">فحص المصنع: القطعة سليمة 100%</span>
+                      </div>
+                    </div>
+
+                    <div class="rma-photo-card">
+                      <span id="photoAfterLabel">صورة العميل (شكوى الصيانة) 📸</span>
+                      <div class="sim-photo-placeholder">
+                        <div class="photo-couch-clean">
+                          <div class="scuffed-mark"></div>
+                        </div>
+                        <span class="photo-caption text-caution" id="captionAfter">الشكوى: خدش طفيف بالظهر</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- TAB 3: TIMELINE AND ROADMAP -->
+      <div id="timelinePane" class="tab-pane animate-fade">
+        <div class="timeline-intro-meta">
+          <h3 class="timeline-pane-title" id="timelinePaneTitle">جدول التطوير ومراحل التسليم والـ Milestones</h3>
+          <p class="timeline-pane-sub" id="timelinePaneSub">مخطط زمني مقارن لتنفيذ المشروع في 4 أسابيع للنسخة القياسية مقابل 5 أسابيع للنسخة المتكاملة بالـ AI والـ B2B.</p>
+        </div>
+
+        <div class="timeline-milestones-list">
+          
+          <!-- Week 1 -->
+          <div class="milestone-item-row glass">
+            <div class="milestone-col-indicator">
+              <div class="milestone-node active-node">1</div>
+              <div class="milestone-line"></div>
+            </div>
+            <div class="milestone-col-details">
+              <h4 class="milestone-week-title" id="tlWeek1Title">الأسبوع 1: التخطيط والواجهة الأساسية</h4>
+              <p class="milestone-week-description" id="tlWeek1Desc">هيكلة قاعدة البيانات، ربط نظام الحسابات والتوثيق، ودمج تصميم واجهة العميل التفاعلية.</p>
+              <div class="milestone-plan-tags">
+                <span class="tag-std" id="tagStdInclude1">متوفر في العرض القياسي 50k</span>
+                <span class="tag-elite" id="tagEliteInclude1">متوفر في عرض الـ 63k</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Week 2 -->
+          <div class="milestone-item-row glass">
+            <div class="milestone-col-indicator">
+              <div class="milestone-node active-node">2</div>
+              <div class="milestone-line"></div>
+            </div>
+            <div class="milestone-col-details">
+              <h4 class="milestone-week-title" id="tlWeek2Title">الأسبوع 2: تجربة الشراء وعينات الخامات</h4>
+              <p class="milestone-week-description" id="tlWeek2Desc">برمجة متجر تصفح المنتجات وسلة المشتريات، وتفعيل آلية طلب صناديق العينات والتصميمات الخاصة.</p>
+              <div class="milestone-plan-tags">
+                <span class="tag-std" id="tagStdInclude2">متوفر في العرض القياسي 50k</span>
+                <span class="tag-elite" id="tagEliteInclude2">متوفر في عرض الـ 63k</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Week 3 -->
+          <div class="milestone-item-row glass">
+            <div class="milestone-col-indicator">
+              <div class="milestone-node active-node">3</div>
+              <div class="milestone-line"></div>
+            </div>
+            <div class="milestone-col-details">
+              <h4 class="milestone-week-title" id="tlWeek3Title">الأسبوع 3: الدفع وأرامكس وتتبع الطلبات</h4>
+              <p class="milestone-week-description" id="tlWeek3Desc">ربط بوابات الدفع الإلكتروني، دمج نظام أرامكس للشحن، وبناء لوحة تحكم تتبع حالات الطلبات للآدمن.</p>
+              <div class="milestone-plan-tags">
+                <span class="tag-std" id="tagStdInclude3">متوفر في العرض القياسي 50k</span>
+                <span class="tag-elite" id="tagEliteInclude3">متوفر في عرض الـ 63k</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Week 4 -->
+          <div class="milestone-item-row glass">
+            <div class="milestone-col-indicator">
+              <div class="milestone-node active-node">4</div>
+              <div class="milestone-line"></div>
+            </div>
+            <div class="milestone-col-details">
+              <h4 class="milestone-week-title" id="tlWeek4Title">الأسبوع 4: أدوات مضاعفة المبيعات والـ AI</h4>
+              <p class="milestone-week-description" id="tlWeek4Desc">تطوير نظام التوصيات الذكي، شات بوت المساعدة 24/7، وإطلاق ميزة منسق الغرف الذكي (AI Room Styler) لنسخة الـ Elite.</p>
+              <div class="milestone-plan-tags">
+                <span class="tag-std-warn" id="tagStdWarn">العرض القياسي: اختبار شامل وتسليم نهائي 🏁</span>
+                <span class="tag-elite" id="tagEliteInclude4">متوفر في عرض الـ 63k</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Week 5 -->
+          <div class="milestone-item-row glass">
+            <div class="milestone-col-indicator">
+              <div class="milestone-node elite-node">5</div>
+            </div>
+            <div class="milestone-col-details">
+              <h4 class="milestone-week-title" id="tlWeek5Title">الأسبوع 5: بوابة الـ B2B ونظام RMA والتشغيل الكامل</h4>
+              <p class="milestone-week-description" id="tlWeek5Desc">برمجة بوابة تجار الجملة الحصرية، إطلاق نظام إدارة الصيانة RMA بالصور، إرسال أدلة العناية التلقائية، والتسليم النهائي للمشروع.</p>
+              <div class="milestone-plan-tags">
+                <span class="tag-std-missing" id="tagStdMissing">العرض القياسي: تم التسليم بالفعل بالأسبوع الرابع</span>
+                <span class="tag-elite" id="tagEliteInclude5">متوفر في عرض الـ 63k</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="proposal-faq-section glass">
+      <h3 class="faq-heading-title" id="faqTitle">الأسئلة الشائعة وتوضيحات تقنية</h3>
+      
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4 class="faq-q" id="faqQ1">❓ ما الفرق الجوهري الذي يستحق فارق الاستثمار البالغ 13,000 ج.م؟</h4>
+          <p class="faq-a" id="faqA1">الاستثمار الإضافي يغطي أدوات الذكاء الاصطناعي الحقيقية مثل منسق الغرف الذكي، وبوابة B2B مخصصة لتجار الأثاث والمصممين لتشغيل خط مبيعات ضخم للمصنع، بالإضافة إلى أتمتة كاملة للعمليات مثل ربط بوالص أرامكس برمجياً ونظام الصيانة بالصور (RMA)، مما يوفر تكلفة موظفين إداريين إضافيين للمصنع.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h4 class="faq-q" id="faqQ2">❓ هل يمكنني الترقية من العرض القياسي إلى المتكامل لاحقاً؟</h4>
+          <p class="faq-a" id="faqA2">نعم، النظام مصمم بهيكلية معيارية تسمح بالبدء بالعرض القياسي وإضافة بوابة الـ B2B وأدوات الـ AI التفاعلية لاحقاً، ولكن تنفيذها من البداية يوفر نحو 30% من تكلفة التطوير المنفصل ويسرع من عملية الانتشار السوقي.</p>
+        </div>
+
+        <div class="faq-item">
+          <h4 class="faq-q" id="faqQ3">❓ كيف يتم تأمين وحساب بوالص الشحن مع أرامكس؟</h4>
+          <p class="faq-a" id="faqA3">في كلا الحلين يتم الربط مع حساب المصنع لدى أرامكس. في العرض المتكامل يتم ذلك تلقائياً بضغطة زر لسحب البوليصة وإرسال التتبع للعميل، وفي العرض القياسي يظهر طلب الشحن للآدمن ليقوم بسحبها من لوحة أرامكس ونسخ رقم التتبع.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="hub-footer">
+      <p id="footerCopyright">© 2026 بلال أبو قورة — مهندس برمجيات وتطوير ويب</p>
+      <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 4px;" id="footerTagline">
+        مُصمم ومُطور خصيصاً لمشاريع الأثاث الفاخر والتحول الرقمي للشركات والمصانع.
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- ── TRANSLATIONS & INTERACTIVES SCRIPT ── -->
+  <script>
+    // Complete bilingual translation dictionary
+    const t = {
+      ar: {
+        title: "عرض مشروع منصة مصنع الأثاث المتكاملة",
+        subtitle: "رؤية رقمية متكاملة لربط العملاء بالإنتاج، مضاعفة المبيعات، وأتمتة العمليات اللوجستية.",
+        langSwitch: "English",
+        backHome: "العودة للرئيسية",
+        budget: "الميزانية الاستثمارية",
+        timeline: "المدة الزمنية للتنفيذ",
+        weeks: "أسابيع",
+        week: "أسبوع",
+        days: "أيام",
+        recommendedBadge: "العرض الأكثر قيمة واستثماراً للنمو",
+        standardBadge: "العرض القياسي الذكي",
+        egp: "جنيه مصري",
+        eliteTitle: "العرض المتكامل للنمو والذكاء الاصطناعي (Elite AI Suite)",
+        eliteDesc: "الحل الرقمي الأقوى والأشمل للمصنع. يدمج بين تجربة التسوق الذكية بالذكاء الاصطناعي، وبوابة تجار الجملة (B2B)، ولوحة تحكم متطورة لأتمتة عمليات الشحن والصيانة بشكل كامل.",
+        standardTitle: "العرض القياسي الذكي (Standard Growth)",
+        standardDesc: "منصة متكاملة لتأسيس حضور المصنع الإلكتروني باحترافية. تغطي عمليات البيع المباشر للأفراد، ربط أرامكس الأساسي، ونظام المقالات والصيانة القياسي.",
+        whatsappElite: "تفعيل عرض الـ 63,000 ج.م والمناقشة",
+        whatsappStandard: "تفعيل عرض الـ 50,000 ج.م والمناقشة",
+        compareTab: "⚡ مقارنة الميزات التفصيلية",
+        timelineTab: "📅 خريطة وجدول مراحل العمل",
+        simulatorTab: "📱 محاكي تجربة المستخدم التفاعلي",
+        frontEndSection: "القسم الأول: واجهة العميل (Main Website)",
+        frontEndDesc: "رحلة سلسة تأخذ الزائر من الاستكشاف وبناء الثقة حتى الشراء والدفع بمرونة تامة.",
+        adminSection: "القسم الثاني: لوحة الإدارة والتشغيل (Admin Panel)",
+        adminDesc: "المطبخ الخلفي الذي يدير منه المصنع كل عملياته بسهولة واحترافية فائقة.",
+        
+        simTitle: "كيف ستبدو تجربة المستخدم للعميل والآدمن؟ (UX Simulator)",
+        simDesc: "اضغط على الأزرار أدناه لتجربة الأدوات الذكية المخطط تنفيذها مباشرة والتفاعل معها:",
+        simStyler: "✨ منسق الغرف الذكي (AI Room Styler)",
+        simB2b: "💼 بوابة أسعار التجار (B2B Portal)",
+        simAdmin: "⚙ لوحة تتبع الطلبات والشحن (Admin Flow)",
+
+        stylerIntro: "🎨 <strong>يتيح للعميل رفع صورة لغرفته الفارغة، ليقوم النظام بتخيلها وفرشها بأثاث المصنع ليرى النتيجة قبل الشراء.</strong>",
+        styleLabel: "قم باختيار طراز الغرفة المراد فرشها:",
+        btnStyleModern: "🏠 صالون مودرن فاخر",
+        btnStyleClassic: "🏰 غرفة نوم كلاسيك دافئة",
+        badgeBefore: "غرفة فارغة (قبل الفرش)",
+        badgeAfter: "الغرفة مفروشة بأثاث المصنع (بعد الفرش)",
+        emptyTextDesc: "غرفة صالون فارغة، جاري تجهيز الذكاء الاصطناعي لملء الفراغ...",
+        emptyTextClassicDesc: "غرفة نوم فارغة، جاري تجهيز الذكاء الاصطناعي لملء الفراغ...",
+        btnApplyStaging: "تطبيق فرش الأثاث بالذكاء الاصطناعي ✨",
+        stylerProcessingText: "جاري تحليل أبعاد الغرفة وتطبيق الأثاث بشكل متناسق...",
+        stylerSuccessAlert: "🎉 تم فرش الغرفة بنجاح! يمكنك الآن شراء الأثاث كـ Bundle بخصم 15%",
+        modernLabel: "صالون 'أورورا'",
+        classicLabel: "سرير 'رويال' خشب زان",
+
+        b2bIntro: "💼 <strong>واجهة تفتح بصلاحيات خاصة للمصممين وتجار الأثاث تظهر أسعار الجملة، مما يفتح خط مبيعات ضخم للمصنع.</strong>",
+        b2bToggleLabel: "اختر نوع حساب المستخدم لرؤية تغير الأسعار:",
+        btnB2bRetail: "👤 عميل تجزئة (عادي)",
+        btnB2bPartner: "🏢 تاجر / مصمم ديكور (B2B)",
+        prodTitle: "طاولة صالون 'أورورا' خشب زان طبيعي",
+        prodDesc: "مصنعة بالكامل من قطاع خشب زان أحمر عالي الجودة مع طبقة حماية عازلة للرطوبة والخدش.",
+        priceLabelNormal: "السعر للعميل العادي:",
+        priceLabelWholesale: "سعر شريك B2B المعتمد:",
+        discountBadge: "خصم الشركاء (30%-)",
+        b2bTermsText: "الحد الأدنى لطلب الجملة: 3 قطع · السعر لا يشمل مصاريف الشحن الخاص بالتجار.",
+        btnCartAction: "إضافة إلى السلة",
+        btnCartActionB2b: "طلب تسعيرة كميات جملة",
+
+        adminIntro: "⚙ <strong>المطبخ التشغيلي للمصنع: معالجة الطلبات، سحب بوالص أرامكس تلقائياً، وإدارة الصيانة.</strong>",
+        adminActionLabel: "قم بنقل حالة الطلب لمحاكاة التدفق التشغيلي 🔄",
+        btnStep1: "🛠 1. قيد التنفيذ (الورشة)",
+        btnStep2: "🚚 2. جاري الشحن (أرامكس)",
+        btnStep3: "✅ 3. مكتمل (تلقائي)",
+        orderTitleText: "📦 إدارة الطلب #AMX-09823",
+        orderStatusWorkshop: "تحت التصنيع بالورشة",
+        orderStatusTransit: "مع أرامكس للشحن",
+        orderStatusCompleted: "مكتمل وتم تسليمه",
+        statusDescWorkshop: "الطلب قيد التصنيع في الورشة حالياً. جاري تجهيز الأخشاب والأقمشة المعتمدة.",
+        statusDescTransit: "تم تجهيز بوليصة الشحن تلقائياً عبر ربط API أرامكس. رقم التتبع: AMX-9827361.",
+        statusDescCompleted: "تم التوصيل بنجاح. أرسل النظام تلقائياً دليل العناية بالأثاث للعميل عبر الإيميل.",
+        rmaTitleText: "نظام الصيانة والاسترجاع الذكي (RMA):",
+        rmaSubText: "يتم رفع صور القطعة قبل الشحن وصور الشكوى لحفظ حقوق المصنع وتفادي نزاعات الصيانة.",
+        photoBeforeLabel: "صورة المصنع قبل الشحن 📸",
+        photoAfterLabel: "صورة العميل (شكوى الصيانة) 📸",
+        captionBefore: "فحص المصنع: القطعة سليمة 100%",
+        captionAfter: "الشكوى: خدش طفيف بالظهر",
+
+        timelinePaneTitle: "جدول التطوير ومراحل التسليم والـ Milestones",
+        timelinePaneSub: "مخطط زمني مقارن لتنفيذ المشروع في 4 أسابيع للنسخة القياسية مقابل 5 أسابيع للنسخة المتكاملة بالـ AI والـ B2B.",
+        tlWeek1Title: "الأسبوع 1: التخطيط والواجهة الأساسية",
+        tlWeek1Desc: "هيكلة قاعدة البيانات، ربط نظام الحسابات والتوثيق، ودمج تصميم واجهة العميل التفاعلية.",
+        tagStdInclude: "متوفر في العرض القياسي 50k",
+        tagEliteInclude: "متوفر في عرض الـ 63k",
+        tlWeek2Title: "الأسبوع 2: تجربة الشراء وعينات الخامات",
+        tlWeek2Desc: "برمجة متجر تصفح المنتجات وسلة المشتريات، وتفعيل آلية طلب صناديق العينات والتصميمات الخاصة.",
+        tlWeek3Title: "الأسبوع 3: الدفع وأرامكس وتتبع الطلبات",
+        tlWeek3Desc: "ربط بوابات الدفع الإلكتروني، دمج نظام أرامكس للشحن، وبناء لوحة تحكم تتبع حالات الطلبات للآدمن.",
+        tlWeek4Title: "الأسبوع 4: أدوات مضاعفة المبيعات والـ AI",
+        tlWeek4Desc: "تطوير نظام التوصيات الذكي، شات بوت المساعدة 24/7، وإطلاق ميزة منسق الغرف الذكي (AI Room Styler) لنسخة الـ Elite.",
+        tagStdWarn: "العرض القياسي: اختبار شامل وتسليم نهائي 🏁",
+        tlWeek5Title: "الأسبوع 5: بوابة الـ B2B ونظام RMA والتشغيل الكامل",
+        tlWeek5Desc: "برمجة بوابة تجار الجملة الحصرية، إطلاق نظام إدارة الصيانة RMA بالصور، إرسال أدلة العناية التلقائية، والتسليم النهائي للمشروع.",
+        tagStdMissing: "العرض القياسي: تم التسليم بالفعل بالأسبوع الرابع",
+
+        faqTitle: "الأسئلة الشائعة وتوضيحات تقنية",
+        faqQ1: "❓ ما الفرق الجوهري الذي يستحق فارق الاستثمار البالغ 13,000 ج.م؟",
+        faqA1: "الاستثمار الإضافي يغطي أدوات الذكاء الاصطناعي الحقيقية مثل منسق الغرف الذكي، وبوابة B2B مخصصة لتجار الأثاث والمصممين لتشغيل خط مبيعات ضخم للمصنع، بالإضافة إلى أتمتة كاملة للعمليات مثل ربط بوالص أرامكس برمجياً ونظام الصيانة بالصور (RMA)، مما يوفر تكلفة موظفين إداريين إضافيين للمصنع.",
+        faqQ2: "❓ هل يمكنني الترقية من العرض القياسي إلى المتكامل لاحقاً؟",
+        faqA2: "نعم، النظام مصمم بهيكلية معيارية تسمح بالبدء بالعرض القياسي وإضافة بوابة الـ B2B وأدوات الـ AI التفاعلية لاحقاً، ولكن تنفيذها من البداية يوفر نحو 30% من تكلفة التطوير المنفصل ويسرع من عملية الانتشار السوقي.",
+        faqQ3: "❓ كيف يتم تأمين وحساب بوالص الشحن مع أرامكس؟",
+        faqA3: "في كلا الحلين يتم الربط مع حساب المصنع لدى أرامكس. في العرض المتكامل يتم ذلك تلقائياً بضغطة زر لسحب البوليصة وإرسال التتبع للعميل، وفي العرض القياسي يظهر طلب الشحن للآدمن ليقوم بسحبها من لوحة أرامكس ونسخ رقم التتبع.",
+
+        footerCopyright: "© 2026 بلال أبو قورة — مهندس برمجيات وتطوير ويب",
+        footerTagline: "مُصمم ومُطور خصيصاً لمشاريع الأثاث الفاخر والتحول الرقمي للشركات والمصانع."
+      },
+      en: {
+        title: "Proposal for Furniture Factory Digital Platform",
+        subtitle: "A comprehensive digital ecosystem to connect production to sales, boost conversion rates, and automate logistics.",
+        langSwitch: "العربية",
+        backHome: "Back to Home",
+        budget: "Budget Investment",
+        timeline: "Execution Timeline",
+        weeks: "Weeks",
+        week: "Week",
+        days: "Days",
+        recommendedBadge: "Best Value & ROI Package for Growth",
+        standardBadge: "Standard Growth Package",
+        egp: "EGP",
+        eliteTitle: "Elite AI & Enterprise Suite",
+        eliteDesc: "The ultimate digital infrastructure for the factory. Integrates cutting-edge AI Room Styling, a dedicated B2B wholesale pricing portal for decorators, and complete operational automation for shipping and customer RMA care.",
+        standardTitle: "Standard Growth Package",
+        standardDesc: "A robust digital presence showcasing the factory's craftsmanship. Covers standard B2C sales flow, basic Aramex logistics, custom designs processing, and manual admin controls.",
+        whatsappElite: "Activate 63,000 EGP Proposal & Discuss",
+        whatsappStandard: "Activate 50,000 EGP Proposal & Discuss",
+        compareTab: "⚡ Feature Matrix Comparison",
+        timelineTab: "📅 Development Roadmap",
+        simulatorTab: "📱 Interactive UX Simulators",
+        frontEndSection: "Section 1: Main Customer Website",
+        frontEndDesc: "A fluid customer journey designed to move visitors from browsing, building trust, up to secure electronic purchase.",
+        adminSection: "Section 2: Admin Panel & Back-Office",
+        adminDesc: "The back-office engine where the factory team manages inventories, logistics, orders, and customer after-sales.",
+        
+        simTitle: "What Does the User Experience Look Like? (UX Simulator)",
+        simDesc: "Interact with the components below to preview the smart tools planned for development:",
+        simStyler: "✨ AI Room Styler Simulator",
+        simB2b: "💼 B2B Wholesaler Portal",
+        simAdmin: "⚙ Admin Order & Shipping Flow",
+
+        stylerIntro: "🎨 <strong>Allows customers to upload a photo of their empty room and see the factory's furniture laid out beautifully in real-time.</strong>",
+        styleLabel: "Choose room styling demo:",
+        btnStyleModern: "🏠 Premium Modern Salon Set",
+        btnStyleClassic: "🏰 Warm Neo-Classic Bedroom Set",
+        badgeBefore: "Empty Room (Before)",
+        badgeAfter: "Styled with Factory Furniture (After)",
+        emptyTextDesc: "Bare living room walls and hardwood floor. Preparing AI...",
+        emptyTextClassicDesc: "Bare bedroom walls. Preparing AI...",
+        btnApplyStaging: "Apply AI Furniture Layout ✨",
+        stylerProcessingText: "AI is analyzing room borders and layout matching...",
+        stylerSuccessAlert: "🎉 Room styled! Add all featured furniture as a bundle and save 15%",
+        modernLabel: "Salon 'Aurora'",
+        classicLabel: "Solid Beech 'Royal' Bed",
+
+        b2bIntro: "💼 <strong>A dedicated B2B portal revealing trade discounts for furniture distributors and interior designers, boosting large volume sales.</strong>",
+        b2bToggleLabel: "Toggle user profile level to see dynamic pricing changes:",
+        btnB2bRetail: "👤 Standard Retail Customer",
+        btnB2bPartner: "🏢 Registered Trade Decorator / B2B",
+        prodTitle: "Solid Beech 'Aurora' Living Room Coffee Table",
+        prodDesc: "Meticulously crafted from premium solid beech wood with standard heavy moisture seal layers.",
+        priceLabelNormal: "Retail Price:",
+        priceLabelWholesale: "Trade/B2B Approved Price:",
+        discountBadge: "Partner Trade Discount Applied (-30%)",
+        b2bTermsText: "Minimum order qty: 3 units. Standard wholesale shipping tariffs apply.",
+        btnCartAction: "Add to Cart",
+        btnCartActionB2b: "Request Wholesale Quote",
+
+        adminIntro: "⚙ <strong>Operational kitchen: complete control of orders, automatic Aramex shipping webhook integrations, and maintenance records.</strong>",
+        adminActionLabel: "Click statuses below to simulate the admin operational pipeline 🔄",
+        btnStep1: "🛠 1. Production (Workshop)",
+        btnStep2: "🚚 2. Dispatched (Aramex)",
+        btnStep3: "✅ 3. Delivered & Closed",
+        orderTitleText: "📦 Order Dashboard #AMX-09823",
+        orderStatusWorkshop: "In Workshop",
+        orderStatusTransit: "In Transit (Aramex)",
+        orderStatusCompleted: "Delivered & Closed",
+        statusDescWorkshop: "Order is currently being crafted in the carpentry workshop using solid beech wood.",
+        statusDescTransit: "Shipping label automatically generated via Aramex API integration. Track ID: AMX-9827361.",
+        statusDescCompleted: "Delivered successfully. System automatically dispatched the Furniture Care Manual to customer email.",
+        rmaTitleText: "RMA Maintenance Tracker Component:",
+        rmaSubText: "Before/After photo comparison logs to document pre-shipping state and post-delivery claims, safeguarding factory rights.",
+        photoBeforeLabel: "Factory Inspection Photo 📸",
+        photoAfterLabel: "Customer Maintenance Claim Photo 📸",
+        captionBefore: "Ready at Factory: Pristine State",
+        captionAfter: "Customer Scuff Claim in Transit",
+
+        timelinePaneTitle: "Project Roadmaps & Milestones Development Schedule",
+        timelinePaneSub: "Track the structural milestones and deliverables scheduled for both plans.",
+        tlWeek1Title: "Week 1: Foundations & Core DB",
+        tlWeek1Desc: "Setup server backend structure, customer authentication, and premium front-end layout shell.",
+        tagStdInclude: "Included in 50k Plan",
+        tagEliteInclude: "Included in 63k Plan",
+        tlWeek2Title: "Week 2: Commerce Pages & Sample Boxes",
+        tlWeek2Desc: "Build main product grids, shopping cart checkout flow, custom design uploads, and sample box logic.",
+        tlWeek3Title: "Week 3: Payments, Logistics & Admin Portal",
+        tlWeek3Desc: "Incorporate electronic payment gateways, bind Aramex billing webhooks, and launch back-office order tracking.",
+        tlWeek4Title: "Week 4: Smart Conversion & AI Engines",
+        tlWeek4Desc: "Launch AI support chatbot, direct WhatsApp shortcuts, dynamic bundling system, and premium interactive features.",
+        tagStdWarn: "50k Plan: Testing & Final Delivery 🏁",
+        tlWeek5Title: "Week 5: Enterprise Portals & Quality Control",
+        tlWeek5Desc: "Deploy B2B dealer profiles, RMA maintenance visual ledger, automated care trigger logs, and production deploy.",
+        tagStdMissing: "50k Plan: Completed in Week 4",
+
+        faqTitle: "Frequently Asked Questions",
+        faqQ1: "❓ Why invest the additional 13,000 EGP for the Elite package?",
+        faqA1: "The Elite package pays for itself by automating standard overheads. Features like the automatic Aramex dispatch save hours of manual shipping forms every day. The B2B Wholesale Portal opens a completely new recurring high-ticket pipeline by making it seamless for decorators to bulk order, while the AI Room Styler converts uncertain buyers who struggle to visualize the furniture in their houses.",
+        faqQ2: "❓ Can we start with the Standard package and upgrade to Elite later?",
+        faqA2: "Absolutely! The system uses a modular clean code architecture, allowing us to implement B2B pricing, automated RMA grids, and AI components later. However, booking them together saves roughly 30% compared to separate build phases.",
+        faqQ3: "❓ How does the Aramex shipping integration operate?",
+        faqA3: "Both versions hook into your official Aramex corporate account. In the Standard Package, the admin receives orders and manually creates shipping bills inside the Aramex portal. In the Elite Suite, the system communicates directly with Aramex API to instantly generate shipping bills, fetch tracking numbers, and update the customer in real-time.",
+
+        footerCopyright: "© 2026 Bilal Aboqura — Full Stack Software Engineer",
+        footerTagline: "Tailored for high-end furniture manufacturing transformations and enterprise digitizations."
+      }
+    };
+
+    let lang = 'ar';
+    let currentStyle = 'modern';
+    let isStylerSimulated = false;
+
+    // Build the WhatsApp Deep links
+    function updateWhatsAppLinks() {
+      const number = "+201112678333";
+      let eliteMsg = "";
+      let stdMsg = "";
+      
+      if (lang === 'ar') {
+        eliteMsg = "مرحباً بلال! لقد اطلعت على العرض المتكامل للنمو والذكاء الاصطناعي (Elite AI Suite) بقيمة 63,000 ج.م وأود المضي قدماً لتفعيله وبدء المشروع. دعنا ننسق الخطوات القادمة!";
+        stdMsg = "مرحباً بلال! لقد اطلعت على العرض القياسي الذكي (Standard Growth) بقيمة 50,000 ج.م وأود بدء المشروع بهذا العرض المناسب. دعنا نتحدث لمباشرة العمل!";
+      } else {
+        eliteMsg = "Hi Bilal! I reviewed the Elite AI & Enterprise Suite proposal (63,000 EGP / 5 Weeks) and want to proceed with it. Let's align on the kick-off steps!";
+        stdMsg = "Hi Bilal! I reviewed the Standard Growth Package proposal (50,000 EGP / 4 Weeks) and would like to launch this setup. Let's schedule a call!";
+      }
+      
+      document.getElementById('eliteCtaBtn').href = `https://wa.me/${number}?text=${encodeURIComponent(eliteMsg)}`;
+      document.getElementById('standardCtaBtn').href = `https://wa.me/${number}?text=${encodeURIComponent(stdMsg)}`;
+    }
+
+    // Toggle language dynamically
+    function toggleLanguage() {
+      lang = lang === 'ar' ? 'en' : 'ar';
+      
+      // Update body class for styling direction
+      if (lang === 'ar') {
+        document.body.className = 'rtl';
+        document.getElementById('langToggleBtn').innerText = '🌐 English';
+      } else {
+        document.body.className = 'ltr';
+        document.getElementById('langToggleBtn').innerText = '🌐 العربية';
+      }
+
+      // Update Texts
+      const itemKeys = [
+        'backHomeText', 'proposalTitle', 'proposalSubtitle',
+        'eliteBadgeText', 'eliteTitleText', 'eliteDescText', 'budgetLabel1', 'currencyLabel1', 'timelineLabel1', 'weeksLabel1', 'eliteCtaText',
+        'standardBadgeText', 'standardTitleText', 'standardDescText', 'budgetLabel2', 'currencyLabel2', 'timelineLabel2', 'weeksLabel2', 'standardCtaText',
+        'tabCompareBtn', 'tabSimBtn', 'tabTimelineBtn',
+        'frontEndSectionTitle', 'frontEndSectionDesc', 'cellFeatHeader',
+        'adminSectionTitle', 'adminSectionDesc', 'cellFeatHeader2',
+        'simTitleHeader', 'simDescText', 'btnSimStyler', 'btnSimB2b', 'btnSimAdmin',
+        'styleSelectorLabel', 'btnStyleModern', 'btnStyleClassic', 'badgeBefore', 'badgeAfter',
+        'btnApplyStaging', 'stylerProcessingText', 'stylerSuccessAlert',
+        'b2bToggleLabel', 'btnB2bRetail', 'btnB2bPartner', 'b2bActiveBadge',
+        'prodTitleText', 'prodDescText', 'priceLabelNormal', 'priceLabelWholesale', 'discountBadge', 'b2bTermsText',
+        'adminActionLabel', 'btnStep1', 'btnStep2', 'btnStep3', 'orderTitleText',
+        'rmaTitleText', 'rmaSubText', 'photoBeforeLabel', 'photoAfterLabel', 'captionBefore', 'captionAfter',
+        'timelinePaneTitle', 'timelinePaneSub',
+        'tlWeek1Title', 'tlWeek1Desc', 'tagStdInclude1', 'tagEliteInclude1',
+        'tlWeek2Title', 'tlWeek2Desc', 'tagStdInclude2', 'tagEliteInclude2',
+        'tlWeek3Title', 'tlWeek3Desc', 'tagStdInclude3', 'tagEliteInclude3',
+        'tlWeek4Title', 'tlWeek4Desc', 'tagStdWarn', 'tagEliteInclude4',
+        'tlWeek5Title', 'tlWeek5Desc', 'tagStdMissing', 'tagEliteInclude5',
+        'faqTitle', 'faqQ1', 'faqA1', 'faqQ2', 'faqA2', 'faqQ3', 'faqA3',
+        'footerCopyright', 'footerTagline'
+      ];
+
+      itemKeys.forEach(key => {
+        const el = document.getElementById(key);
+        if (el) {
+          const dictKey = key.replace('Text', '').replace('Btn', '').replace('Label1', '').replace('Label2', '').replace('Title', '').replace('Desc', '').replace('Pane', '').replace('Include1', '').replace('Include2', '').replace('Include3', '').replace('Include4', '').replace('Include5', '').replace('Normal', '').replace('Wholesale', '');
+          
+          // Match keys properly
+          let lookup = dictKey;
+          if (key === 'budgetLabel1' || key === 'budgetLabel2') lookup = 'budget';
+          if (key === 'currencyLabel1' || key === 'currencyLabel2') lookup = 'egp';
+          if (key === 'weeksLabel1' || key === 'weeksLabel2') lookup = 'weeks';
+          if (key === 'timelineLabel1' || key === 'timelineLabel2') lookup = 'timeline';
+          
+          if (t[lang][lookup]) {
+            el.innerHTML = t[lang][lookup];
+          } else if (t[lang][key]) {
+            el.innerHTML = t[lang][key];
+          }
+        }
+      });
+
+      // Special highlight list items translation
+      const eliteHighlights = document.getElementById('eliteHighlights');
+      const standardHighlights = document.getElementById('standardHighlights');
+      
+      if (lang === 'ar') {
+        eliteHighlights.innerHTML = `
+          <ul>
+            <li><strong>منسق الغرف الذكي (AI Room Styler)</strong> لتخيل الأثاث في الغرفة</li>
+            <li><strong>شات بوت تفاعلي للعملاء 24/7</strong> للإجابة واقتراح المنتجات</li>
+            <li><strong>بوابة تجار ومصممي ديكور B2B</strong> مخصصة بأسعار الجملة</li>
+            <li><strong>ربط أتمتة شحن أرامكس API بالكامل</strong> لسحب البوالص فوريًا</li>
+            <li><strong>نظام الصيانة والاسترجاع الرقمي بالصور (RMA)</strong> لحماية الحقوق</li>
+          </ul>
+        `;
+        standardHighlights.innerHTML = `
+          <ul>
+            <li>تصفح المنتجات والأقسام وسلة الشراء بالكامل</li>
+            <li>صفحة "تنفيذ تصميمات خاصة" مع رفع صورة ودفع عربون</li>
+            <li>طلب "صندوق عينات الخامات" مباشرة كمنتج بالمتجر</li>
+            <li>بوابة الدفع الإلكتروني وتواصل واتساب مباشر</li>
+            <li>لوحة تحكم الآدمن لإدارة الطلبات والمدونة (SEO)</li>
+          </ul>
+        `;
+      } else {
+        eliteHighlights.innerHTML = `
+          <ul>
+            <li><strong>AI Room Styler</strong> for virtual furniture styling visualization</li>
+            <li><strong>24/7 Smart AI Chatbot</strong> for instant customer queries</li>
+            <li><strong>Dedicated B2B Portal</strong> showing decorator trade discounts</li>
+            <li><strong>Full Automatic Aramex Shipping API</strong> dispatch & tracking</li>
+            <li><strong>RMA Claims System</strong> using before/after shipping photos log</li>
+          </ul>
+        `;
+        standardHighlights.innerHTML = `
+          <ul>
+            <li>Full storefront catalog browsing & e-commerce shopping cart</li>
+            <li>Special customized orders request flow with deposit payment</li>
+            <li>Buy physical material sample boxes directly in checkout</li>
+            <li>Electronic secure payment gateway & quick WhatsApp floating buttons</li>
+            <li>Admin order tracker & simple SEO blogging articles panel</li>
+          </ul>
+        `;
+      }
+
+      // Re-trigger simulator texts adjustments
+      if (isStylerSimulated) {
+        document.getElementById('stylerSuccessAlert').style.display = 'block';
+      }
+      
+      // Update URLs
+      updateWhatsAppLinks();
+    }
+
+    // Tab switcher logic
+    function switchMainTab(tabId, btnEl) {
+      // Deactivate all
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('pane-active'));
+      document.querySelectorAll('.nav-tab-btn').forEach(el => el.classList.remove('nav-tab-btn--active'));
+      
+      // Activate target
+      document.getElementById(tabId + 'Pane').classList.add('pane-active');
+      btnEl.classList.add('nav-tab-btn--active');
+    }
+
+    // Simulator sub-module switcher logic
+    function switchSimModule(moduleId, btnEl) {
+      document.querySelectorAll('.sim-module-pane').forEach(el => el.classList.remove('sim-active'));
+      document.querySelectorAll('.sim-nav-btn').forEach(el => el.classList.remove('sim-nav-btn--active'));
+      
+      document.getElementById('simModule' + moduleId.charAt(0).toUpperCase() + moduleId.slice(1)).classList.add('sim-active');
+      btnEl.classList.add('sim-nav-btn--active');
+    }
+
+    // AI Room Styler options simulator
+    function setStylerOption(style, btnEl) {
+      currentStyle = style;
+      isStylerSimulated = false;
+      
+      // Update buttons
+      document.querySelectorAll('.style-btn-group button').forEach(el => el.classList.remove('active-btn'));
+      btnEl.classList.add('active-btn');
+      
+      // Revert result canvas state
+      document.getElementById('stylerResultBg').classList.remove('room-visible');
+      document.getElementById('stylerCtaOverlay').style.display = 'flex';
+      document.getElementById('stylerLoadingOverlay').style.display = 'none';
+      document.getElementById('stylerSuccessAlert').style.display = 'none';
+      
+      // Update description text in left empty room pane
+      const emptyTextDesc = document.getElementById('emptyTextDesc');
+      if (style === 'modern') {
+        emptyTextDesc.innerText = lang === 'ar' ? 'غرفة صالون فارغة، جاري تجهيز الذكاء الاصطناعي لملء الفراغ...' : 'Bare living room walls and hardwood floor. Preparing AI...';
+      } else {
+        emptyTextDesc.innerText = lang === 'ar' ? 'غرفة نوم فارغة، جاري تجهيز الذكاء الاصطناعي لملء الفراغ...' : 'Bare bedroom walls and hardwood floor. Preparing AI...';
+      }
+    }
+
+    // Run AI Staging simulation
+    function simulateAIStaging() {
+      const ctaOverlay = document.getElementById('stylerCtaOverlay');
+      const loadingOverlay = document.getElementById('stylerLoadingOverlay');
+      const resultBg = document.getElementById('stylerResultBg');
+      const successAlert = document.getElementById('stylerSuccessAlert');
+      
+      // Switch groups
+      const modGroup = document.getElementById('furnitureModernGroup');
+      const classGroup = document.getElementById('furnitureClassicGroup');
+      
+      if (currentStyle === 'modern') {
+        modGroup.style.display = 'block';
+        classGroup.style.display = 'none';
+      } else {
+        modGroup.style.display = 'none';
+        classGroup.style.display = 'block';
+      }
+
+      ctaOverlay.style.display = 'none';
+      loadingOverlay.style.display = 'flex';
+
+      setTimeout(() => {
+        loadingOverlay.style.display = 'none';
+        resultBg.classList.add('room-visible');
+        successAlert.style.display = 'block';
+        isStylerSimulated = true;
+      }, 2000);
+    }
+
+    // B2B Pricing simulator profile switcher
+    function setB2bProfile(profile, btnEl) {
+      document.querySelectorAll('.b2b-toggle-switch-container button').forEach(el => el.classList.remove('profile-toggle-btn--active'));
+      btnEl.classList.add('profile-toggle-btn--active');
+      
+      const activeBadge = document.getElementById('b2bActiveBadge');
+      const priceRetail = document.getElementById('priceRetailGroup');
+      const pricePartner = document.getElementById('pricePartnerGroup');
+      const cartAction = document.getElementById('btnCartAction');
+      
+      if (profile === 'retail') {
+        activeBadge.style.display = 'none';
+        priceRetail.style.display = 'block';
+        pricePartner.style.display = 'none';
+        cartAction.innerText = lang === 'ar' ? 'إضافة إلى السلة' : 'Add to Cart';
+      } else {
+        activeBadge.style.display = 'inline-block';
+        priceRetail.style.display = 'none';
+        pricePartner.style.display = 'block';
+        cartAction.innerText = lang === 'ar' ? 'طلب تسعيرة كميات جملة' : 'Request Wholesale Quote';
+      }
+    }
+
+    // Admin Operations Status Pipeline simulator
+    function setAdminStatus(status, btnEl) {
+      document.querySelectorAll('.admin-status-pipeline button').forEach(el => {
+        el.className = 'pipeline-btn';
+      });
+      
+      const badge = document.getElementById('orderStatusBadge');
+      const desc = document.getElementById('statusDescText');
+      const rma = document.getElementById('rmaModule');
+      
+      if (status === 'workshop') {
+        btnEl.classList.add('active-workshop');
+        badge.innerText = lang === 'ar' ? 'تحت التصنيع بالورشة' : 'In Workshop';
+        badge.className = 'status-display-badge status-workshop';
+        desc.innerText = lang === 'ar' ? 'الطلب قيد التصنيع في الورشة حالياً. جاري تجهيز الأخشاب والأقمشة المعتمدة.' : 'Order is currently being crafted in the carpentry workshop using solid beech wood.';
+        rma.style.display = 'none';
+      } else if (status === 'transit') {
+        btnEl.classList.add('active-transit');
+        badge.innerText = lang === 'ar' ? 'مع أرامكس للشحن' : 'In Transit (Aramex)';
+        badge.className = 'status-display-badge status-transit';
+        desc.innerText = lang === 'ar' ? 'تم تجهيز بوليصة الشحن تلقائياً عبر ربط API أرامكس. رقم التتبع: AMX-9827361.' : 'Shipping label automatically generated via Aramex API integration. Track ID: AMX-9827361.';
+        rma.style.display = 'none';
+      } else if (status === 'completed') {
+        btnEl.classList.add('active-completed');
+        badge.innerText = lang === 'ar' ? 'مكتمل وتم تسليمه' : 'Delivered & Closed';
+        badge.className = 'status-display-badge status-completed';
+        desc.innerText = lang === 'ar' ? 'تم التوصيل بنجاح. أرسل النظام تلقائياً دليل العناية بالأثاث للعميل عبر الإيميل.' : 'Delivered successfully. System automatically dispatched the Furniture Care Manual to customer email.';
+        rma.style.display = 'block';
+      }
+    }
+
+    // Initialize WhatsApp link on boot
+    updateWhatsAppLinks();
+  </script>
+</body>
+</html>
