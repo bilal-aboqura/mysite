@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>عرض مشروع منصة مصنع الأثاث المتكاملة — بلال أبو قورة</title>
   <meta name="robots" content="noindex, nofollow">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
   
   <!-- Premium Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,19 +26,51 @@
     }
 
     :root {
-      --color-bg: #050a14;
-      --color-bg-alt: #0a1628;
-      --color-primary: #3b82f6;
-      --color-primary-glow: #1d4ed8;
-      --color-accent: #60a5fa;
-      --color-text: #ffffff;
-      --color-text-dim: #94a3b8;
-      --color-text-muted: #64748b;
+      /* Light Theme (Default / Inspired by edumize) */
+      --color-bg: #f8f9fb;
+      --color-bg-alt: #ffffff;
+      --color-primary: #1a56db;
+      --color-primary-glow: #0d1f3c;
+      --color-accent: #1a56db;
+      --color-accent-dim: #2563eb;
+      --color-text: #0d1f3c;
+      --color-text-dim: #374151;
+      --color-text-muted: #6b7280;
       
-      --glass-bg: rgba(255, 255, 255, 0.03);
-      --glass-bg-hover: rgba(255, 255, 255, 0.05);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --glass-border-hover: rgba(59, 130, 246, 0.35);
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-bg-hover: rgba(255, 255, 255, 0.95);
+      --glass-border: #e4e7ec;
+      --glass-border-hover: rgba(26, 86, 219, 0.35);
+      
+      --card-bg-elite: linear-gradient(135deg, rgba(26, 86, 219, 0.05), rgba(255, 255, 255, 0.98));
+      --card-bg-standard: #ffffff;
+      --card-border-elite: rgba(26, 86, 219, 0.3);
+      --card-border-standard: #e4e7ec;
+      --shadow-color: rgba(13, 31, 60, 0.08);
+      
+      --heading-color: #0d1f3c;
+      --hero-text-gradient: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
+      
+      --matrix-header-bg: rgba(26, 86, 219, 0.08);
+      --matrix-row-hover: #f1f5f9;
+      --matrix-border: #e2e8f0;
+      --badge-bg: rgba(26, 86, 219, 0.08);
+      
+      --simulator-bg: #ffffff;
+      --canvas-bg: #f1f5f9;
+      
+      /* Statuses */
+      --color-status-workshop-text: #b45309;
+      --color-status-workshop-bg: rgba(180, 83, 9, 0.08);
+      --color-status-workshop-border: rgba(180, 83, 9, 0.25);
+      
+      --color-status-transit-text: #1a56db;
+      --color-status-transit-bg: rgba(26, 86, 219, 0.08);
+      --color-status-transit-border: rgba(26, 86, 219, 0.25);
+      
+      --color-status-completed-text: #047857;
+      --color-status-completed-bg: rgba(4, 120, 87, 0.08);
+      --color-status-completed-border: rgba(4, 120, 87, 0.25);
       
       --radius-sm: 8px;
       --radius-md: 16px;
@@ -45,6 +83,56 @@
       --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
+    [data-theme="dark"] {
+      /* Dark Theme */
+      --color-bg: #060d1e;
+      --color-bg-alt: #0b1a35;
+      --color-primary: #1a56db;
+      --color-primary-glow: #1e40af;
+      --color-accent: #60a5fa;
+      --color-accent-dim: #93c5fd;
+      --color-text: #f0f4f8;
+      --color-text-dim: #b0bec5;
+      --color-text-muted: #78909c;
+      
+      --glass-bg: rgba(13, 31, 60, 0.45);
+      --glass-bg-hover: rgba(13, 31, 60, 0.6);
+      --glass-border: rgba(96, 165, 250, 0.12);
+      --glass-border-hover: rgba(26, 86, 219, 0.5);
+      
+      --card-bg-elite: linear-gradient(135deg, rgba(26, 86, 219, 0.12), rgba(13, 31, 60, 0.6));
+      --card-bg-standard: rgba(13, 31, 60, 0.3);
+      --card-border-elite: rgba(26, 86, 219, 0.55);
+      --card-border-standard: rgba(96, 165, 250, 0.1);
+      --shadow-color: rgba(0, 0, 0, 0.4);
+      
+      --heading-color: #ffffff;
+      --hero-text-gradient: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
+      
+      --matrix-header-bg: rgba(59, 130, 246, 0.08);
+      --matrix-row-hover: rgba(255, 255, 255, 0.015);
+      --matrix-border: rgba(255, 255, 255, 0.04);
+      --badge-bg: rgba(26, 86, 219, 0.18);
+      
+      --simulator-bg: var(--glass-bg);
+      --canvas-bg: #080c16;
+      
+      --color-status-workshop-text: #fbbf24;
+      --color-status-workshop-bg: rgba(245, 158, 11, 0.15);
+      --color-status-workshop-border: rgba(245, 158, 11, 0.35);
+      
+      --color-status-transit-text: #93c5fd;
+      --color-status-transit-bg: rgba(59, 130, 246, 0.15);
+      --color-status-transit-border: rgba(59, 130, 246, 0.35);
+      
+      --color-status-completed-text: #34d399;
+      --color-status-completed-bg: rgba(16, 185, 129, 0.15);
+      --color-status-completed-border: rgba(16, 185, 129, 0.35);
+
+      --blob-1-bg: radial-gradient(circle, rgba(26, 86, 219, 0.2) 0%, transparent 70%);
+      --blob-2-bg: radial-gradient(circle, rgba(96, 165, 250, 0.1) 0%, transparent 70%);
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -53,11 +141,11 @@
       font-family: 'Inter', 'Tajawal', sans-serif;
       background-color: var(--color-bg);
       background-image: 
-        linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
-      background-size: 50px 50px;
+        linear-gradient(rgba(26, 86, 219, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26, 86, 219, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
       color: var(--color-text);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -86,7 +174,7 @@
     .liquid-blob-1 {
       width: 450px;
       height: 450px;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+      background: var(--blob-1-bg, radial-gradient(circle, rgba(26, 86, 219, 0.05) 0%, transparent 70%));
       top: 5%;
       right: 10%;
     }
@@ -94,7 +182,7 @@
     .liquid-blob-2 {
       width: 350px;
       height: 350px;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+      background: var(--blob-2-bg, radial-gradient(circle, rgba(96, 165, 250, 0.03) 0%, transparent 70%));
       top: 40%;
       left: 10%;
     }
@@ -131,7 +219,7 @@
       justify-content: center;
       gap: 8px;
       padding: 14px 32px;
-      background: var(--color-primary);
+      background: linear-gradient(135deg, #1a56db, #2563eb);
       color: #fff;
       font-size: 0.95rem;
       font-weight: 700;
@@ -140,7 +228,7 @@
       cursor: pointer;
       text-decoration: none;
       transition: all var(--transition-base);
-      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+      box-shadow: 0 4px 24px rgba(26, 86, 219, 0.45);
       font-family: inherit;
     }
 
@@ -160,7 +248,7 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid var(--glass-border);
-      color: #fff;
+      color: var(--heading-color);
       font-size: 0.95rem;
       font-weight: 600;
       border-radius: var(--radius-pill);
@@ -173,7 +261,7 @@
     .btn-glass:hover {
       background: var(--glass-bg-hover);
       border-color: var(--glass-border-hover);
-      color: #ffffff;
+      color: var(--heading-color);
       transform: translateY(-2px);
     }
 
@@ -184,11 +272,11 @@
       font-weight: 700;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--color-accent);
+      color: #93c5fd;
       margin-bottom: 1rem;
       padding: 6px 16px;
-      background: rgba(59, 130, 246, 0.12);
-      border: 1px solid rgba(59, 130, 246, 0.25);
+      background: rgba(26, 86, 219, 0.18);
+      border: 1px solid rgba(26, 86, 219, 0.35);
       border-radius: var(--radius-pill);
     }
 
@@ -220,13 +308,33 @@
       font-family: 'Outfit', sans-serif;
       font-size: 1.15rem;
       font-weight: 800;
-      color: #ffffff;
+      color: var(--heading-color);
+      transition: color var(--transition-base);
     }
 
     /* ── HERO ── */
     .proposal-hero {
       text-align: center;
-      padding-block: clamp(3rem, 8vw, 6rem);
+      padding-block: clamp(3rem, 7vw, 4.5rem);
+      padding-inline: clamp(20px, 5vw, 40px);
+      background: #0d1f3c;
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(13, 31, 60, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .proposal-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
     }
 
     .proposal-main-title {
@@ -235,19 +343,23 @@
       line-height: 1.25;
       margin-top: 15px;
       margin-bottom: 20px;
-      background: linear-gradient(135deg, #ffffff 30%, #93c5fd 100%);
+      background: var(--hero-text-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       max-width: 900px;
       margin-inline: auto;
+      position: relative;
+      z-index: 2;
     }
 
     .proposal-main-subtitle {
       font-size: 1.05rem;
-      color: var(--color-text-dim);
+      color: rgba(255, 255, 255, 0.75);
       max-width: 750px;
       margin: 0 auto;
       line-height: 1.7;
+      position: relative;
+      z-index: 2;
     }
 
     /* ── PRICING CARDS GRID ── */
@@ -265,17 +377,19 @@
       flex-direction: column;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 10px 30px var(--shadow-color);
+      transition: all var(--transition-base);
     }
 
     .proposal-card--elite {
-      border-color: rgba(59, 130, 246, 0.45);
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(99, 102, 241, 0.04));
-      box-shadow: 0 0 50px rgba(59, 130, 246, 0.2), 0 20px 60px rgba(0, 0, 0, 0.5);
+      border-color: var(--card-border-elite);
+      background: var(--card-bg-elite);
+      box-shadow: 0 10px 45px var(--shadow-color);
     }
 
     .proposal-card--standard {
-      border-color: rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.01);
+      border-color: var(--card-border-standard);
+      background: var(--card-bg-standard);
     }
 
     .card-badge-container {
@@ -284,7 +398,7 @@
     }
 
     .elite-badge {
-      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      background: linear-gradient(135deg, #1a56db, #3b82f6);
       color: #ffffff;
       padding: 6px 16px;
       border-radius: var(--radius-pill);
@@ -292,11 +406,11 @@
       font-weight: 800;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 4px 16px rgba(26, 86, 219, 0.35);
     }
 
     .standard-badge {
-      background: rgba(255, 255, 255, 0.06);
+      background: var(--glass-border);
       color: var(--color-text-dim);
       padding: 6px 16px;
       border-radius: var(--radius-pill);
@@ -307,7 +421,7 @@
     .card-title {
       font-size: 1.3rem;
       font-weight: 700;
-      color: #ffffff;
+      color: var(--heading-color);
       margin-bottom: 12px;
       line-height: 1.35;
     }
@@ -322,8 +436,8 @@
     .pricing-meta-row {
       display: flex;
       gap: 20px;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(26, 86, 219, 0.02);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-md);
       padding: 20px;
       margin-bottom: 30px;
@@ -346,7 +460,7 @@
     .meta-val {
       font-size: 1.45rem;
       font-weight: 800;
-      color: #ffffff;
+      color: var(--heading-color);
       display: flex;
       align-items: baseline;
       gap: 4px;
@@ -383,7 +497,7 @@
 
     .package-highlights-summary li {
       font-size: 0.9rem;
-      color: #cbd5e1;
+      color: var(--color-text-dim);
       display: flex;
       align-items: flex-start;
       gap: 8px;
@@ -409,7 +523,7 @@
     }
 
     .card-cta-btn--elite {
-      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.35);
     }
 
     /* ── SECTION NAV TABS ── */
@@ -418,7 +532,8 @@
       justify-content: space-around;
       padding: 6px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
       margin-bottom: 40px;
       flex-wrap: wrap;
       gap: 6px;
@@ -440,14 +555,20 @@
     }
 
     .nav-tab-btn:hover {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.02);
+      color: var(--heading-color);
+      background: rgba(26, 86, 219, 0.03);
     }
 
     .nav-tab-btn--active {
+      color: var(--color-primary) !important;
+      background: rgba(26, 86, 219, 0.08) !important;
+      box-shadow: inset 0 0 12px rgba(26, 86, 219, 0.03);
+      border: 1px solid rgba(26, 86, 219, 0.2);
+    }
+
+    [data-theme="dark"] .nav-tab-btn--active {
       color: #ffffff !important;
       background: rgba(59, 130, 246, 0.12) !important;
-      box-shadow: inset 0 0 12px rgba(59, 130, 246, 0.05);
       border: 1px solid rgba(59, 130, 246, 0.2);
     }
 
@@ -462,16 +583,17 @@
 
     /* ── FEATURE MATRIX ── */
     .matrix-category {
-      background: rgba(255, 255, 255, 0.005);
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      background: var(--color-bg-alt);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-lg);
       padding: 30px;
       margin-bottom: 40px;
+      box-shadow: 0 10px 40px var(--shadow-color);
     }
 
     .category-title-header {
       font-size: 1.25rem;
-      color: #ffffff;
+      color: var(--heading-color);
       margin-bottom: 8px;
     }
 
@@ -491,13 +613,13 @@
     .matrix-row {
       display: flex;
       padding: 16px 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid var(--matrix-border);
       align-items: center;
       transition: background-color var(--transition-fast);
     }
 
     .matrix-row:hover:not(.matrix-header) {
-      background: rgba(255, 255, 255, 0.015);
+      background: var(--matrix-row-hover);
     }
 
     .matrix-row:last-child {
@@ -505,10 +627,11 @@
     }
 
     .matrix-header {
-      background: rgba(59, 130, 246, 0.08);
-      border-bottom: 2px solid rgba(59, 130, 246, 0.2);
+      background: var(--matrix-header-bg);
+      border-bottom: 2px solid var(--color-primary);
       font-weight: 700;
       font-size: 0.9rem;
+      color: var(--heading-color);
     }
 
     .matrix-cell {
@@ -532,7 +655,7 @@
     }
 
     .elite-col {
-      background: rgba(59, 130, 246, 0.02);
+      background: rgba(26, 86, 219, 0.015);
     }
 
     .feat-tip {
@@ -554,16 +677,16 @@
     .highlight-tag {
       font-size: 0.68rem;
       padding: 2px 8px;
-      background: rgba(59, 130, 246, 0.15);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      color: var(--color-accent);
+      background: rgba(26, 86, 219, 0.08);
+      border: 1px solid rgba(26, 86, 219, 0.2);
+      color: var(--color-primary);
       border-radius: var(--radius-pill);
       margin-top: 4px;
       font-weight: 700;
     }
 
     .text-highlight-row {
-      background: rgba(59, 130, 246, 0.01);
+      background: rgba(26, 86, 219, 0.005);
     }
 
     /* ── UX SIMULATORS ── */
@@ -574,7 +697,7 @@
 
     .sim-title-header {
       font-size: 1.35rem;
-      color: #ffffff;
+      color: var(--heading-color);
       margin-bottom: 8px;
     }
 
@@ -594,8 +717,8 @@
     .sim-nav-btn {
       padding: 12px 24px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
       color: var(--color-text-dim);
       font-weight: 600;
       font-size: 0.88rem;
@@ -605,21 +728,23 @@
     }
 
     .sim-nav-btn:hover {
-      background: rgba(255, 255, 255, 0.04);
-      color: #ffffff;
+      background: rgba(26, 86, 219, 0.03);
+      color: var(--heading-color);
     }
 
     .sim-nav-btn--active {
       background: var(--color-primary) !important;
       border-color: var(--color-primary) !important;
       color: #ffffff !important;
-      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+      box-shadow: 0 8px 24px rgba(26, 86, 219, 0.25);
     }
 
     .simulator-body {
       padding: 30px;
+      background: var(--color-bg-alt);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-lg);
-      border-color: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 10px 40px var(--shadow-color);
       min-height: 380px;
     }
 
@@ -633,7 +758,7 @@
 
     .sim-module-intro {
       font-size: 0.95rem;
-      color: #ffffff;
+      color: var(--heading-color);
       margin-bottom: 20px;
     }
 
@@ -665,7 +790,12 @@
 
     .style-btn-group button.active-btn {
       border-color: var(--color-accent);
-      background: rgba(96, 165, 250, 0.12);
+      background: rgba(26, 86, 219, 0.08);
+      color: var(--color-primary);
+    }
+
+    [data-theme="dark"] .style-btn-group button.active-btn {
+      background: rgba(96, 165, 250, 0.15);
       color: #ffffff;
     }
 
@@ -685,9 +815,9 @@
     .canvas-pane {
       position: relative;
       border-radius: var(--radius-md);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--glass-border);
       overflow: hidden;
-      background: #080c16;
+      background: var(--canvas-bg);
     }
 
     .canvas-badge {
@@ -969,8 +1099,8 @@
 
     .b2b-toggle-switch-container {
       display: flex;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--color-bg);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-pill);
       padding: 4px;
     }
@@ -989,6 +1119,12 @@
     }
 
     .profile-toggle-btn--active {
+      background: rgba(26, 86, 219, 0.08) !important;
+      border: 1px solid rgba(26, 86, 219, 0.2) !important;
+      color: var(--color-primary) !important;
+    }
+
+    [data-theme="dark"] .profile-toggle-btn--active {
       background: rgba(59, 130, 246, 0.15) !important;
       border: 1px solid rgba(59, 130, 246, 0.3) !important;
       color: var(--color-accent) !important;
@@ -1009,9 +1145,9 @@
     .b2b-badge-applied {
       font-size: 0.72rem;
       padding: 4px 12px;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #34d399;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: #10b981;
       border-radius: var(--radius-pill);
       font-weight: 800;
     }
@@ -1029,8 +1165,8 @@
     }
 
     .sim-product-image-container {
-      background: #070b14;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--canvas-bg);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-md);
       display: flex;
       align-items: center;
@@ -1073,7 +1209,7 @@
 
     .sim-prod-name {
       font-size: 1.1rem;
-      color: #ffffff;
+      color: var(--heading-color);
       margin-bottom: 6px;
     }
 
@@ -1097,7 +1233,7 @@
     .actual-price-num {
       font-size: 1.55rem;
       font-weight: 800;
-      color: #ffffff;
+      color: var(--heading-color);
     }
 
     .original-strike-price {
@@ -1117,8 +1253,9 @@
     .b2b-saving-pill {
       font-size: 0.68rem;
       padding: 2px 8px;
-      background: rgba(16, 185, 129, 0.15);
-      color: #34d399;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: #10b981;
       border-radius: var(--radius-sm);
       font-weight: 700;
     }
@@ -1155,8 +1292,8 @@
     .pipeline-btn {
       padding: 10px 18px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255,255,255,0.01);
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
       color: var(--color-text-dim);
       font-weight: 700;
       font-size: 0.78rem;
@@ -1171,37 +1308,38 @@
     }
 
     .active-workshop {
-      border-color: #f59e0b !important;
-      background: rgba(245, 158, 11, 0.15) !important;
-      color: #fbbf24 !important;
+      border-color: var(--color-status-workshop-border) !important;
+      background: var(--color-status-workshop-bg) !important;
+      color: var(--color-status-workshop-text) !important;
     }
 
     .active-transit {
-      border-color: #3b82f6 !important;
-      background: rgba(59, 130, 246, 0.15) !important;
-      color: #93c5fd !important;
+      border-color: var(--color-status-transit-border) !important;
+      background: var(--color-status-transit-bg) !important;
+      color: var(--color-status-transit-text) !important;
     }
 
     .active-completed {
-      border-color: #10b981 !important;
-      background: rgba(16, 185, 129, 0.15) !important;
-      color: #34d399 !important;
+      border-color: var(--color-status-completed-border) !important;
+      background: var(--color-status-completed-bg) !important;
+      color: var(--color-status-completed-text) !important;
     }
 
     .admin-order-workspace {
       max-width: 650px;
       margin: 0 auto;
       border-radius: var(--radius-md);
-      border-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--glass-border);
       overflow: hidden;
+      box-shadow: 0 10px 40px var(--shadow-color);
     }
 
     .workspace-header {
       display: flex;
       justify-content: space-between;
       padding: 15px 20px;
-      background: rgba(255, 255, 255, 0.02);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: var(--color-bg-alt);
+      border-bottom: 1px solid var(--glass-border);
       font-size: 0.82rem;
       font-weight: 700;
       align-items: center;
@@ -1216,9 +1354,9 @@
       font-weight: 800;
     }
 
-    .status-display-badge.status-workshop { background: rgba(245, 158, 11, 0.12); color: #fbbf24; }
-    .status-display-badge.status-transit { background: rgba(59, 130, 246, 0.12); color: #93c5fd; }
-    .status-display-badge.status-completed { background: rgba(16, 185, 129, 0.12); color: #34d399; }
+    .status-display-badge.status-workshop { background: var(--color-status-workshop-bg); color: var(--color-status-workshop-text); border: 1px solid var(--color-status-workshop-border); }
+    .status-display-badge.status-transit { background: var(--color-status-transit-bg); color: var(--color-status-transit-text); border: 1px solid var(--color-status-transit-border); }
+    .status-display-badge.status-completed { background: var(--color-status-completed-bg); color: var(--color-status-completed-text); border: 1px solid var(--color-status-completed-border); }
 
     .workspace-body-details {
       padding: 24px;
@@ -1326,7 +1464,7 @@
 
     .timeline-pane-title {
       font-size: 1.25rem;
-      color: #ffffff;
+      color: var(--heading-color);
       margin-bottom: 8px;
     }
 
@@ -1346,9 +1484,11 @@
       display: grid;
       grid-template-columns: 60px 1fr;
       padding: 24px;
+      background: var(--color-bg-alt);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-md);
       margin-bottom: 20px;
-      border-color: rgba(255,255,255,0.05);
+      box-shadow: 0 8px 30px var(--shadow-color);
     }
 
     .milestone-col-indicator {
@@ -1367,8 +1507,8 @@
       justify-content: center;
       font-weight: 800;
       font-size: 0.85rem;
-      background: rgba(255,255,255,0.03);
-      border: 2px solid rgba(255, 255, 255, 0.12);
+      background: var(--color-bg);
+      border: 2px solid var(--glass-border);
       color: var(--color-text-muted);
       z-index: 10;
     }
@@ -1377,14 +1517,14 @@
       background: var(--color-primary);
       border-color: var(--color-primary);
       color: #ffffff;
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 0 15px rgba(26, 86, 219, 0.4);
     }
 
     .milestone-node.elite-node {
-      background: #8b5cf6;
-      border-color: #8b5cf6;
+      background: #7c3aed;
+      border-color: #7c3aed;
       color: #ffffff;
-      box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
     }
 
     .milestone-line {
@@ -1392,13 +1532,13 @@
       top: 32px;
       bottom: -44px;
       width: 2px;
-      background: rgba(255, 255, 255, 0.06);
+      background: var(--glass-border);
       z-index: 0;
     }
 
     .milestone-week-title {
       font-size: 1.05rem;
-      color: #ffffff;
+      color: var(--heading-color);
       margin-bottom: 6px;
     }
 
@@ -1422,23 +1562,25 @@
       font-weight: 700;
     }
 
-    .tag-std { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255,255,255,0.08); color: var(--color-text-dim); }
-    .tag-elite { background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59,130,246,0.18); color: var(--color-accent); }
-    .tag-std-warn { background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245,158,11,0.2); color: #fbbc04; }
-    .tag-std-missing { background: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239,68,68,0.12); color: #f87171; }
+    .tag-std { background: rgba(13, 31, 60, 0.04); border: 1px solid var(--glass-border); color: var(--color-text-dim); }
+    .tag-elite { background: rgba(26, 86, 219, 0.08); border: 1px solid rgba(26, 86, 219, 0.2); color: var(--color-primary); }
+    .tag-std-warn { background: rgba(180, 83, 9, 0.08); border: 1px solid rgba(180, 83, 9, 0.2); color: var(--color-status-workshop-text); }
+    .tag-std-missing { background: rgba(220, 38, 38, 0.08); border: 1px solid rgba(220, 38, 38, 0.2); color: #dc2626; }
 
     /* ── FAQ SECTION ── */
     .proposal-faq-section {
       padding: 40px;
+      background: var(--color-bg-alt);
+      border: 1px solid var(--glass-border);
       border-radius: var(--radius-lg);
-      border-color: rgba(255, 255, 255, 0.04);
       margin-top: 60px;
       margin-bottom: 60px;
+      box-shadow: 0 10px 40px var(--shadow-color);
     }
 
     .faq-heading-title {
       font-size: 1.35rem;
-      color: #ffffff;
+      color: var(--heading-color);
       margin-bottom: 30px;
       text-align: center;
     }
@@ -1457,7 +1599,7 @@
 
     .faq-q {
       font-size: 1rem;
-      color: #ffffff;
+      color: var(--heading-color);
       font-weight: 700;
     }
 
@@ -1469,7 +1611,7 @@
 
     /* ── HUB FOOTER ── */
     .hub-footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid var(--glass-border);
       padding-top: 30px;
       margin-top: 40px;
       text-align: center;
@@ -1509,6 +1651,496 @@
     body.ltr .back-home-btn svg {
       margin-right: 6px;
     }
+
+    /* ══════════════════════════════════════════════
+       COMPREHENSIVE MOBILE RESPONSIVE STYLES
+    ══════════════════════════════════════════════ */
+
+    /* ── Tablet ── */
+    @media (max-width: 960px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .proposal-card {
+        padding: 30px 24px;
+      }
+
+      .matrix-row {
+        padding: 14px 16px;
+      }
+
+      .matrix-category {
+        padding: 24px 20px;
+      }
+
+      .proposal-faq-section {
+        padding: 30px 24px;
+      }
+
+      .sim-sub-nav {
+        gap: 10px;
+      }
+
+      .sim-nav-btn {
+        padding: 10px 16px;
+        font-size: 0.82rem;
+      }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 680px) {
+      /* Header */
+      header {
+        padding-block: 1.25rem;
+        gap: 1rem;
+      }
+
+      .btn-glass, .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+      }
+
+      .logo-text {
+        font-size: 1rem;
+      }
+
+      /* Hero */
+      .proposal-hero {
+        padding-block: clamp(2rem, 6vw, 3.5rem);
+      }
+
+      .proposal-main-title {
+        font-size: clamp(1.35rem, 5vw, 2rem);
+        line-height: 1.35;
+      }
+
+      .proposal-main-subtitle {
+        font-size: 0.92rem;
+        line-height: 1.65;
+      }
+
+      .section-label {
+        font-size: 0.7rem;
+        padding: 5px 12px;
+      }
+
+      /* Pricing cards */
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+
+      .proposal-card {
+        padding: 24px 18px;
+        border-radius: var(--radius-md);
+      }
+
+      .card-title {
+        font-size: 1.1rem;
+        line-height: 1.4;
+      }
+
+      .card-description {
+        font-size: 0.82rem;
+      }
+
+      .pricing-meta-row {
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px;
+      }
+
+      .meta-val {
+        font-size: 1.25rem;
+      }
+
+      .package-highlights-summary li {
+        font-size: 0.82rem;
+      }
+
+      .card-cta-btn {
+        padding: 13px 16px;
+        font-size: 0.85rem;
+      }
+
+      /* Navigation Tabs — stack vertically */
+      .proposal-nav-tabs {
+        flex-direction: column;
+        padding: 8px;
+        gap: 6px;
+        margin-bottom: 28px;
+        border-radius: var(--radius-md);
+      }
+
+      .nav-tab-btn {
+        min-width: unset;
+        width: 100%;
+        padding: 12px 14px;
+        font-size: 0.82rem;
+        text-align: center;
+        border-radius: var(--radius-sm);
+      }
+
+      /* Feature Matrix — make scrollable on mobile */
+      .matrix-category {
+        padding: 18px 14px;
+        margin-bottom: 28px;
+        border-radius: var(--radius-md);
+      }
+
+      .category-title-header {
+        font-size: 1.05rem;
+      }
+
+      .category-subtext {
+        font-size: 0.8rem;
+        margin-bottom: 18px;
+      }
+
+      .matrix-table {
+        border-radius: var(--radius-sm);
+      }
+
+      .matrix-row {
+        padding: 12px 10px;
+        gap: 8px;
+      }
+
+      .matrix-header {
+        font-size: 0.75rem;
+      }
+
+      .cell-feat {
+        flex: 1.5;
+        min-width: 0;
+      }
+
+      body.rtl .cell-feat { padding-left: 6px; }
+      body.ltr .cell-feat { padding-right: 6px; }
+
+      .cell-std, .cell-elite {
+        font-size: 0.78rem;
+      }
+
+      .feat-title-main {
+        font-size: 0.78rem;
+        display: block;
+      }
+
+      .feat-tip {
+        font-size: 0.65rem;
+        display: none;
+      }
+
+      .badge-yes {
+        font-size: 0.95rem;
+      }
+
+      .badge-no {
+        font-size: 0.82rem;
+      }
+
+      .highlight-tag {
+        font-size: 0.58rem;
+        padding: 1px 5px;
+      }
+
+      /* Simulator */
+      .simulator-heading-block {
+        margin-bottom: 20px;
+      }
+
+      .sim-title-header {
+        font-size: 1.05rem;
+      }
+
+      .sim-description-text {
+        font-size: 0.82rem;
+      }
+
+      .sim-sub-nav {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .sim-nav-btn {
+        width: 100%;
+        text-align: center;
+        padding: 10px 14px;
+        font-size: 0.82rem;
+      }
+
+      .simulator-body {
+        padding: 18px 14px;
+        border-radius: var(--radius-md);
+        min-height: auto;
+      }
+
+      .sim-module-intro {
+        font-size: 0.85rem;
+      }
+
+      /* AI Styler Canvas */
+      .style-selector-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+
+      .style-btn-group {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .style-btn-group button {
+        width: 100%;
+        padding: 10px 14px;
+        font-size: 0.8rem;
+      }
+
+      .styler-canvas {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .canvas-badge {
+        font-size: 0.6rem;
+        padding: 3px 8px;
+      }
+
+      .room-bg-sim {
+        min-height: 220px;
+      }
+
+      /* B2B Module */
+      .b2b-selector-block {
+        gap: 10px;
+      }
+
+      .b2b-toggle-switch-container {
+        flex-direction: column;
+        gap: 4px;
+        width: 100%;
+      }
+
+      .profile-toggle-btn {
+        width: 100%;
+        text-align: center;
+        padding: 10px 16px;
+        font-size: 0.8rem;
+      }
+
+      .product-b2b-card-sim {
+        padding: 16px;
+      }
+
+      .sim-product-details {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .sim-prod-name {
+        font-size: 0.95rem;
+      }
+
+      .sim-prod-desc {
+        font-size: 0.8rem;
+      }
+
+      .actual-price-num {
+        font-size: 1.3rem;
+      }
+
+      /* Admin Flow Module */
+      .admin-status-pipeline {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+      }
+
+      .pipeline-connector {
+        display: none;
+      }
+
+      .pipeline-btn {
+        width: 100%;
+        text-align: center;
+        padding: 10px 14px;
+        font-size: 0.78rem;
+      }
+
+      .admin-order-workspace {
+        border-radius: var(--radius-sm);
+      }
+
+      .workspace-header {
+        padding: 12px 14px;
+        font-size: 0.78rem;
+      }
+
+      .workspace-body-details {
+        padding: 16px;
+      }
+
+      .status-explanation-card {
+        font-size: 0.82rem;
+        padding: 12px;
+      }
+
+      .rma-title {
+        font-size: 0.82rem;
+      }
+
+      .rma-sub {
+        font-size: 0.7rem;
+      }
+
+      .rma-photo-comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      /* Timeline */
+      .timeline-intro-meta {
+        margin-bottom: 24px;
+      }
+
+      .timeline-pane-title {
+        font-size: 1.05rem;
+      }
+
+      .timeline-pane-sub {
+        font-size: 0.82rem;
+      }
+
+      .milestone-item-row {
+        grid-template-columns: 44px 1fr;
+        padding: 16px;
+        margin-bottom: 14px;
+      }
+
+      .milestone-node {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+      }
+
+      .milestone-line {
+        top: 28px;
+        bottom: -38px;
+      }
+
+      .milestone-week-title {
+        font-size: 0.9rem;
+      }
+
+      .milestone-week-description {
+        font-size: 0.78rem;
+      }
+
+      .milestone-plan-tags {
+        gap: 6px;
+      }
+
+      .tag-std, .tag-elite, .tag-std-warn, .tag-std-missing {
+        font-size: 0.58rem;
+        padding: 2px 8px;
+      }
+
+      /* FAQ */
+      .proposal-faq-section {
+        padding: 24px 16px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        border-radius: var(--radius-md);
+      }
+
+      .faq-heading-title {
+        font-size: 1.05rem;
+        margin-bottom: 20px;
+      }
+
+      .faq-q {
+        font-size: 0.88rem;
+      }
+
+      .faq-a {
+        font-size: 0.8rem;
+      }
+
+      .faq-grid {
+        gap: 22px;
+      }
+
+      /* Footer */
+      .hub-footer {
+        padding-top: 20px;
+        margin-top: 28px;
+        padding-bottom: 28px;
+      }
+
+      .hub-footer p {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ── Small phones ── */
+    @media (max-width: 400px) {
+      .wrap {
+        padding: 0 14px;
+      }
+
+      .proposal-main-title {
+        font-size: 1.2rem;
+      }
+
+      .proposal-main-subtitle {
+        font-size: 0.85rem;
+      }
+
+      .proposal-card {
+        padding: 20px 14px;
+      }
+
+      .card-title {
+        font-size: 1rem;
+      }
+
+      .meta-val {
+        font-size: 1.1rem;
+      }
+
+      .nav-tab-btn {
+        font-size: 0.75rem;
+        padding: 10px 12px;
+      }
+
+      .feat-title-main {
+        font-size: 0.72rem;
+      }
+
+      .matrix-row {
+        padding: 10px 8px;
+      }
+
+      .sim-module-intro {
+        font-size: 0.78rem;
+      }
+
+      .milestone-item-row {
+        grid-template-columns: 36px 1fr;
+        padding: 12px 10px;
+      }
+
+      .milestone-node {
+        width: 24px;
+        height: 24px;
+        font-size: 0.65rem;
+      }
+    }
   </style>
 </head>
 <body class="rtl"> <!-- Arabic RTL by default -->
@@ -1529,9 +2161,12 @@
         <span id="backHomeText">العودة للرئيسية</span>
       </a>
 
-      <button class="btn-primary" onclick="toggleLanguage()" id="langToggleBtn">
-        🌐 English
-      </button>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <button class="btn-glass theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn" aria-label="Toggle Theme" style="padding: 0; border-radius: 50%; width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; min-width: unset; flex: none;">
+          <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none; color: #eab308; flex-shrink: 0;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #60a5fa; flex-shrink: 0;"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+      </div>
     </header>
 
     <!-- Main Title Block -->
@@ -1626,9 +2261,6 @@
     <section class="proposal-nav-tabs glass">
       <button class="nav-tab-btn nav-tab-btn--active" onclick="switchMainTab('features', this)" id="tabCompareBtn">
         ⚡ مقارنة الميزات التفصيلية
-      </button>
-      <button class="nav-tab-btn" onclick="switchMainTab('simulator', this)" id="tabSimBtn">
-        📱 محاكي تجربة المستخدم التفاعلي
       </button>
       <button class="nav-tab-btn" onclick="switchMainTab('timeline', this)" id="tabTimelineBtn">
         📅 خريطة وجدول مراحل العمل
@@ -1863,220 +2495,7 @@
 
       </div>
 
-      <!-- TAB 2: INTERACTIVE UX SIMULATOR -->
-      <div id="simulatorPane" class="tab-pane animate-fade">
-        <div class="simulator-heading-block">
-          <h3 class="sim-title-header" id="simTitleHeader">كيف ستبدو تجربة المستخدم للعميل والآدمن؟ (UX Simulator)</h3>
-          <p class="sim-description-text" id="simDescText">اضغط على الأزرار أدناه لتجربة الأدوات الذكية المخطط تنفيذها مباشرة والتفاعل معها:</p>
-        </div>
 
-        <!-- Simulator Navigation -->
-        <div class="sim-sub-nav">
-          <button class="sim-nav-btn sim-nav-btn--active" onclick="switchSimModule('styler', this)" id="btnSimStyler">
-            ✨ منسق الغرف الذكي (AI Room Styler)
-          </button>
-          <button class="sim-nav-btn" onclick="switchSimModule('b2b', this)" id="btnSimB2b">
-            💼 بوابة أسعار التجار (B2B Portal)
-          </button>
-          <button class="sim-nav-btn" onclick="switchSimModule('admin', this)" id="btnSimAdmin">
-            ⚙ لوحة تتبع الطلبات والشحن (Admin Flow)
-          </button>
-        </div>
-
-        <!-- Simulator Core Frame -->
-        <div class="simulator-body glass">
-          
-          <!-- 1. AI Room Styler module -->
-          <div id="simModuleStyler" class="sim-module-pane sim-active animate-fade">
-            <p class="sim-module-intro" id="stylerIntroText">🎨 <strong>يتيح للعميل رفع صورة لغرفته الفارغة، ليقوم النظام بتخيلها وفرشها بأثاث المصنع ليرى النتيجة قبل الشراء.</strong></p>
-            
-            <div class="style-selector-row">
-              <label id="styleSelectorLabel">قم باختيار طراز الغرفة المراد فرشها:</label>
-              <div class="style-btn-group">
-                <button class="btn-glass active-btn" onclick="setStylerOption('modern', this)" id="btnStyleModern">🏠 صالون مودرن فاخر</button>
-                <button class="btn-glass" onclick="setStylerOption('classic', this)" id="btnStyleClassic">🏰 غرفة نوم كلاسيك دافئة</button>
-              </div>
-            </div>
-
-            <div class="styler-canvas">
-              <div class="canvas-pane">
-                <div class="canvas-badge" id="badgeBefore">غرفة فارغة (قبل الفرش)</div>
-                <div class="room-bg-sim">
-                  <div class="empty-corner-walls"></div>
-                  <div class="empty-wood-floor"></div>
-                  <div class="empty-window"></div>
-                  <div class="empty-text-desc" id="emptyTextDesc">غرفة صالون فارغة، جاري تجهيز الذكاء الاصطناعي لملء الفراغ...</div>
-                </div>
-              </div>
-
-              <div class="canvas-pane">
-                <div class="canvas-badge styled-badge" id="badgeAfter">الغرفة مفروشة بأثاث المصنع (بعد الفرش)</div>
-                
-                <div class="room-cta-overlay" id="stylerCtaOverlay">
-                  <button class="btn-primary" onclick="simulateAIStaging()" id="btnApplyStaging">تطبيق فرش الأثاث بالذكاء الاصطناعي ✨</button>
-                </div>
-
-                <div class="room-loading-overlay" id="stylerLoadingOverlay" style="display: none;">
-                  <div class="spinner"></div>
-                  <p id="stylerProcessingText">جاري تحليل أبعاد الغرفة وتطبيق الأثاث بشكل متناسق...</p>
-                </div>
-
-                <div class="room-bg-sim room-bg-sim--styled" id="stylerResultBg">
-                  <div class="styled-walls"></div>
-                  <div class="styled-floor" id="styledFloor"></div>
-                  <div class="styled-window-glow"></div>
-                  
-                  <!-- Modern furniture pieces -->
-                  <div id="furnitureModernGroup" class="styled-furniture-modern animate-scale" style="display: block;">
-                    <div class="modern-couch">
-                      <div class="couch-body"></div>
-                      <div class="couch-pillow pillow-1"></div>
-                      <div class="couch-pillow pillow-2"></div>
-                    </div>
-                    <div class="modern-plant"></div>
-                    <div class="modern-rug"></div>
-                    <div class="modern-table-flat"></div>
-                    <span class="price-tag-overlay" id="modernLabel">صالون 'أورورا'</span>
-                  </div>
-
-                  <!-- Classic furniture pieces -->
-                  <div id="furnitureClassicGroup" class="styled-furniture-classic animate-scale" style="display: none;">
-                    <div class="classic-bed">
-                      <div class="bed-headboard"></div>
-                      <div class="bed-mattress"></div>
-                    </div>
-                    <div class="classic-nightstand stand-l"></div>
-                    <div class="classic-nightstand stand-r"></div>
-                    <div class="classic-rug"></div>
-                    <span class="price-tag-overlay" id="classicLabel">سرير 'رويال' خشب زان</span>
-                  </div>
-
-                  <div class="styler-success-alert animate-fade" id="stylerSuccessAlert">
-                    🎉 تم فرش الغرفة بنجاح! يمكنك الآن شراء الأثاث كـ Bundle بخصم 15%
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 2. B2B Wholesaler module -->
-          <div id="simModuleB2b" class="sim-module-pane animate-fade">
-            <p class="sim-module-intro" id="b2bIntroText">💼 <strong>واجهة تفتح بصلاحيات خاصة للمصممين وتجار الأثاث تظهر أسعار الجملة، مما يفتح خط مبيعات ضخم للمصنع.</strong></p>
-            
-            <div class="b2b-selector-block">
-              <label class="b2b-label-heading" id="b2bToggleLabel">اختر نوع حساب المستخدم لرؤية تغير الأسعار:</label>
-              <div class="b2b-toggle-switch-container">
-                <button class="profile-toggle-btn profile-toggle-btn--active" onclick="setB2bProfile('retail', this)" id="btnB2bRetail">👤 عميل تجزئة (عادي)</button>
-                <button class="profile-toggle-btn" onclick="setB2bProfile('partner', this)" id="btnB2bPartner">🏢 تاجر / مصمم ديكور (B2B)</button>
-              </div>
-            </div>
-
-            <!-- Product Card -->
-            <div class="product-b2b-card-sim glass">
-              <div class="prod-badge-holder">
-                <span class="b2b-badge-applied animate-scale" id="b2bActiveBadge" style="display: none;">🔥 B2B Partner Portal Active</span>
-              </div>
-              
-              <div class="sim-product-details">
-                <div class="sim-product-image-container">
-                  <div class="sim-coffee-table-drawing">
-                    <div class="table-top"></div>
-                    <div class="table-leg leg-1"></div>
-                    <div class="table-leg leg-2"></div>
-                    <div class="table-leg leg-3"></div>
-                    <div class="table-leg leg-4"></div>
-                  </div>
-                </div>
-
-                <div class="sim-product-info">
-                  <h4 class="sim-prod-name" id="prodTitleText">طاولة صالون 'أورورا' خشب زان طبيعي</h4>
-                  <p class="sim-prod-desc" id="prodDescText">مصنعة بالكامل من قطاع خشب زان أحمر عالي الجودة مع طبقة حماية عازلة للرطوبة والخدش.</p>
-                  
-                  <div class="sim-prod-price-area">
-                    <!-- Standard Retail Price -->
-                    <div id="priceRetailGroup" class="retail-price-display animate-fade">
-                      <span class="price-tag-label" id="priceLabelNormal">السعر للعميل العادي:</span>
-                      <span class="actual-price-num">18,000 ج.م</span>
-                    </div>
-
-                    <!-- Wholesale price -->
-                    <div id="pricePartnerGroup" class="b2b-price-display animate-scale" style="display: none;">
-                      <span class="original-strike-price">18,000 ج.م</span>
-                      <div class="b2b-discounted-price">
-                        <span class="price-tag-label" id="priceLabelWholesale">سعر شريك B2B المعتمد:</span>
-                        <span class="actual-price-num">12,600 ج.م</span>
-                        <span class="b2b-saving-pill" id="discountBadgeText">خصم الشركاء (30%-)</span>
-                      </div>
-                      <p class="b2b-terms-text" id="b2bTermsText">الحد الأدنى لطلب الجملة: 3 قطع · السعر لا يشمل مصاريف الشحن الخاص بالتجار.</p>
-                    </div>
-                  </div>
-
-                  <div class="sim-checkout-actions">
-                    <button class="btn-primary" style="width: 100%;" id="btnCartAction">إضافة إلى السلة</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. Admin Flow module -->
-          <div id="simModuleAdmin" class="sim-module-pane animate-fade">
-            <p class="sim-module-intro" id="adminIntroText">⚙ <strong>المطبخ التشغيلي للمصنع: معالجة الطلبات، سحب بوالص أرامكس تلقائياً، وإدارة الصيانة.</strong></p>
-            
-            <div class="admin-status-control-section">
-              <label class="admin-status-label" id="adminActionLabel">قم بنقل حالة الطلب لمحاكاة التدفق التشغيلي 🔄</label>
-              <div class="admin-status-pipeline">
-                <button class="pipeline-btn active-workshop" onclick="setAdminStatus('workshop', this)" id="btnStep1">🛠 1. قيد التنفيذ (الورشة)</button>
-                <div class="pipeline-connector">➡</div>
-                <button class="pipeline-btn" onclick="setAdminStatus('transit', this)" id="btnStep2">🚚 2. جاري الشحن (أرامكس)</button>
-                <div class="pipeline-connector">➡</div>
-                <button class="pipeline-btn" onclick="setAdminStatus('completed', this)" id="btnStep3">✅ 3. مكتمل (تلقائي)</button>
-              </div>
-            </div>
-
-            <!-- Admin workspace view -->
-            <div class="admin-order-workspace glass">
-              <div class="workspace-header">
-                <span id="orderTitleText">📦 إدارة الطلب #AMX-09823</span>
-                <span class="status-display-badge status-workshop" id="orderStatusBadge">تحت التصنيع بالورشة</span>
-              </div>
-
-              <div class="workspace-body-details">
-                <div class="status-explanation-card" id="statusDescText">
-                  الطلب قيد التصنيع في الورشة حالياً. جاري تجهيز الأخشاب والأقمشة المعتمدة.
-                </div>
-
-                <!-- Warranty RMA verification if completed -->
-                <div class="rma-simulation-module" id="rmaModule" style="display: none;">
-                  <h5 class="rma-title" id="rmaTitleText">نظام الصيانة والاسترجاع الذكي (RMA):</h5>
-                  <p class="rma-sub" id="rmaSubText">يتم رفع صور القطعة قبل الشحن وصور الشكوى لحفظ حقوق المصنع وتفادي نزاعات الصيانة.</p>
-                  
-                  <div class="rma-photo-comparison-grid">
-                    <div class="rma-photo-card">
-                      <span id="photoBeforeLabel">صورة المصنع قبل الشحن 📸</span>
-                      <div class="sim-photo-placeholder">
-                        <div class="photo-couch-clean"></div>
-                        <span class="photo-caption" id="captionBefore">فحص المصنع: القطعة سليمة 100%</span>
-                      </div>
-                    </div>
-
-                    <div class="rma-photo-card">
-                      <span id="photoAfterLabel">صورة العميل (شكوى الصيانة) 📸</span>
-                      <div class="sim-photo-placeholder">
-                        <div class="photo-couch-clean">
-                          <div class="scuffed-mark"></div>
-                        </div>
-                        <span class="photo-caption text-caution" id="captionAfter">الشكوى: خدش طفيف بالظهر</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
 
       <!-- TAB 3: TIMELINE AND ROADMAP -->
       <div id="timelinePane" class="tab-pane animate-fade">
@@ -2452,10 +2871,12 @@
       // Update body class for styling direction
       if (lang === 'ar') {
         document.body.className = 'rtl';
-        document.getElementById('langToggleBtn').innerText = '🌐 English';
+        const btn = document.getElementById('langToggleBtn');
+        if (btn) btn.innerText = '🌐 English';
       } else {
         document.body.className = 'ltr';
-        document.getElementById('langToggleBtn').innerText = '🌐 العربية';
+        const btn = document.getElementById('langToggleBtn');
+        if (btn) btn.innerText = '🌐 العربية';
       }
 
       // Update Texts
@@ -2683,6 +3104,32 @@
         rma.style.display = 'block';
       }
     }
+
+    // Theme switching logic
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeToggleIcon(newTheme);
+    }
+
+    function updateThemeToggleIcon(theme) {
+      const sunIcon = document.querySelector('.theme-icon-sun');
+      const moonIcon = document.querySelector('.theme-icon-moon');
+      if (sunIcon && moonIcon) {
+        if (theme === 'light') {
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'inline-block';
+        } else {
+          sunIcon.style.display = 'inline-block';
+          moonIcon.style.display = 'none';
+        }
+      }
+    }
+
+    // Sync icon state immediately on boot
+    updateThemeToggleIcon(document.documentElement.getAttribute('data-theme') || 'light');
 
     // Initialize WhatsApp link on boot
     updateWhatsAppLinks();
