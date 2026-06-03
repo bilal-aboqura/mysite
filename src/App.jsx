@@ -15,7 +15,6 @@ const Projects    = lazy(() => import('./components/Projects'));
 const Services    = lazy(() => import('./components/Services'));
 const Skills      = lazy(() => import('./components/Skills'));
 const Testimonials = lazy(() => import('./components/Testimonials'));
-const Plans       = lazy(() => import('./components/Plans'));
 const FAQ         = lazy(() => import('./components/FAQ'));
 const Blog        = lazy(() => import('./components/Blog'));
 const CTA         = lazy(() => import('./components/CTA'));
@@ -71,9 +70,6 @@ function App() {
 
             {/* 6. Testimonials — social proof before the price reveal */}
             <Testimonials />
-
-            {/* 7. Plans — pricing after trust is established */}
-            <Plans onOpenWizard={openWizard} />
 
             {/* 8. FAQ — pre-answer objections, reduce friction */}
             <FAQ onOpenWizard={openWizard} />
