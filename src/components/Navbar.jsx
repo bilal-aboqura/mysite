@@ -11,14 +11,11 @@ const navLinks = [
 ];
 
 const Navbar = ({ onOpenWizard }) => {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-      
       // Detect active section based on scroll position
       const sections = ['home', 'about', 'services', 'projects', 'blog', 'contact'];
       const scrollPosition = window.scrollY + window.innerHeight / 3;

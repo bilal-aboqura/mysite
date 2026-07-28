@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Unreferenced duplicate image generated during local asset processing
+public/images/portfolio/project-cloy_tmp*

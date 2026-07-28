@@ -192,8 +192,8 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   padding: 1.25rem;
   overflow: hidden;
-  backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)';
-  backgroundSize: '20px 20px';
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 .poetic-card__browser-glow {

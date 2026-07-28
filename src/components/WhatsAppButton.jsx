@@ -86,7 +86,6 @@ const WhatsAppButton = () => {
           position: 'absolute',
           right: '-6px',
           top: '50%',
-          transform: 'translateY(-50%)',
           width: '10px',
           height: '10px',
           background: 'rgba(10, 20, 35, 0.95)',
