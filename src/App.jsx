@@ -715,14 +715,6 @@ function ProjectCard({ project, index, language, text }) {
             <dt>{text.role}</dt>
             <dd>{project.role[language]}</dd>
           </div>
-          <div>
-            <dt>{text.technologies}</dt>
-            <dd className="project-technologies">
-              {project.technologies.map((technology) => (
-                <span key={technology}>{technology}</span>
-              ))}
-            </dd>
-          </div>
         </dl>
         {project.url && (
           <a

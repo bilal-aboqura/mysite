@@ -1084,21 +1084,6 @@ html[dir='rtl'] .case-content h3 {
   line-height: 1.55;
 }
 
-.project-technologies {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.project-technologies span {
-  padding: 4px 7px;
-  background: var(--blue-soft);
-  border: 1px solid color-mix(in oklch, var(--blue) 35%, var(--white));
-  border-radius: 999px;
-  font-size: 0.66rem;
-  font-weight: 750;
-}
-
 .case-content > a {
   display: inline-flex;
   align-items: center;
