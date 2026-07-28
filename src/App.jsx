@@ -277,7 +277,7 @@ function useSmoothMotion(appRef, language) {
       });
 
       ScrollTrigger.matchMedia({
-        '(prefers-reduced-motion: no-preference)': () => {
+        '(min-width: 901px) and (prefers-reduced-motion: no-preference)': () => {
           const stage = root.querySelector('.horizontal-stage');
           const trackElement = root.querySelector('.project-track');
           if (!stage || !trackElement) return undefined;
@@ -732,6 +732,80 @@ function ProjectCard({ project, index, language, text }) {
 }
 
 function Work({ language, text }) {
+  const carouselRef = useRef(null);
+  const [activeProject, setActiveProject] = useState(0);
+  const isArabic = language === 'ar';
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return undefined;
+
+    const updateActiveProject = () => {
+      const cards = Array.from(carousel.querySelectorAll('[data-project-index]'));
+      if (!cards.length) return;
+
+      const carouselRect = carousel.getBoundingClientRect();
+      const carouselCenter = carouselRect.left + carouselRect.width / 2;
+      let nearestIndex = 0;
+      let nearestDistance = Number.POSITIVE_INFINITY;
+
+      cards.forEach((card, index) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const distance = Math.abs(cardCenter - carouselCenter);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+      });
+
+      setActiveProject(nearestIndex);
+    };
+
+    const resetFrame = window.requestAnimationFrame(() => {
+      const firstCard = carousel.querySelector('[data-project-index="0"]');
+      if (!firstCard) return;
+
+      const targetLeft =
+        firstCard.offsetLeft + firstCard.offsetWidth / 2 - carousel.clientWidth / 2;
+      carousel.scrollTo({
+        left: targetLeft,
+        behavior: 'auto',
+      });
+      updateActiveProject();
+    });
+    carousel.addEventListener('scroll', updateActiveProject, { passive: true });
+    window.addEventListener('resize', updateActiveProject);
+
+    return () => {
+      window.cancelAnimationFrame(resetFrame);
+      carousel.removeEventListener('scroll', updateActiveProject);
+      window.removeEventListener('resize', updateActiveProject);
+    };
+  }, [language]);
+
+  const moveCarousel = (step) => {
+    const nextIndex = Math.min(
+      projectData.length - 1,
+      Math.max(0, activeProject + step),
+    );
+    const nextCard = carouselRef.current?.querySelector(
+      `[data-project-index="${nextIndex}"]`,
+    );
+    const carousel = carouselRef.current;
+    if (!nextCard || !carousel) return;
+
+    const targetLeft =
+      nextCard.offsetLeft + nextCard.offsetWidth / 2 - carousel.clientWidth / 2;
+    carousel.scrollTo({
+      left: targetLeft,
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        ? 'auto'
+        : 'smooth',
+    });
+    setActiveProject(nextIndex);
+  };
+
   return (
     <section className="work" id="work" aria-labelledby="work-title">
       <div className="work-intro section-shell">
@@ -742,16 +816,52 @@ function Work({ language, text }) {
       </div>
 
       <div className="horizontal-stage">
-        <div className="project-track">
-          {projectData.map((project, index) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              index={index}
-              language={language}
-              text={text}
-            />
-          ))}
+        <div
+          className="project-carousel-viewport"
+          ref={carouselRef}
+          role="region"
+          aria-roledescription="carousel"
+          aria-label={isArabic ? 'مشاريع مختارة' : 'Selected projects'}
+        >
+          <div className="project-track">
+            {projectData.map((project, index) => (
+              <div
+                className="project-slide"
+                data-project-index={index}
+                key={project.slug}
+              >
+                <ProjectCard
+                  project={project}
+                  index={index}
+                  language={language}
+                  text={text}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="project-carousel-controls">
+          <button
+            className="carousel-arrow carousel-prev"
+            type="button"
+            onClick={() => moveCarousel(-1)}
+            disabled={activeProject === 0}
+            aria-label={isArabic ? 'المشروع السابق' : 'Previous project'}
+          >
+            <ArrowIcon />
+          </button>
+          <span className="carousel-progress" aria-live="polite" aria-atomic="true">
+            <bdi>{activeProject + 1} / {projectData.length}</bdi>
+          </span>
+          <button
+            className="carousel-arrow carousel-next"
+            type="button"
+            onClick={() => moveCarousel(1)}
+            disabled={activeProject === projectData.length - 1}
+            aria-label={isArabic ? 'المشروع التالي' : 'Next project'}
+          >
+            <ArrowIcon />
+          </button>
         </div>
         <div className="horizontal-hint" aria-hidden="true">
           <span>{text.scrollHint}</span>
