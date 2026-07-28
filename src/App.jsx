@@ -277,33 +277,33 @@ function useSmoothMotion(appRef, language) {
       });
 
       ScrollTrigger.matchMedia({
-        '(min-width: 901px) and (prefers-reduced-motion: no-preference)': () => {
+        '(prefers-reduced-motion: no-preference)': () => {
           const stage = root.querySelector('.horizontal-stage');
           const trackElement = root.querySelector('.project-track');
           if (!stage || !trackElement) return undefined;
 
-          const tween = gsap.to(trackElement, {
-            x: () => {
-              const distance = Math.max(
-                0,
-                trackElement.scrollWidth - document.documentElement.clientWidth + 80,
-              );
-              return -distance;
+          const isRtl = document.documentElement.dir === 'rtl';
+          const getDistance = () =>
+            Math.max(0, trackElement.scrollWidth - document.documentElement.clientWidth);
+
+          const tween = gsap.fromTo(
+            trackElement,
+            {
+              x: () => (isRtl ? -getDistance() : 0),
             },
-            ease: 'none',
-            scrollTrigger: {
-              trigger: stage,
-              start: 'top top',
-              end: () =>
-                `+=${Math.max(
-                  900,
-                  trackElement.scrollWidth - document.documentElement.clientWidth,
-                )}`,
-              pin: true,
-              scrub: 0.75,
-              invalidateOnRefresh: true,
+            {
+              x: () => (isRtl ? 0 : -getDistance()),
+              ease: 'none',
+              scrollTrigger: {
+                trigger: stage,
+                start: 'top top',
+                end: () => `+=${Math.max(900, getDistance())}`,
+                pin: true,
+                scrub: 0.75,
+                invalidateOnRefresh: true,
+              },
             },
-          });
+          );
 
           return () => tween.kill();
         },
@@ -446,6 +446,20 @@ function Header({ language, onLanguageChange, text }) {
   );
 }
 
+function HeroBadges({ text, mobile = false }) {
+  return (
+    <div className={`hero-badges ${mobile ? 'hero-badges-mobile' : 'hero-badges-desktop'}`}>
+      <span className="availability" data-hero-badge>
+        <i />
+        {text.available}
+      </span>
+      <span className="experience" data-hero-badge>
+        {text.experience}
+      </span>
+    </div>
+  );
+}
+
 function Hero({ language, text, onBookCall, onOpenWizard }) {
   const whatsappUrl = getWhatsAppUrl(language);
   const splitWords = (line) => line.split(/(\s+)/);
@@ -476,15 +490,7 @@ function Hero({ language, text, onBookCall, onOpenWizard }) {
       </div>
       <div className="hero-inner">
         <div className="hero-copy">
-          <div className="hero-badges">
-            <span className="availability" data-hero-badge>
-              <i />
-              {text.available}
-            </span>
-            <span className="experience" data-hero-badge>
-              {text.experience}
-            </span>
-          </div>
+          <HeroBadges text={text} />
 
           <h1 id="hero-title">
             {text.hero.map((line, index) => (
@@ -545,6 +551,7 @@ function Hero({ language, text, onBookCall, onOpenWizard }) {
         </div>
 
         <div className="hero-portrait-wrap" aria-label={language === 'ar' ? 'صورة بلال أبو قورة' : 'Portrait of Bilal Aboqura'}>
+          <HeroBadges text={text} mobile />
           {/* <div className="portrait-note portrait-note-top">
             {language === 'ar' ? 'تصميم + برمجة' : 'DESIGN + DEVELOPMENT'}
           </div> */}
@@ -1037,6 +1044,8 @@ function Contact({ language, text, onBookCall, onOpenWizard }) {
 }
 
 function Footer({ language, onLanguageChange, text }) {
+  const isArabic = language === 'ar';
+
   return (
     <footer className="site-footer">
       <div className="footer-main section-shell">
@@ -1052,6 +1061,7 @@ function Footer({ language, onLanguageChange, text }) {
           <p>{text.footerLine}</p>
         </div>
         <div className="footer-contact">
+          <span className="footer-label">{isArabic ? 'تواصل مباشر' : 'Direct contact'}</span>
           <a
             href={`mailto:${SITE_CONFIG.email}`}
             onClick={() => track('email_click', { location: 'footer' })}
@@ -1061,9 +1071,10 @@ function Footer({ language, onLanguageChange, text }) {
           <a href={getWhatsAppUrl(language)} target="_blank" rel="noreferrer">
             WhatsApp
           </a>
-          <a href="tel:+201112678333">+20 111 267 8333</a>
+          <a href="tel:+201112678333" dir="ltr">+20 111 267 8333</a>
         </div>
         <div className="social-links">
+          <span className="footer-label">{isArabic ? 'روابط سريعة' : 'Quick links'}</span>
           <a href="https://www.linkedin.com/in/bilal-aboqura/" target="_blank" rel="noreferrer">
             LinkedIn <ArrowIcon up />
           </a>
