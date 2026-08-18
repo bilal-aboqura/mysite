@@ -3,8 +3,12 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
-import Wizard from './components/Wizard';
-import { copy, projectData, seoCopy, services, testimonials } from './content';
+import {
+  copy,
+  projectData,
+  seoCopy,
+  services,
+} from './content';
 import { getWhatsAppUrl, SITE_CONFIG, track } from './siteConfig';
 import workspacePhotoSmall from './assets/IMG_E1456-640.webp';
 import workspacePhotoMedium from './assets/IMG_E1456-1200.webp';
@@ -282,17 +286,16 @@ function useSmoothMotion(appRef, language) {
           const trackElement = root.querySelector('.project-track');
           if (!stage || !trackElement) return undefined;
 
-          const isRtl = document.documentElement.dir === 'rtl';
           const getDistance = () =>
             Math.max(0, trackElement.scrollWidth - document.documentElement.clientWidth);
 
           const tween = gsap.fromTo(
             trackElement,
             {
-              x: () => (isRtl ? -getDistance() : 0),
+              x: 0,
             },
             {
-              x: () => (isRtl ? 0 : -getDistance()),
+              x: () => -getDistance(),
               ease: 'none',
               scrollTrigger: {
                 trigger: stage,
@@ -321,7 +324,6 @@ function useSmoothMotion(appRef, language) {
 function Header({ language, onLanguageChange, text }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const whatsappUrl = getWhatsAppUrl(language);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 28);
@@ -385,15 +387,20 @@ function Header({ language, onLanguageChange, text }) {
         </button>
         <a
           className="header-cta"
-          href={whatsappUrl}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => track('whatsapp_project_click', { location: 'header' })}
+          href="#contact"
+          onClick={() => track('lead_form_cta_click', { location: 'header' })}
         >
-          <WhatsAppIcon />
           {text.navCta}
         </a>
       </div>
+
+      <a
+        className="mobile-header-cta"
+        href="#contact"
+        onClick={() => track('lead_form_cta_click', { location: 'mobile_header' })}
+      >
+        <span>{text.mobileCta}</span>
+      </a>
 
       <button
         className="menu-toggle"
@@ -431,12 +438,12 @@ function Header({ language, onLanguageChange, text }) {
               {text.languageAction}
             </button>
             <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => track('whatsapp_project_click', { location: 'mobile_menu' })}
+              href="#contact"
+              onClick={() => {
+                setMenuOpen(false);
+                track('lead_form_cta_click', { location: 'mobile_menu' });
+              }}
             >
-              <WhatsAppIcon />
               {text.navCta}
             </a>
           </div>
@@ -460,8 +467,7 @@ function HeroBadges({ text, mobile = false }) {
   );
 }
 
-function Hero({ language, text, onBookCall, onOpenWizard }) {
-  const whatsappUrl = getWhatsAppUrl(language);
+function Hero({ language, text }) {
   const splitWords = (line) => line.split(/(\s+)/);
 
   return (
@@ -528,25 +534,24 @@ function Hero({ language, text, onBookCall, onOpenWizard }) {
             ))}
           </h1>
 
-          <p data-hero-support>{text.heroBody}</p>
+          <p data-hero-support>
+            {(Array.isArray(text.heroBody) ? text.heroBody : [text.heroBody]).map((line) => (
+              <span key={line}>{line}</span>
+            ))}
+          </p>
 
           <div className="hero-actions" data-hero-support>
             <a
               className="button button-dark"
-              href={whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => track('whatsapp_project_click', { location: 'hero' })}
+              href="#contact"
+              onClick={() => track('lead_form_cta_click', { location: 'hero' })}
             >
-              <WhatsAppIcon />
               {text.whatsapp}
+              <ArrowIcon />
             </a>
-            <button className="button button-light" type="button" onClick={onBookCall}>
+            <a className="button button-light" href="#work">
               {text.call} <ArrowIcon />
-            </button>
-            <button className="hero-estimate" type="button" onClick={onOpenWizard}>
-              {text.estimate}
-            </button>
+            </a>
           </div>
         </div>
 
@@ -600,6 +605,30 @@ function TrustRail({ language, text }) {
   );
 }
 
+function Problems({ text }) {
+  return (
+    <section className="problems" id="problems" aria-labelledby="problems-title">
+      <div className="section-shell problems-layout">
+        <div className="problems-heading" data-reveal>
+          <h2 id="problems-title">{text.problemsTitle}</h2>
+          <p>{text.problemsIntro}</p>
+        </div>
+        <ol className="problem-list" data-stagger>
+          {text.problems.map(([title, body], index) => (
+            <li key={title} data-stagger-item>
+              <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
 function Positioning({ language, text }) {
   return (
     <section className="positioning section-shell" aria-labelledby="positioning-title">
@@ -625,9 +654,19 @@ function Positioning({ language, text }) {
           {language === 'ar' ? 'من داخل عملية البناء' : 'Inside the build'}
         </figcaption>
       </figure>
-      <p className="positioning-copy" data-reveal>
-        {text.introBody}
-      </p>
+      <div className="positioning-foot">
+        <p className="positioning-copy" data-reveal>
+          {text.introBody}
+        </p>
+        <ul className="outcome-list" data-stagger>
+          {text.outcomeItems.map((item) => (
+            <li key={item} data-stagger-item>
+              <span aria-hidden="true">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
@@ -718,6 +757,7 @@ function ProjectCard({ project, index, language, text }) {
         </dl>
         {project.url && (
           <a
+            className="case-project-link"
             href={project.url}
             target="_blank"
             rel="noreferrer"
@@ -726,84 +766,38 @@ function ProjectCard({ project, index, language, text }) {
             {text.viewProject} <ArrowIcon up />
           </a>
         )}
+        <a
+          className="case-lead-link"
+          href="#contact"
+          onClick={() => track('lead_form_cta_click', { location: `case_${project.slug}` })}
+        >
+          <span>{text.similarProblem}</span>
+          <strong>{text.tellMeAboutIt} <ArrowIcon /></strong>
+        </a>
       </div>
     </article>
   );
 }
 
 function Work({ language, text }) {
-  const carouselRef = useRef(null);
-  const [activeProject, setActiveProject] = useState(0);
-  const isArabic = language === 'ar';
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const selectedSlugs = ['platvo', 'the-lobby', 'xeemo'];
+  const selectedProjects = selectedSlugs
+    .map((slug) => projectData.find((project) => project.slug === slug))
+    .filter(Boolean);
+  const additionalProjects = projectData.filter(
+    (project) => !selectedSlugs.includes(project.slug),
+  );
+  const visibleProjects = showAllProjects
+    ? [...selectedProjects, ...additionalProjects]
+    : selectedProjects;
 
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return undefined;
-
-    const updateActiveProject = () => {
-      const cards = Array.from(carousel.querySelectorAll('[data-project-index]'));
-      if (!cards.length) return;
-
-      const carouselRect = carousel.getBoundingClientRect();
-      const carouselCenter = carouselRect.left + carouselRect.width / 2;
-      let nearestIndex = 0;
-      let nearestDistance = Number.POSITIVE_INFINITY;
-
-      cards.forEach((card, index) => {
-        const cardRect = card.getBoundingClientRect();
-        const cardCenter = cardRect.left + cardRect.width / 2;
-        const distance = Math.abs(cardCenter - carouselCenter);
-        if (distance < nearestDistance) {
-          nearestDistance = distance;
-          nearestIndex = index;
-        }
-      });
-
-      setActiveProject(nearestIndex);
-    };
-
-    const resetFrame = window.requestAnimationFrame(() => {
-      const firstCard = carousel.querySelector('[data-project-index="0"]');
-      if (!firstCard) return;
-
-      const targetLeft =
-        firstCard.offsetLeft + firstCard.offsetWidth / 2 - carousel.clientWidth / 2;
-      carousel.scrollTo({
-        left: targetLeft,
-        behavior: 'auto',
-      });
-      updateActiveProject();
+  const toggleProjects = () => {
+    const nextState = !showAllProjects;
+    setShowAllProjects(nextState);
+    track(nextState ? 'more_projects_open' : 'more_projects_close', {
+      visible_count: nextState ? projectData.length : selectedProjects.length,
     });
-    carousel.addEventListener('scroll', updateActiveProject, { passive: true });
-    window.addEventListener('resize', updateActiveProject);
-
-    return () => {
-      window.cancelAnimationFrame(resetFrame);
-      carousel.removeEventListener('scroll', updateActiveProject);
-      window.removeEventListener('resize', updateActiveProject);
-    };
-  }, [language]);
-
-  const moveCarousel = (step) => {
-    const nextIndex = Math.min(
-      projectData.length - 1,
-      Math.max(0, activeProject + step),
-    );
-    const nextCard = carouselRef.current?.querySelector(
-      `[data-project-index="${nextIndex}"]`,
-    );
-    const carousel = carouselRef.current;
-    if (!nextCard || !carousel) return;
-
-    const targetLeft =
-      nextCard.offsetLeft + nextCard.offsetWidth / 2 - carousel.clientWidth / 2;
-    carousel.scrollTo({
-      left: targetLeft,
-      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
-        ? 'auto'
-        : 'smooth',
-    });
-    setActiveProject(nextIndex);
   };
 
   return (
@@ -815,58 +809,47 @@ function Work({ language, text }) {
         <p data-reveal>{text.workBody}</p>
       </div>
 
-      <div className="horizontal-stage">
-        <div
-          className="project-carousel-viewport"
-          ref={carouselRef}
-          role="region"
-          aria-roledescription="carousel"
-          aria-label={isArabic ? 'مشاريع مختارة' : 'Selected projects'}
+      <div className="selected-projects section-shell">
+        {visibleProjects.map((project, index) => (
+          <ProjectCard
+            project={project}
+            index={index}
+            language={language}
+            text={text}
+            key={project.slug}
+          />
+        ))}
+      </div>
+      <div className="projects-more-wrap section-shell">
+        <button
+          className="button projects-more-button"
+          type="button"
+          aria-expanded={showAllProjects}
+          onClick={toggleProjects}
         >
-          <div className="project-track">
-            {projectData.map((project, index) => (
-              <div
-                className="project-slide"
-                data-project-index={index}
-                key={project.slug}
-              >
-                <ProjectCard
-                  project={project}
-                  index={index}
-                  language={language}
-                  text={text}
-                />
-              </div>
-            ))}
-          </div>
+          {showAllProjects ? text.viewFewerProjects : text.viewMoreProjects}
+          <span aria-hidden="true">{showAllProjects ? '−' : '+'}</span>
+        </button>
+      </div>
+    </section>
+  );
+}
+
+function MidCta({ text }) {
+  return (
+    <section className="mid-cta" aria-labelledby="mid-cta-title">
+      <div className="section-shell mid-cta-inner" data-reveal>
+        <div>
+          <h2 id="mid-cta-title">{text.midCtaTitle}</h2>
+          <p>{text.midCtaBody}</p>
         </div>
-        <div className="project-carousel-controls">
-          <button
-            className="carousel-arrow carousel-prev"
-            type="button"
-            onClick={() => moveCarousel(-1)}
-            disabled={activeProject === 0}
-            aria-label={isArabic ? 'المشروع السابق' : 'Previous project'}
-          >
-            <ArrowIcon />
-          </button>
-          <span className="carousel-progress" aria-live="polite" aria-atomic="true">
-            <bdi>{activeProject + 1} / {projectData.length}</bdi>
-          </span>
-          <button
-            className="carousel-arrow carousel-next"
-            type="button"
-            onClick={() => moveCarousel(1)}
-            disabled={activeProject === projectData.length - 1}
-            aria-label={isArabic ? 'المشروع التالي' : 'Next project'}
-          >
-            <ArrowIcon />
-          </button>
-        </div>
-        <div className="horizontal-hint" aria-hidden="true">
-          <span>{text.scrollHint}</span>
-          <i />
-        </div>
+        <a
+          className="button button-white"
+          href="#contact"
+          onClick={() => track('lead_form_cta_click', { location: 'mid_page' })}
+        >
+          {text.midCtaAction} <ArrowIcon />
+        </a>
       </div>
     </section>
   );
@@ -976,85 +959,51 @@ function Process({ text }) {
   );
 }
 
-function WhyBilal({ text }) {
-  return (
-    <section className="why" id="why" aria-labelledby="why-title">
-      <div className="section-shell why-grid">
-        <div data-reveal>
-          <h2 id="why-title">{text.whyTitle}</h2>
-        </div>
-        <ul data-stagger>
-          {text.whyItems.map((item) => (
-            <li key={item} data-stagger-item>
-              <span aria-hidden="true">✓</span>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
-function ReviewCard({ item, language, duplicate = false }) {
-  const isArabic = language === 'ar';
-
-  return (
-    <blockquote
-      className={`review-card ${item.placeholder ? 'is-placeholder' : ''}`}
-      dir={isArabic ? 'rtl' : 'ltr'}
-      aria-hidden={duplicate || undefined}
-    >
-      <header className="review-author">
-        <span className="review-person">
-          <strong>{item.name[language]}</strong>
-          <small>{item.role[language]}</small>
-        </span>
-      </header>
-      <p>{item.quote[language]}</p>
-      <footer>
-        <a href={`#case-${item.projectSlug}`} tabIndex={duplicate ? -1 : undefined}>
-          {isArabic ? 'شاهد المشروع' : 'View related project'}
-          <ArrowIcon up />
-        </a>
-      </footer>
-    </blockquote>
-  );
-}
-
-function Testimonials({ language, text }) {
-  const splitAt = Math.ceil(testimonials.length / 2);
-  const reviewRows = [testimonials.slice(0, splitAt), testimonials.slice(splitAt)];
+function Testimonials({ text }) {
+  const proofImages = [
+    {
+      src: '/images/testimonials/client-website.jpeg',
+      width: 1206,
+      height: 1536,
+    },
+    {
+      src: '/images/testimonials/client-team.jpeg',
+      width: 1068,
+      height: 1595,
+    },
+    {
+      src: '/images/testimonials/client-result.jpeg',
+      width: 1206,
+      height: 1077,
+    },
+    {
+      src: '/images/testimonials/client-system.jpeg',
+      width: 1206,
+      height: 1055,
+    },
+  ];
 
   return (
     <section className="testimonials" id="testimonials" aria-labelledby="testimonials-title">
       <div className="testimonial-heading section-shell" data-reveal>
         <h2 id="testimonials-title">{text.testimonialTitle}</h2>
       </div>
-      <div className="testimonial-marquee" data-reveal>
-        {reviewRows.map((row, rowIndex) => (
-          <div
-            className={`review-row ${rowIndex === 1 ? 'review-row-reverse' : ''}`}
-            key={rowIndex}
-          >
-            <div className="review-track">
-              <div className="review-set">
-                {row.map((item) => (
-                  <ReviewCard item={item} language={language} key={item.projectSlug} />
-                ))}
-              </div>
-              <div className="review-set" aria-hidden="true">
-                {row.map((item) => (
-                  <ReviewCard
-                    duplicate
-                    item={item}
-                    language={language}
-                    key={`duplicate-${item.projectSlug}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
+      <div className="verified-reviews section-shell" data-reveal>
+        {proofImages.map((proof, index) => (
+          <figure className="proof-message" key={proof.src}>
+            <img
+              src={proof.src}
+              alt={text.testimonialProofs[index]}
+              width={proof.width}
+              height={proof.height}
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>
+              <strong>{text.testimonialProofs[index]}</strong>
+              <span>{text.testimonialPrivacy}</span>
+            </figcaption>
+          </figure>
         ))}
       </div>
     </section>
@@ -1101,45 +1050,198 @@ function Faq({ language, text }) {
   );
 }
 
-function Contact({ language, text, onBookCall, onOpenWizard }) {
-  const whatsappUrl = getWhatsAppUrl(language);
+function Contact({ language, text }) {
+  const [formData, setFormData] = useState({
+    name: '',
+    whatsapp: '',
+    projectType: '',
+    description: '',
+    budget: '',
+    website: '',
+  });
+  const [status, setStatus] = useState('idle');
+  const formStartedRef = useRef(false);
+  const formText = text.form;
+  const optionLabel = (options, value) =>
+    options.find(([id]) => id === value)?.[1] || value;
+  const summary = language === 'ar'
+    ? `مرحبًا بلال، عندي مشروع وأرغب في مناقشته معك.\n\nالاسم: ${formData.name}\nواتساب: ${formData.whatsapp}\nنوع المشروع: ${optionLabel(formText.projectTypes, formData.projectType)}\nالميزانية: ${optionLabel(formText.budgets, formData.budget)}\n\nالمشكلة أو الفكرة:\n${formData.description}`
+    : `Hi Bilal, I have a project I would like to discuss.\n\nName: ${formData.name}\nWhatsApp: ${formData.whatsapp}\nProject type: ${optionLabel(formText.projectTypes, formData.projectType)}\nBudget: ${optionLabel(formText.budgets, formData.budget)}\n\nProblem or idea:\n${formData.description}`;
+  const whatsappUrl = getWhatsAppUrl(language, summary);
+
+  const updateField = (field, value) => {
+    setFormData((current) => ({ ...current, [field]: value }));
+    if (status !== 'idle') setStatus('idle');
+  };
+
+  const submitLead = async (event) => {
+    event.preventDefault();
+    if (formData.website) return;
+
+    track('lead_form_submit_attempt', {
+      project_type: formData.projectType,
+      budget: formData.budget,
+    });
+
+    if (!SITE_CONFIG.enquiryEndpoint) {
+      setStatus('fallback');
+      track('lead_form_ready', { project_type: formData.projectType, budget: formData.budget });
+      return;
+    }
+
+    setStatus('sending');
+    try {
+      const response = await fetch(SITE_CONFIG.enquiryEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, language, source: 'inline-sales-form' }),
+      });
+      if (!response.ok) throw new Error('Submission failed');
+      setStatus('success');
+      track('lead_form_submit', { project_type: formData.projectType, budget: formData.budget });
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  const trackFormStart = () => {
+    if (formStartedRef.current) return;
+    formStartedRef.current = true;
+    track('lead_form_start', { language });
+  };
+
+  const trackWhatsAppLead = () => {
+    const hasQualifiedBrief = Boolean(
+      formData.name.trim().length > 1 &&
+      formData.whatsapp.trim().length >= 7 &&
+      formData.projectType &&
+      formData.description.trim().length >= 20 &&
+      formData.budget,
+    );
+
+    track('whatsapp_project_click', { location: 'inline_form' });
+    if (hasQualifiedBrief) {
+      track('lead_form_submit', {
+        method: 'whatsapp',
+        project_type: formData.projectType,
+        budget: formData.budget,
+      });
+    }
+  };
 
   return (
     <section className="contact" id="contact" aria-labelledby="contact-title">
-      <div className="section-shell contact-inner">
-        <h2 data-reveal id="contact-title">
-          {text.contactTitle[0]}
-          <br />
-          <span>{text.contactTitle[1]}</span>
-        </h2>
-        <p className="contact-body" data-reveal>
-          {text.contactBody}
-        </p>
-        <div className="contact-actions" data-reveal>
+      <div className="section-shell contact-layout">
+        <div className="contact-copy" data-reveal>
+          <h2 id="contact-title">
+            {text.contactTitle[0]}
+            <span>{text.contactTitle[1]}</span>
+          </h2>
+          <p className="contact-body">{text.contactBody}</p>
+          <p className="contact-minimum">{formText.minimum}</p>
+        </div>
+
+        <form className="lead-form" onSubmit={submitLead} onFocus={trackFormStart} data-reveal>
+          <div className="lead-form-row">
+            <label>
+              <span>{formText.name}</span>
+              <input
+                autoComplete="name"
+                required
+                minLength="2"
+                value={formData.name}
+                onChange={(event) => updateField('name', event.target.value)}
+              />
+            </label>
+            <label>
+              <span>{formText.whatsapp}</span>
+              <input
+                autoComplete="tel"
+                inputMode="tel"
+                required
+                minLength="7"
+                dir="ltr"
+                value={formData.whatsapp}
+                onChange={(event) => updateField('whatsapp', event.target.value)}
+              />
+            </label>
+          </div>
+
+          <label>
+            <span>{formText.projectType}</span>
+            <select
+              required
+              value={formData.projectType}
+              onChange={(event) => updateField('projectType', event.target.value)}
+            >
+              <option value="">—</option>
+              {formText.projectTypes.map(([id, label]) => (
+                <option value={id} key={id}>{label}</option>
+              ))}
+            </select>
+          </label>
+
+          <label>
+            <span>{formText.description}</span>
+            <textarea
+              required
+              minLength="20"
+              rows="5"
+              placeholder={formText.descriptionPlaceholder}
+              value={formData.description}
+              onChange={(event) => updateField('description', event.target.value)}
+            />
+          </label>
+
+          <label>
+            <span>{formText.budget}</span>
+            <select
+              required
+              value={formData.budget}
+              onChange={(event) => updateField('budget', event.target.value)}
+            >
+              <option value="">—</option>
+              {formText.budgets.map(([id, label]) => (
+                <option value={id} key={id}>{label}</option>
+              ))}
+            </select>
+          </label>
+
+          <label className="lead-honeypot" aria-hidden="true">
+            Website
+            <input
+              tabIndex="-1"
+              autoComplete="off"
+              value={formData.website}
+              onChange={(event) => updateField('website', event.target.value)}
+            />
+          </label>
+
+          <button className="button lead-submit" type="submit" disabled={status === 'sending'}>
+            {status === 'sending' ? formText.sending : formText.submit}
+            <ArrowIcon />
+          </button>
+
+          <p className="lead-selection-note">{formText.selectionNote}</p>
+
+          {status === 'success' && <p className="form-status is-success" role="status">{formText.success}</p>}
+          {(status === 'fallback' || status === 'error') && (
+            <p className="form-status" role="status">
+              {status === 'error' ? formText.error : formText.fallback}
+            </p>
+          )}
+
           <a
-            className="button button-white"
+            className="lead-whatsapp"
             href={whatsappUrl}
             target="_blank"
             rel="noreferrer"
-            onClick={() => track('whatsapp_project_click', { location: 'contact' })}
+            onClick={trackWhatsAppLead}
           >
             <WhatsAppIcon />
-            {text.whatsapp}
+            {formText.whatsappAlternative}
           </a>
-          <button className="button contact-call" type="button" onClick={onBookCall}>
-            {text.call}
-          </button>
-          <a
-            className="button contact-email-button"
-            href={`mailto:${SITE_CONFIG.email}`}
-            onClick={() => track('email_click', { location: 'contact' })}
-          >
-            {text.emailAction}
-          </a>
-        </div>
-        <button type="button" className="contact-estimate" onClick={onOpenWizard}>
-          {text.estimate}
-        </button>
+        </form>
       </div>
     </section>
   );
@@ -1203,9 +1305,8 @@ function Footer({ language, onLanguageChange, text }) {
 
 function App() {
   const [language, setLanguage] = useState(getInitialLanguage);
-  const [wizardOpen, setWizardOpen] = useState(false);
-  const [bookingNotice, setBookingNotice] = useState(false);
   const appRef = useRef(null);
+  const pageViewTracked = useRef(false);
   const text = copy[language];
 
   useEffect(() => {
@@ -1215,13 +1316,18 @@ function App() {
     const url = new URL(window.location.href);
     url.searchParams.set('lang', language);
     window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
-  }, [language]);
 
-  useEffect(() => {
-    if (!bookingNotice) return undefined;
-    const timeout = window.setTimeout(() => setBookingNotice(false), 6000);
-    return () => window.clearTimeout(timeout);
-  }, [bookingNotice]);
+    if (!pageViewTracked.current) {
+      pageViewTracked.current = true;
+      track('page_view', {
+        language,
+        path: url.pathname,
+        utm_source: url.searchParams.get('utm_source') || '',
+        utm_campaign: url.searchParams.get('utm_campaign') || '',
+        referrer: document.referrer || '',
+      });
+    }
+  }, [language]);
 
   useEffect(() => {
     const milestones = new Set();
@@ -1249,20 +1355,6 @@ function App() {
     track('language_change', { language: nextLanguage });
   };
 
-  const handleBookCall = () => {
-    track('discovery_call_click');
-    if (SITE_CONFIG.discoveryCallUrl) {
-      window.open(SITE_CONFIG.discoveryCallUrl, '_blank', 'noopener,noreferrer');
-      return;
-    }
-    setBookingNotice(true);
-  };
-
-  const handleOpenWizard = () => {
-    track('estimate_form_open');
-    setWizardOpen(true);
-  };
-
   return (
     <div className="app" ref={appRef} data-language={language}>
       <a className="skip-link" href="#main-content">
@@ -1270,45 +1362,19 @@ function App() {
       </a>
       <Header language={language} onLanguageChange={handleLanguageChange} text={text} />
       <main id="main-content">
-        <Hero
-          language={language}
-          text={text}
-          onBookCall={handleBookCall}
-          onOpenWizard={handleOpenWizard}
-        />
+        <Hero language={language} text={text} />
         <TrustRail language={language} text={text} />
-        <Positioning language={language} text={text} />
-        <Work language={language} text={text} />
+        <Problems text={text} />
         <Services language={language} text={text} />
+        <Work language={language} text={text} />
+        <MidCta text={text} />
+        <Testimonials text={text} />
         <Process text={text} />
-        <WhyBilal text={text} />
-        <Testimonials language={language} text={text} />
+        <Positioning language={language} text={text} />
+        <Contact language={language} text={text} />
         <Faq language={language} text={text} />
-        <Contact
-          language={language}
-          text={text}
-          onBookCall={handleBookCall}
-          onOpenWizard={handleOpenWizard}
-        />
       </main>
       <Footer language={language} onLanguageChange={handleLanguageChange} text={text} />
-      <Wizard
-        isOpen={wizardOpen}
-        language={language}
-        onClose={() => setWizardOpen(false)}
-      />
-      {bookingNotice && (
-        <div className="booking-notice" role="status" aria-live="polite">
-          <span>{text.bookingUnavailable}</span>
-          <button
-            type="button"
-            onClick={() => setBookingNotice(false)}
-            aria-label={language === 'ar' ? 'إغلاق التنبيه' : 'Dismiss notice'}
-          >
-            ×
-          </button>
-        </div>
-      )}
     </div>
   );
 }
