@@ -1,6 +1,22 @@
 services:
+  api:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD in your .env file}
+    volumes:
+      - dashboard_data:/data
+
   web:
     build: .
     restart: unless-stopped
+    depends_on:
+      - api
     ports:
       - "127.0.0.1:3000:80" # Maps local port 3000 to container port 80 securely
+
+volumes:
+  dashboard_data:
